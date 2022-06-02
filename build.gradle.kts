@@ -15,6 +15,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.boot:spring-boot-starter-security:2.7.0")
     // implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     // runtimeOnly("org.postgresql:postgresql")
     // runtimeOnly("org.flywaydb:flyway-core")
