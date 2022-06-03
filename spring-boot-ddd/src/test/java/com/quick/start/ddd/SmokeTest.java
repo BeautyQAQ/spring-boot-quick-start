@@ -1,4 +1,4 @@
-package com.quick.start;
+package com.quick.start.ddd;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

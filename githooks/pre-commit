@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+# 未被跟踪的代码会被stash掉
+git stash -qku
+./gradlew clean check
+RESULT=$?
+git stash pop -q
+exit $RESULT
