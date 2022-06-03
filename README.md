@@ -17,8 +17,8 @@
 
 - 第一步，先引入测试
 - jupiter就是junit5
-- org.junit.jupiter:junit-jupiter-api--------------->编译期间提供的api
-- org.junit.jupiter:junit-jupiter-engine------------>api具体的实现
+- org.junit.jupiter:junit-jupiter-api  --------------->  编译期间提供的api
+- org.junit.jupiter:junit-jupiter-engine  ------------>  api具体的实现
 - 进行**冒烟测试**
 
 **git hooks**
@@ -29,5 +29,14 @@
 - 二：使用`git config core.hooksPath githooks`命令
 
 **这里并没有使用上述hooks机制**
+
+### spring-boot-ddd
+
+- 使用CQRS-命令查询职责分离的模式下，面向领域的逻辑代码应该使用JPA这样的ORM框架，更有利于代码的建模
+- 对于面向数据的查询代码，则使用MyBatis，更有利于SQL编写和性能优化
+- 对于一个大型应用，这两者应该是可以同时存在的，他们分别负责提供不同场景下的持久化支持
+- jpa在反序列化时需要一个空的构造函数
+- 测试不应依赖我们本地的数据库环境，两个方案，其一：使用spring的H2数据库，这是个in memory的数据库，好处是比较简单不需要额外依赖，缺点是它毕竟是另一种数据库，和生产不一致，语法支持也不一样
+- 其二：使用test container框架，它会帮助我们测试时启动一个本地的docker对应的容器，测试期间直接连接这个容器
 
 ### spring-boot-security

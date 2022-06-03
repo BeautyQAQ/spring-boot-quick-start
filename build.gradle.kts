@@ -1,7 +1,7 @@
 plugins {
     java
     checkstyle
-    id("org.springframework.boot") version "2.6.4"
+    id("org.springframework.boot") version "2.7.0"
 }
 
 subprojects{
@@ -33,17 +33,9 @@ allprojects{
     }
 
     dependencies {
-        // implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-        // runtimeOnly("org.postgresql:postgresql")
-        // runtimeOnly("org.flywaydb:flyway-core")
-
         testImplementation(platform("org.junit:junit-bom:5.8.2"))
         testImplementation("org.junit.jupiter:junit-jupiter-api")
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-
-        // testImplementation(platform("org.testcontainers:testcontainers-bom:1.16.3"))
-        // testImplementation("org.testcontainers:testcontainers")
-        // testImplementation("org.testcontainers:postgresql")
     }
 
     // 指定Java的构建版本，由Java插件提供
