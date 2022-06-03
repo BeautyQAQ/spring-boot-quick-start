@@ -8,8 +8,7 @@
 - 通过`gradle wrapper`将gradle包一层，避免多台机器gradle版本不一致的问题，这是一个比较好的实践
 - 通过IDEA选择新建模块->来自现有源代码的模块，导入刚刚创建的module
 
-**这里并未使用上述机制**  
-**还是使用了多模块的方案**
+**这里并未使用上述机制，还是使用了多模块的方案**
 
 - spring组件的统一版本控制由`id("org.springframework.boot") version "2.6.4"`插件控制
 
