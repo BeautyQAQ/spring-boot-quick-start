@@ -17,7 +17,7 @@ public class QuestionRepositoryTest {
     private QuestionRepository questionRepository;
 
     @Test
-    void repository_should_successfully_save_question(){
+    void repository_should_successfully_save_question() {
         var question = new Question("UID_00001", "A test title", "A test detail");
         Question saveQuestion = questionRepository.save(question);
         assertThat(saveQuestion.getId(), is(notNullValue()));

@@ -9,7 +9,6 @@ import org.testcontainers.containers.wait.strategy.Wait;
 
 import javax.sql.DataSource;
 
-
 public class DatabaseTestConfiguration {
 
     @Bean(initMethod = "start", destroyMethod = "stop")
