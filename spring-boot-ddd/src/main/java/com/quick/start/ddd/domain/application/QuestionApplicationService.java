@@ -2,7 +2,7 @@ package com.quick.start.ddd.domain.application;
 
 import com.quick.start.ddd.domain.application.command.CreateQuestionCommand;
 import com.quick.start.ddd.domain.application.resule.QuestionCreatedResult;
-import com.quick.start.ddd.domain.module.entity.Question;
+import com.quick.start.ddd.domain.model.entity.Question;
 import com.quick.start.ddd.domain.repository.QuestionRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
