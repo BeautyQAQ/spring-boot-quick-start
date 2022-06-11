@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Spring Security 注解测试Controller
+ * Spring Security 注解测试Controller.
  * ·@EnableGlobalMethodSecurity(prePostEnabled = true)·
  */
 @RestController
 @RequestMapping("/demo")
 public class DemoController {
-    
+
     @PermitAll
     @GetMapping("/echo")
     public String demo() {

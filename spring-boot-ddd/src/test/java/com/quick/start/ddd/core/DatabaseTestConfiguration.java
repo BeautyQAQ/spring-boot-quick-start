@@ -13,7 +13,7 @@ public class DatabaseTestConfiguration {
 
     @Bean(initMethod = "start", destroyMethod = "stop")
     public PostgreSQLContainer<?> postgreSqlContainer() {
-        return new PostgreSQLContainer<>("postgres:last").waitingFor(Wait.forListeningPort());
+        return new PostgreSQLContainer<>("postgres:14-alpine").waitingFor(Wait.forListeningPort());
     }
 
     @Bean
