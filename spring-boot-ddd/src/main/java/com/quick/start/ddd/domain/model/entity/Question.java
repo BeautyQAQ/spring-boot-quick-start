@@ -1,20 +1,18 @@
 package com.quick.start.ddd.domain.model.entity;
 
-import com.quick.start.ddd.domain.model.vo.QuestionUpdatedRecord;
-import org.springframework.data.annotation.PersistenceConstructor;
+import static javax.persistence.GenerationType.IDENTITY;
 
+import com.quick.start.ddd.domain.model.vo.QuestionUpdatedRecord;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OrderBy;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import static javax.persistence.GenerationType.IDENTITY;
+import org.springframework.data.annotation.PersistenceConstructor;
 
 @Entity
 public class Question {
@@ -22,6 +20,7 @@ public class Question {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private String id;
+
     private String questionerId;
     private String title;
     private String detail;
@@ -40,17 +39,15 @@ public class Question {
     }
 
     @PersistenceConstructor
-    protected Question() {
+    protected Question() {}
 
-    }
-
-    public void editTitle(String editorId, String reason, String title){
-        this.updatedRecords.add(QuestionUpdatedRecord.ofTitleEdited(editorId,reason,this.title, title));
+    public void editTitle(String editorId, String reason, String title) {
+        this.updatedRecords.add(QuestionUpdatedRecord.ofTitleEdited(editorId, reason, this.title, title));
         this.title = title;
     }
 
-    public void editDetail(String editorId, String reason, String detail){
-        this.updatedRecords.add(QuestionUpdatedRecord.ofDetailEdited(editorId,reason,this.detail, detail));
+    public void editDetail(String editorId, String reason, String detail) {
+        this.updatedRecords.add(QuestionUpdatedRecord.ofDetailEdited(editorId, reason, this.detail, detail));
         this.detail = detail;
     }
 

@@ -1,17 +1,16 @@
 package com.quick.start.ddd.domain.repository;
 
-import com.quick.start.ddd.core.JpaRepositoryTest;
-import com.quick.start.ddd.domain.model.entity.Question;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.persistence.EntityManager;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
+
+import com.quick.start.ddd.core.JpaRepositoryTest;
+import com.quick.start.ddd.domain.model.entity.Question;
+import javax.persistence.EntityManager;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @JpaRepositoryTest
 public class QuestionRepositoryTest {
@@ -31,7 +30,7 @@ public class QuestionRepositoryTest {
     }
 
     @Test
-    void repository_should_successfully_find_question_by_id(){
+    void repository_should_successfully_find_question_by_id() {
         Question question = new Question("UID_00001", "A test title", "A test detail");
         question.editTitle("UID_00002", "for test", "A new test title");
         // 保存之后直接刷新到数据库

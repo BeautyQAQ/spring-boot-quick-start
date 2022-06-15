@@ -1,10 +1,5 @@
 package com.quick.start.ddd.domain.model.entity;
 
-import com.quick.start.ddd.domain.model.vo.QuestionUpdatedRecord;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
 import static com.quick.start.ddd.domain.model.vo.QuestionUpdatedRecord.UpdateType.CREATED;
 import static com.quick.start.ddd.domain.model.vo.QuestionUpdatedRecord.UpdateType.DETAIL_EDITED;
 import static com.quick.start.ddd.domain.model.vo.QuestionUpdatedRecord.UpdateType.TITLE_EDITED;
@@ -12,9 +7,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 
+import com.quick.start.ddd.domain.model.vo.QuestionUpdatedRecord;
+import java.util.List;
+import org.junit.jupiter.api.Test;
+
 public class QuestionTest {
+
     @Test
-    void should_generate_created_record_after_question_created(){
+    void should_generate_created_record_after_question_created() {
         Question question = new Question("UID_00001", "A test title", "A test detail");
         List<QuestionUpdatedRecord> updatedRecords = question.getUpdatedRecords();
         assertThat(updatedRecords, hasSize(1));
@@ -25,7 +25,7 @@ public class QuestionTest {
     }
 
     @Test
-    void should_generate_edited_record_after_question_edited(){
+    void should_generate_edited_record_after_question_edited() {
         String originalTitle = "A test title";
         String originalDetail = "A test detail";
         Question question = new Question("UID_00001", originalTitle, originalDetail);
