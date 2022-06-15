@@ -22,8 +22,9 @@ dependencies{
     implementation("io.jsonwebtoken:jjwt:0.9.1")
     // 验证码
     implementation("com.github.penggle:kaptcha:2.3.2")
-    // implementation("com.github.hc621311:springboot-swagger3-starter:3.0.0")
 
+    implementation("io.springfox:springfox-swagger2:3.0.0")
+    implementation("io.springfox:springfox-swagger-ui:3.0.0")
 
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
