@@ -32,13 +32,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
      * 认证失败处理类
      */
     @Autowired
-    private AuthenticationEntryPointImpl unauthorizedHandler;
+    private GlobalExceptionHandler unauthorizedHandler;
 
     /**
      * 退出处理类
      */
     @Autowired
-    private LogoutSuccessHandlerImpl logoutSuccessHandler;
+    private MyException logoutSuccessHandler;
 
     /**
      * token认证过滤器
