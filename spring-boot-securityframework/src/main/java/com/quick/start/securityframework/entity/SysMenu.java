@@ -1,5 +1,6 @@
 package com.quick.start.securityframework.entity;
 
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.NotBlank;
@@ -15,6 +16,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  */
 public class SysMenu extends BaseEntity {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     /** 菜单ID */
@@ -216,11 +218,8 @@ public class SysMenu extends BaseEntity {
             .append("status ", getStatus())
             .append("perms", getPerms())
             .append("icon", getIcon())
-            .append("createBy", getCreateBy())
             .append("createTime", getCreateTime())
-            .append("updateBy", getUpdateBy())
             .append("updateTime", getUpdateTime())
-            .append("remark", getRemark())
             .toString();
     }
 }

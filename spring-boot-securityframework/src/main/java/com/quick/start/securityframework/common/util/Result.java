@@ -29,18 +29,64 @@ public class Result<T> implements Serializable {
     @ApiModelProperty(value = "token数据")
     private String jwt;
 
-
     /**
      * 把构造方法私有
      */
-    private Result() {}
+    private Result() {
+    }
 
+    public Boolean getSuccess() {
+        return success;
+    }
 
+    public void setSuccess(Boolean success) {
+        this.success = success;
+    }
 
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public Long getCount() {
+        return count;
+    }
+
+    public void setCount(Long count) {
+        this.count = count;
+    }
+
+    public List<T> getData() {
+        return data;
+    }
+
+    public void setData(List<T> data) {
+        this.data = data;
+    }
+
+    public String getJwt() {
+        return jwt;
+    }
+
+    public void setJwt(String jwt) {
+        this.jwt = jwt;
+    }
 
     /**
      * 成功静态方法
-     * @return
+     *
+     * @return 成功
      */
     public static Result ok() {
         Result r = new Result();
@@ -50,10 +96,10 @@ public class Result<T> implements Serializable {
         return r;
     }
 
-
     /**
      * 失败静态方法
-     * @return
+     *
+     * @return 失败
      */
     public static Result error() {
         Result r = new Result();
@@ -63,35 +109,36 @@ public class Result<T> implements Serializable {
         return r;
     }
 
-    public static Result judge(int n,String msg){
-        return n > 0 ? ok().message(msg + "成功") : error().message(msg +"失败");
+    public static Result judge(int n, String msg) {
+        return n > 0 ? ok().message(msg + "成功") : error().message(msg + "失败");
     }
 
-    public Result success(Boolean success){
+    public Result success(Boolean success) {
         this.setSuccess(success);
         return this;
     }
 
-    public Result message(String message){
+    public Result message(String message) {
         this.setMsg(message);
         return this;
     }
 
-    public Result code(Integer code){
+    public Result code(Integer code) {
         this.setCode(code);
         return this;
     }
 
-
-    public Result data(List<T> list){
+    public Result data(List<T> list) {
         this.data.addAll(list);
         return this;
     }
-    public Result count(Long count){
+
+    public Result count(Long count) {
         this.count = count;
         return this;
     }
-    public Result jwt(String jwt){
+
+    public Result jwt(String jwt) {
         this.jwt = jwt;
         return this;
     }
