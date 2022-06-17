@@ -46,16 +46,19 @@ spring:
       enabled: true
       additional-paths: src/main/java
       exclude: WEB-INF/**
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 #mybatis配置
 mybatis:
-  type-aliases-package: com.codermy.myspringsecurityplus.entity
+  type-aliases-package: com.quick.start.securityframework.entity
   mapper-locations: classpath:/mybatis-mappers/*
   configuration:
     map-underscore-to-camel-case: true
 
 logging:
   file:
-    path: src\main\resources\logger\ # logger文件夹需要提前生成
+    path: log # log文件夹
 
 jwt:
   tokenHeader: Authorization #JWT存储的请求头
