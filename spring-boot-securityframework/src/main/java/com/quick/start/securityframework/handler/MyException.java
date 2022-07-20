@@ -1,8 +1,7 @@
 package com.quick.start.securityframework.handler;
 
 /**
- * @author codermy
- * @createTime 2020/5/8
+ * 自定义异常
  */
 public class MyException extends  RuntimeException {
     /**

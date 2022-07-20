@@ -48,7 +48,7 @@ spring:
       exclude: WEB-INF/**
   mvc:
     pathmatch:
-      matching-strategy: ant_path_matcher
+      matching-strategy: ANT_PATH_MATCHER
 #mybatis配置
 mybatis:
   type-aliases-package: com.quick.start.securityframework.entity
