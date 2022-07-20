@@ -16,6 +16,9 @@ dependencies{
     implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2")
     implementation("com.github.pagehelper:pagehelper-spring-boot-starter:1.4.2")
     implementation("io.jsonwebtoken:jjwt:0.9.1")
+    implementation("org.apache.commons:commons-lang3:3.12.0")
+    
+    compileOnly("org.projectlombok:lombok:1.18.24")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 /**
  * 用户对象 sys_user
  */
-public class MyUser extends BaseEntity<Integer> {
+public class MyUser extends BaseEntity<Long> {
 
     private static final long serialVersionUID = -6525908145032868837L;
     private String userName;
@@ -80,6 +80,7 @@ public class MyUser extends BaseEntity<Integer> {
             .append("status", getStatus())
             .append("createTime", getCreateTime())
             .append("updateTime", getUpdateTime())
+            .append("id", getId())
             .toString();
     }
 }

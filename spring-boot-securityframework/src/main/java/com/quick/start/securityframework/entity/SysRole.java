@@ -8,7 +8,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 /**
  * 角色表 sys_role
  */
-public class SysRole extends BaseEntity {
+public class SysRole extends BaseEntity<Long> {
 
     private static final long serialVersionUID = 1L;
 
@@ -175,11 +175,9 @@ public class SysRole extends BaseEntity {
             .append("deptCheckStrictly", isDeptCheckStrictly())
             .append("status", getStatus())
             .append("delFlag", getDelFlag())
-            .append("createBy", getCreateBy())
             .append("createTime", getCreateTime())
-            .append("updateBy", getUpdateBy())
             .append("updateTime", getUpdateTime())
-            .append("remark", getRemark())
+            .append("id", getId())
             .toString();
     }
 }
