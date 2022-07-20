@@ -3,11 +3,14 @@ package com.quick.start.securityframework.entity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import java.io.Serial;
+
 /**
  * 用户对象 sys_user
  */
 public class MyUser extends BaseEntity<Long> {
 
+    @Serial
     private static final long serialVersionUID = -6525908145032868837L;
     private String userName;
     private String password;

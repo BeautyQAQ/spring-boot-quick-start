@@ -19,6 +19,8 @@ dependencies{
     implementation("org.apache.commons:commons-lang3:3.12.0")
     
     compileOnly("org.projectlombok:lombok:1.18.24")
+    implementation("io.springfox:springfox-swagger2:3.0.0")
+    implementation("io.springfox:springfox-swagger-ui:3.0.0")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

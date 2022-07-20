@@ -1,5 +1,6 @@
 package com.quick.start.securityframework.entity;
 
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.NotBlank;
@@ -13,6 +14,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  */
 public class SysMenu extends BaseEntity<Long> {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     /** 菜单ID */

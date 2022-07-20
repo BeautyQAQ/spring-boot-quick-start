@@ -38,3 +38,4 @@ out/
 
 application-*.yml
 !application-env.template.yml
+/log/
