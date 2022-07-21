@@ -1,22 +1,33 @@
 package com.quick.start.securityframework.entity;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.io.Serial;
 
-/**
- * 用户对象 sys_user
- */
-public class MyUser extends BaseEntity<Long> {
-
+@Data
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+public class MyUser extends BaseEntity{
     @Serial
     private static final long serialVersionUID = -6525908145032868837L;
+
+    private Integer userId;
+
+    private Integer deptId;
+
     private String userName;
+
     private String password;
+
     private String nickName;
+
     private String phone;
+
     private String email;
+
     private Integer status;
 
     public interface Status {
@@ -24,66 +35,26 @@ public class MyUser extends BaseEntity<Long> {
         int VALID = 1;
     }
 
-    public String getUserName() {
-        return userName;
+    private Integer roleId;
+    /** 岗位组 */
+    private Integer[] jobIds;
+
+    /**
+     * 判断是否为admin用户
+     * @return
+     */
+    public boolean isAdmin()
+    {
+        return isAdmin(this.getUserId());
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public static boolean isAdmin(Integer userId)
+    {
+        return userId != null && 1L == userId;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getNickName() {
-        return nickName;
-    }
-
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-            .append("userName", getUserName())
-            .append("nickName", getNickName())
-            .append("email", getEmail())
-            .append("phone", getPhone())
-            .append("password", getPassword())
-            .append("status", getStatus())
-            .append("createTime", getCreateTime())
-            .append("updateTime", getUpdateTime())
-            .append("id", getId())
-            .toString();
+    public MyUser(Integer userId)
+    {
+        this.setUserId(userId);
     }
 }

@@ -1,0 +1,12 @@
+package com.quick.start.securityframework.dto;
+
+import lombok.Data;
+
+@Data
+public class LogQuery {
+
+    private String userName;
+
+    private String logType;
+    // private List<Timestamp> createTime;
+}

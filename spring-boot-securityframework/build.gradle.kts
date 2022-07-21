@@ -17,10 +17,10 @@ dependencies{
     implementation("com.github.pagehelper:pagehelper-spring-boot-starter:1.4.2")
     implementation("io.jsonwebtoken:jjwt:0.9.1")
     implementation("org.apache.commons:commons-lang3:3.12.0")
-    
+    implementation("io.springfox:springfox-boot-starter:3.0.0")
+    implementation("com.alibaba:fastjson:2.0.9")
+
     compileOnly("org.projectlombok:lombok:1.18.24")
-    implementation("io.springfox:springfox-swagger2:3.0.0")
-    implementation("io.springfox:springfox-swagger-ui:3.0.0")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
