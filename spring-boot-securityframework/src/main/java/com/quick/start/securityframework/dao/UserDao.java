@@ -38,7 +38,7 @@ public interface UserDao {
      * 计算所有用户数量
      * @return Long
      */
-     @Select("select count(*) from My_user")
+     @Select("select count(*) from my_user")
      Long countAllUser();
 
     /**

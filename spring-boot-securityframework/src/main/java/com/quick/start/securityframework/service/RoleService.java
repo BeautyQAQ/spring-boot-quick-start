@@ -3,6 +3,7 @@ package com.quick.start.securityframework.service;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.quick.start.securityframework.annotation.DataPermission;
 import com.quick.start.securityframework.common.util.Result;
 import com.quick.start.securityframework.common.util.ResultCode;
 import com.quick.start.securityframework.common.util.UserConstants;
@@ -31,7 +32,7 @@ public class RoleService {
     private RoleDeptDao roleDeptDao;
 
 
-//    @DataPermission(deptAlias = "d")
+    @DataPermission(deptAlias = "d")
     public Result<MyRole> getFuzzyRolesByPage(Integer offectPosition, Integer limit, MyRole myRole) {
         Page page = PageHelper.offsetPage(offectPosition,limit);
         List<MyRole> fuzzyRolesByPage = roleDao.getFuzzyRolesByPage(myRole);

@@ -19,6 +19,7 @@ dependencies{
     implementation("org.apache.commons:commons-lang3:3.12.0")
     implementation("io.springfox:springfox-boot-starter:3.0.0")
     implementation("com.alibaba:fastjson:2.0.9")
+    implementation("com.github.whvcse:easy-captcha:1.6.2")
 
     compileOnly("org.projectlombok:lombok:1.18.24")
 

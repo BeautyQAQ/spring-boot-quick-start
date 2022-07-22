@@ -2,6 +2,7 @@ package com.quick.start.securityframework.service;
 
 import cn.hutool.core.util.ObjectUtil;
 
+import com.quick.start.securityframework.annotation.DataPermission;
 import com.quick.start.securityframework.common.util.ResultCode;
 import com.quick.start.securityframework.common.util.TreeUtil;
 import com.quick.start.securityframework.common.util.UserConstants;
@@ -20,19 +21,19 @@ public class DeptService {
     private DeptDao deptDao;
 
 
-//    @DataPermission(deptAlias = "d")
+    @DataPermission(deptAlias = "d")
     public List<MyDept> getDeptAll(MyDept myDept) {
         return deptDao.getFuzzyDept(myDept);
     }
 
 
-//    @DataPermission(deptAlias = "d")
+    @DataPermission(deptAlias = "d")
     public List<DeptDto> buildDeptAll(DeptDto deptDto) {
         return deptDao.buildAll(deptDto);
     }
 
 
-//    @DataPermission(deptAlias = "d")
+    @DataPermission(deptAlias = "d")
     public List<DeptDto> roleDeptTreeData(Integer roleId) {
         List<DeptDto> selectRoleDeptTree = deptDao.selectRoleDeptTree(roleId);
         DeptDto deptDto = new DeptDto();

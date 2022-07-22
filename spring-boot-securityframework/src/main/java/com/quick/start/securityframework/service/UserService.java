@@ -4,6 +4,7 @@ import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.ObjectUtil;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.quick.start.securityframework.annotation.DataPermission;
 import com.quick.start.securityframework.common.util.Result;
 import com.quick.start.securityframework.common.util.ResultCode;
 import com.quick.start.securityframework.common.util.UserConstants;
@@ -33,7 +34,7 @@ public class UserService {
     private UserJobDao userJobDao;
 
 
-//    @DataPermission(deptAlias = "d", userAlias = "u")
+    @DataPermission(deptAlias = "d", userAlias = "u")
     public Result<MyUser> getAllUsersByPage(Integer offectPosition, Integer limit, MyUser myUser) {
         Page page = PageHelper.offsetPage(offectPosition,limit);
         List<MyUser> fuzzyUserByPage = userDao.getFuzzyUserByPage(myUser);
