@@ -1,6 +1,5 @@
 package com.quick.start.securityframework.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

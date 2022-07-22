@@ -1,7 +1,7 @@
 package com.quick.start.securityframework.service;
 
 
-import com.quick.start.securityframework.common.util.Result;
+import com.quick.start.securityframework.common.Result;
 import com.quick.start.securityframework.common.util.TreeUtil;
 import com.quick.start.securityframework.dao.MenuDao;
 import com.quick.start.securityframework.dao.RoleMenuDao;

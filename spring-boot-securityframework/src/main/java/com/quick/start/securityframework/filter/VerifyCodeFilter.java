@@ -1,8 +1,8 @@
-package com.codermy.myspringsecurityplus.security.filter;
+package com.quick.start.securityframework.filter;
 
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
-import com.codermy.myspringsecurityplus.common.utils.Result;
+import com.quick.start.securityframework.common.Result;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 

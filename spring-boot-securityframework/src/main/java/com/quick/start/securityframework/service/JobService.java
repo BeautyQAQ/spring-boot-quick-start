@@ -5,14 +5,14 @@ import cn.hutool.core.util.ObjectUtil;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.quick.start.securityframework.common.util.Result;
-import com.quick.start.securityframework.common.util.ResultCode;
-import com.quick.start.securityframework.common.util.UserConstants;
+import com.quick.start.securityframework.common.Result;
+import com.quick.start.securityframework.common.ResultCode;
+import com.quick.start.securityframework.common.UserConstants;
 import com.quick.start.securityframework.dao.JobDao;
 import com.quick.start.securityframework.dao.UserJobDao;
 import com.quick.start.securityframework.dto.JobQueryDto;
 import com.quick.start.securityframework.entity.MyJob;
-import com.quick.start.securityframework.handler.MyException;
+import com.quick.start.securityframework.common.exption.MyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

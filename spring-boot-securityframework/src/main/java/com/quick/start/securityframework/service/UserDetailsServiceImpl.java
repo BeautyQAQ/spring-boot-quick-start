@@ -1,15 +1,11 @@
-package com.codermy.myspringsecurityplus.security;
+package com.quick.start.securityframework.service;
 
-
-import com.codermy.myspringsecurityplus.admin.dao.MenuDao;
-import com.codermy.myspringsecurityplus.admin.dto.MenuIndexDto;
-import com.codermy.myspringsecurityplus.admin.entity.MyRole;
-import com.codermy.myspringsecurityplus.admin.entity.MyRoleUser;
-import com.codermy.myspringsecurityplus.admin.entity.MyUser;
-import com.codermy.myspringsecurityplus.admin.service.RoleService;
-import com.codermy.myspringsecurityplus.admin.service.RoleUserService;
-import com.codermy.myspringsecurityplus.security.dto.JwtUserDto;
-import com.codermy.myspringsecurityplus.admin.service.UserService;
+import com.quick.start.securityframework.dao.MenuDao;
+import com.quick.start.securityframework.dto.JwtUserDto;
+import com.quick.start.securityframework.dto.MenuIndexDto;
+import com.quick.start.securityframework.entity.MyRole;
+import com.quick.start.securityframework.entity.MyRoleUser;
+import com.quick.start.securityframework.entity.MyUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -21,12 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-/**
- * @author codermy
- * @createTime 2020/7/16
- */
 @Service
 @Slf4j
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -54,7 +45,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         List<MenuIndexDto> list = menuDao.listByUserId(user.getUserId());
-        List<String> collect = list.stream().map(MenuIndexDto::getPermission).collect(Collectors.toList());
+        List<String> collect = list.stream().map(MenuIndexDto::getPermission).toList();
         for (String authority : collect){
             if (!("").equals(authority) & authority !=null){
                 GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(authority);

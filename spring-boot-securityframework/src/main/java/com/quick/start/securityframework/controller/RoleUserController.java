@@ -1,7 +1,7 @@
 package com.quick.start.securityframework.controller;
 
 import com.quick.start.securityframework.annotation.MyLog;
-import com.quick.start.securityframework.common.util.Result;
+import com.quick.start.securityframework.common.Result;
 import com.quick.start.securityframework.entity.MyRoleUser;
 import com.quick.start.securityframework.service.RoleUserService;
 import io.swagger.annotations.Api;

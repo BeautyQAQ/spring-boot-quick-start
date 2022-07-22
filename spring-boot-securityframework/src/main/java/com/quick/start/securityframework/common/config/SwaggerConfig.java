@@ -1,4 +1,4 @@
-package com.quick.start.securityframework.config;
+package com.quick.start.securityframework.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

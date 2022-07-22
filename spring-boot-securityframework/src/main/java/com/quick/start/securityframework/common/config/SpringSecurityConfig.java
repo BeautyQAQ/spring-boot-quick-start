@@ -1,7 +1,11 @@
-package com.codermy.myspringsecurityplus.security.config;
+package com.quick.start.securityframework.common.config;
 
 
 import com.quick.start.securityframework.filter.VerifyCodeFilter;
+import com.quick.start.securityframework.handler.MyAuthenticationFailureHandler;
+import com.quick.start.securityframework.handler.MyAuthenticationSuccessHandler;
+import com.quick.start.securityframework.handler.RestAuthenticationEntryPoint;
+import com.quick.start.securityframework.handler.RestfulAccessDeniedHandler;
 import com.quick.start.securityframework.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -33,7 +37,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
      * 登录成功逻辑
      */
     @Autowired
-    MyAuthenticationSuccessHandler authenticationSuccessHandler;
+    private MyAuthenticationSuccessHandler authenticationSuccessHandler;
 
     /**
      * 登录失败逻辑
@@ -102,6 +106,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 //任何人都能访问这个请求
                 .antMatchers("/captcha").permitAll()
+                .antMatchers("/swagger-ui/**").permitAll()
+                .antMatchers("/swagger-resources/**").permitAll()
+                .antMatchers("/v3/**").permitAll()
+
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

@@ -1,4 +1,4 @@
-package com.quick.start.securityframework.handler;
+package com.quick.start.securityframework.common.exption;
 
 /**
  * 自定义异常

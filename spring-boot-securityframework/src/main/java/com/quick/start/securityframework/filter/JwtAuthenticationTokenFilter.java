@@ -1,7 +1,7 @@
-package com.codermy.myspringsecurityplus.security.filter;
+package com.quick.start.securityframework.filter;
 
-import com.codermy.myspringsecurityplus.security.UserDetailsServiceImpl;
-import com.codermy.myspringsecurityplus.security.utils.JwtUtils;
+import com.quick.start.securityframework.common.util.JwtUtils;
+import com.quick.start.securityframework.service.UserDetailsServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,10 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * @author codermy
- * @createTime 2020/7/30
- */
 @Component
 @Slf4j
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {

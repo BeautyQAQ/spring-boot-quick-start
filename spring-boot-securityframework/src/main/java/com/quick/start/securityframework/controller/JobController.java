@@ -1,12 +1,12 @@
 package com.quick.start.securityframework.controller;
 
 import com.quick.start.securityframework.annotation.MyLog;
-import com.quick.start.securityframework.common.util.PageTableRequest;
-import com.quick.start.securityframework.common.util.Result;
-import com.quick.start.securityframework.common.util.UserConstants;
+import com.quick.start.securityframework.common.PageTableRequest;
+import com.quick.start.securityframework.common.Result;
+import com.quick.start.securityframework.common.UserConstants;
 import com.quick.start.securityframework.dto.JobQueryDto;
 import com.quick.start.securityframework.entity.MyJob;
-import com.quick.start.securityframework.handler.MyException;
+import com.quick.start.securityframework.common.exption.MyException;
 import com.quick.start.securityframework.service.JobService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

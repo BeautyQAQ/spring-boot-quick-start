@@ -1,5 +1,4 @@
-package com.codermy.myspringsecurityplus.security.utils;
-
+package com.quick.start.securityframework.common.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -9,10 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.*;
 
-/**
- * @author codermy
- * @createTime 2020/7/23
- */
+
 @Component
 public class JwtUtils {
     @Value("${jwt.secret}")

@@ -1,8 +1,8 @@
 package com.quick.start.securityframework.controller;
 
 import com.quick.start.securityframework.annotation.MyLog;
-import com.quick.start.securityframework.common.util.Result;
-import com.quick.start.securityframework.common.util.ResultCode;
+import com.quick.start.securityframework.common.Result;
+import com.quick.start.securityframework.common.ResultCode;
 import com.quick.start.securityframework.dto.MenuDto;
 import com.quick.start.securityframework.entity.MyMenu;
 import com.quick.start.securityframework.service.MenuService;

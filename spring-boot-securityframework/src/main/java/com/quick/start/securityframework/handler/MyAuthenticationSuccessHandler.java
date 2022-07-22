@@ -1,8 +1,8 @@
-package com.codermy.myspringsecurityplus.security.handler;
+package com.quick.start.securityframework.handler;
 
 import com.alibaba.fastjson.JSON;
-import com.codermy.myspringsecurityplus.security.utils.JwtUtils;
-import com.codermy.myspringsecurityplus.common.utils.Result;
+import com.quick.start.securityframework.common.Result;
+import com.quick.start.securityframework.common.util.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,8 +17,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * @author codermy
- * @createTime 2020/8/1
  * 登录成功
  */
 @Component

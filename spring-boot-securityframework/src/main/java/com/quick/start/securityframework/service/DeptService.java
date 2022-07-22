@@ -3,13 +3,13 @@ package com.quick.start.securityframework.service;
 import cn.hutool.core.util.ObjectUtil;
 
 import com.quick.start.securityframework.annotation.DataPermission;
-import com.quick.start.securityframework.common.util.ResultCode;
+import com.quick.start.securityframework.common.ResultCode;
 import com.quick.start.securityframework.common.util.TreeUtil;
-import com.quick.start.securityframework.common.util.UserConstants;
+import com.quick.start.securityframework.common.UserConstants;
 import com.quick.start.securityframework.dao.DeptDao;
 import com.quick.start.securityframework.dto.DeptDto;
 import com.quick.start.securityframework.entity.MyDept;
-import com.quick.start.securityframework.handler.MyException;
+import com.quick.start.securityframework.common.exption.MyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,8 +1,8 @@
-package com.codermy.myspringsecurityplus.security.handler;
+package com.quick.start.securityframework.handler;
 
 import com.alibaba.fastjson.JSON;
-import com.codermy.myspringsecurityplus.common.utils.Result;
 
+import com.quick.start.securityframework.common.Result;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author codermy
- * @createTime 2020/8/1
  * 当未登录或者token失效访问接口时，自定义的返回结果
  */
 @Component

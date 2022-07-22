@@ -1,9 +1,9 @@
 package com.quick.start.securityframework.controller;
 
 import com.quick.start.securityframework.annotation.MyLog;
-import com.quick.start.securityframework.common.util.Result;
-import com.quick.start.securityframework.common.util.ResultCode;
-import com.quick.start.securityframework.common.util.UserConstants;
+import com.quick.start.securityframework.common.Result;
+import com.quick.start.securityframework.common.ResultCode;
+import com.quick.start.securityframework.common.UserConstants;
 import com.quick.start.securityframework.dto.DeptDto;
 import com.quick.start.securityframework.entity.MyDept;
 import com.quick.start.securityframework.service.DeptService;

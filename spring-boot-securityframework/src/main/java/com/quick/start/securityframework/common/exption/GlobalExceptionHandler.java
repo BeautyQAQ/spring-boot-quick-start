@@ -1,7 +1,7 @@
-package com.quick.start.securityframework.handler;
+package com.quick.start.securityframework.common.exption;
 
-import com.quick.start.securityframework.common.util.Result;
-import com.quick.start.securityframework.common.util.ResultCode;
+import com.quick.start.securityframework.common.Result;
+import com.quick.start.securityframework.common.ResultCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.access.AccessDeniedException;

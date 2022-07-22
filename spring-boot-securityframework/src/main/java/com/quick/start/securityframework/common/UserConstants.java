@@ -1,4 +1,4 @@
-package com.quick.start.securityframework.common.util;
+package com.quick.start.securityframework.common;
 
 /**
  * 用户常量信息

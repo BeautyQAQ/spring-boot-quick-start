@@ -1,4 +1,4 @@
-package com.quick.start.securityframework.common.util;
+package com.quick.start.securityframework.common;
 
 import java.io.Serializable;
 

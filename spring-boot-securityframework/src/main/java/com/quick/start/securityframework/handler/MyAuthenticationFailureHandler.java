@@ -1,7 +1,7 @@
-package com.codermy.myspringsecurityplus.security.handler;
+package com.quick.start.securityframework.handler;
 
 import com.alibaba.fastjson.JSON;
-import com.codermy.myspringsecurityplus.common.utils.Result;
+import com.quick.start.securityframework.common.Result;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -12,10 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * @author codermy
- * @createTime 2020/8/2
- */
 @Component
 public class MyAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
