@@ -8,14 +8,12 @@ import com.quick.start.securityframework.dao.RoleMenuDao;
 import com.quick.start.securityframework.dto.MenuDto;
 import com.quick.start.securityframework.dto.MenuIndexDto;
 import com.quick.start.securityframework.entity.MyMenu;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@Slf4j
 public class MenuService {
     @Autowired
     private MenuDao menuDao;

@@ -20,11 +20,13 @@ public interface RoleMenuDao {
      * @param menuIds
      */
     @Insert("""
+            <script>
             insert into my_role_menu(role_id, menu_id) values
                     <foreach collection="menuIds" item="menuId"
                              separator=",">
                         (#{roleId}, #{menuId})
                     </foreach>
+            </script>
             """)
     void save(@Param("roleId")Integer roleId,@Param("menuIds") List<Integer> menuIds);
 

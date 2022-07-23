@@ -28,6 +28,7 @@ public interface LogDao {
      * @return
      */
     @Select("""
+            <script>
             SELECT l.user_name,l.ip,l.params,l.description,l.browser,l.time,l.method,l.create_time
                     FROM my_log l
                     <where>
@@ -39,6 +40,7 @@ public interface LogDao {
                         </if>
                     </where>
                     ORDER BY l.create_time desc
+            </script>
             """)
     List<LogDto> getFuzzyLogByPage(@Param("logQuery") LogQuery logQuery);
 
@@ -49,6 +51,7 @@ public interface LogDao {
      * @return
      */
     @Select("""
+            <script>
             SELECT l.user_name,l.ip,l.params,l.description,l.browser,l.exception_detail,l.method,l.create_time
                     FROM my_log l
                     <where>
@@ -60,6 +63,7 @@ public interface LogDao {
                         </if>
                     </where>
                     ORDER BY l.create_time desc
+            </script>
             """)
     List<ErrorLogDto> getFuzzyErrorLogByPage(@Param("logQuery") LogQuery logQuery);
 

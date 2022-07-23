@@ -18,6 +18,7 @@ public interface MenuDao {
      */
     @SuppressWarnings("AlibabaAbstractMethodOrInterfaceMethodMustUseJavadoc")
     @Select("""
+            <script>
             select m.menu_id,m.parent_id,m.menu_name,m.icon,m.url,m.permission,m.sort,m.type,m.create_time,m.update_time
                     from my_menu m
                     <where>
@@ -29,6 +30,7 @@ public interface MenuDao {
                         </if>
                     </where>
                     order by m.sort
+            </script>
             """)
     List<MyMenu> getFuzzyMenu(String queryName, Integer queryType);
 
@@ -55,7 +57,8 @@ public interface MenuDao {
      * @return
      */
     @Select("""
-            pdate my_menu m
+            <script>
+            update my_menu m
                     <set>
                         <if test="parentId != null">
                             parent_id = #{parentId},
@@ -81,6 +84,7 @@ public interface MenuDao {
                         update_time = #{updateTime}
                     </set>
                     where m.menu_id = #{menuId}
+            </script>
             """)
     int update(MyMenu menu);
 
@@ -133,7 +137,7 @@ public interface MenuDao {
      * @return
      */
     @Select("""
-            SELECT DISTINCT m.menu_id as id,m.parent_id,m.menu_name as title,m.icon,m.url as href,m.type,m.permission,m.sort
+            <script>SELECT DISTINCT m.menu_id as id,m.parent_id,m.menu_name as title,m.icon,m.url as href,m.type,m.permission,m.sort
                         FROM my_role_user ru
                     INNER JOIN my_role_menu rm ON rm.role_id = ru.role_id
                     LEFT JOIN my_menu m ON rm.menu_id = m.menu_id
@@ -142,7 +146,7 @@ public interface MenuDao {
                             ru.user_id = #{userId}
                         </if>
                     </where>
-                    ORDER BY ifnull(m.sort,0)
+                    ORDER BY ifnull(m.sort,0)</script>
             """)
     List<MenuIndexDto> listByUserId(@Param("userId")Integer userId);
 }

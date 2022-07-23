@@ -1,6 +1,8 @@
 package com.quick.start.securityframework.dao;
 
 import com.quick.start.securityframework.entity.MyUserJob;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -24,6 +26,14 @@ public interface UserJobDao {
      * @param userJobList 用户角色列表
      * @return 结果
      */
+    @Insert("""
+            <script>
+            insert into my_user_job(user_id, job_id) values
+                    <foreach item="item" index="index" collection="list" separator=",">
+                        (#{item.userId},#{item.jobId})
+                    </foreach>
+            </script>
+            """)
     int batchUserJob(List<MyUserJob> userJobList);
 
     /**
@@ -32,5 +42,6 @@ public interface UserJobDao {
      * @param id 用户ID
      * @return 结果
      */
+    @Delete("delete from my_user_job where user_id=#{id}")
     int deleteUserJobByUserId(Integer id);
 }

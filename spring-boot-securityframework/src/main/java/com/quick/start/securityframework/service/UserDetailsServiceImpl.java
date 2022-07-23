@@ -6,7 +6,6 @@ import com.quick.start.securityframework.dto.MenuIndexDto;
 import com.quick.start.securityframework.entity.MyRole;
 import com.quick.start.securityframework.entity.MyRoleUser;
 import com.quick.start.securityframework.entity.MyUser;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
@@ -19,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Slf4j
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired

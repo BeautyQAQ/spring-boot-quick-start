@@ -39,6 +39,7 @@ public interface RoleUserDao {
      * @return
      */
     @Update("""
+            <script>
             update my_role_user ru
                     <set>
                         <if test="roleId != null">
@@ -46,6 +47,7 @@ public interface RoleUserDao {
                         </if>
                     </set>
                     where ru.user_id = #{userId}
+                    </script>
             """)
     int updateMyRoleUser(MyRoleUser myRoleUser);
 

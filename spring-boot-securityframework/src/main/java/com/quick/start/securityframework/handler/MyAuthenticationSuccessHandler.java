@@ -3,7 +3,6 @@ package com.quick.start.securityframework.handler;
 import com.alibaba.fastjson.JSON;
 import com.quick.start.securityframework.common.Result;
 import com.quick.start.securityframework.common.util.JwtUtils;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
@@ -20,8 +19,8 @@ import java.io.IOException;
  * 登录成功
  */
 @Component
-@Slf4j
 public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+
     @Autowired
     private JwtUtils jwtUtils;
     @Value("${jwt.tokenHeader}")

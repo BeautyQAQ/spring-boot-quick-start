@@ -45,6 +45,7 @@ public interface DictDetailDao {
      * @return 结果
      */
     @Update("""
+            <script>
             update my_dict_detail
                     <set>
                         <if test="label != null and label != ''">label = #{label},</if>
@@ -53,6 +54,7 @@ public interface DictDetailDao {
                         update_time = #{updateTime}
                     </set>
                     where id = #{id}
+            </script>
             """)
     int updateDictDetail(MyDictDetail myDictDetail);
 
@@ -63,10 +65,12 @@ public interface DictDetailDao {
      * @return 结果
      */
     @Delete("""
+            <script>
             delete from my_dict_detail where id in
                     <foreach collection="array" item="id" open="(" separator="," close=")">
                         #{id}
                     </foreach>
+            </script>
             """)
     int deleteDictDetailByIds(Integer[] dictDetailIds);
 

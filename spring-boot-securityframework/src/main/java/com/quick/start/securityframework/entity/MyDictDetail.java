@@ -2,9 +2,6 @@ package com.quick.start.securityframework.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 
 import java.io.Serial;
 
@@ -14,9 +11,7 @@ import java.io.Serial;
  * </p>
  *
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Accessors(chain = true)
+
 @ApiModel(value="SysDict对象", description="数据字典")
 public class MyDictDetail extends BaseEntity{
 
@@ -43,4 +38,63 @@ public class MyDictDetail extends BaseEntity{
 
     @ApiModelProperty(value = "更新者")
     private String updateBy;
+
+    public MyDictDetail() {
+    }
+
+    public Integer getId() {
+        return Id;
+    }
+
+    public void setId(Integer id) {
+        Id = id;
+    }
+
+    public Integer getDictId() {
+        return dictId;
+    }
+
+    public void setDictId(Integer dictId) {
+        this.dictId = dictId;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+
+    public String getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
+    }
+
+    public String getUpdateBy() {
+        return updateBy;
+    }
+
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy;
+    }
 }

@@ -18,6 +18,7 @@ public interface JobDao {
      * @return
      */
     @Select("""
+            <script>
             select j.job_id,j.job_name,j.sort,j.status,j.create_time,j.update_time
             from my_job j
             <where>
@@ -29,6 +30,7 @@ public interface JobDao {
                 </if>
             </where>
             order by j.sort
+            </script>
             """)
     List<MyJob> getFuzzyJob(String queryName, Integer queryStatus);
 
@@ -66,10 +68,12 @@ public interface JobDao {
      * @return 结果
      */
     @Delete("""
+            <script>
             delete from my_job where job_id in
                     <foreach collection="array" item="jobId" open="(" separator="," close=")">
                         #{jobId}
                     </foreach>
+            </script>
             """)
     int deleteJobByIds(Integer[] ids);
 
@@ -106,6 +110,7 @@ public interface JobDao {
      * @return 结果
      */
     @Update("""
+            <script>
             update my_job
                     <set>
                         <if test="jobName != null and jobName != ''">job_name = #{jobName},</if>
@@ -114,6 +119,7 @@ public interface JobDao {
                         update_time = #{updateTime}
                     </set>
                     where job_id = #{jobId}
+            </script>
             """)
     int updateJob(MyJob myJob);
 }

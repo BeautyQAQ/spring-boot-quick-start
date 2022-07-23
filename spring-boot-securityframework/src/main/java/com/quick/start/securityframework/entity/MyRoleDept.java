@@ -1,11 +1,8 @@
 package com.quick.start.securityframework.entity;
 
-import lombok.Data;
-
 import java.io.Serial;
 import java.io.Serializable;
 
-@Data
 public class MyRoleDept implements Serializable {
 
     @Serial
@@ -14,4 +11,23 @@ public class MyRoleDept implements Serializable {
     private Integer roleId;
 
     private Integer deptId;
+
+    public MyRoleDept() {
+    }
+
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
+
+    public Integer getDeptId() {
+        return deptId;
+    }
+
+    public void setDeptId(Integer deptId) {
+        this.deptId = deptId;
+    }
 }

@@ -24,11 +24,13 @@ public interface RoleDeptDao {
      * @param deptIds
      */
     @Insert("""
+            <script>
             insert into my_role_dept(role_id, dept_id) values
                     <foreach collection="deptIds" item="deptId"
                              separator=",">
                         (#{roleId}, #{deptId})
                     </foreach>
+            </script>
             """)
     void save(@Param("roleId")Integer id, @Param("deptIds") List<Integer> deptIds);
 }

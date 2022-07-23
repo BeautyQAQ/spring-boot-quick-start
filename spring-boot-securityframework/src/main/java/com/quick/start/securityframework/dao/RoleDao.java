@@ -15,6 +15,7 @@ public interface RoleDao {
      * @return
      */
     @Select("""
+            <script>
             select distinct r.role_id,r.role_name,r.data_scope,r.description,r.create_time,r.update_time
                     from my_role r
             	        left join my_role_user ru on ru.role_id = r.role_id
@@ -26,7 +27,8 @@ public interface RoleDao {
                         </if>
                         <!-- 数据范围过滤 -->
                         ${params.dataScope}
-                    </where>
+            </where>
+            </script>
             """)
     List<MyRole> getFuzzyRolesByPage(MyRole role);
 
@@ -44,6 +46,7 @@ public interface RoleDao {
      * @return
      */
     @Update("""
+            <script>
             update my_role r
                     <set>
                         <if test="roleName != null">
@@ -58,6 +61,7 @@ public interface RoleDao {
                         update_time = #{updateTime}
                     </set>
                     where r.role_id = #{roleId}
+            </script>
             """)
     int update(RoleDto roleDto);
 

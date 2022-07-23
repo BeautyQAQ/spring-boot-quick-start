@@ -15,6 +15,7 @@ public interface DeptDao {
      * @return
      */
     @Select("""
+            <script>
             select d.dept_id,d.parent_id,d.dept_name,d.sort,d.status,d.create_time,d.update_time from my_dept d
                     <where>
                                 <if test="deptName != null and deptName != ''">
@@ -27,6 +28,7 @@ public interface DeptDao {
                                 ${params.dataScope}
                     </where>
                     order by d.sort
+            </script>
             """)
     List<MyDept> getFuzzyDept(MyDept myDept);
 
@@ -37,12 +39,14 @@ public interface DeptDao {
      * @return
      */
     @Select("""
+            <script>
             select d.dept_id as id,d.parent_id,d.dept_name as title
                 from my_dept d
             <where>
                 <!-- 数据范围过滤 -->
                 ${params.dataScope}
             </where>
+            </script>
             """)
     List<DeptDto> buildAll(DeptDto deptDto);
 
@@ -120,6 +124,7 @@ public interface DeptDao {
      * @return 结果
      */
     @Update("""
+                    <script>
                     update my_dept set ancestors =
                     <foreach collection="depts" item="item" index="index"
                              separator=" " open="case dept_id" close="end">
@@ -130,6 +135,7 @@ public interface DeptDao {
                              separator="," open="(" close=")">
                         #{item.id}
                     </foreach>
+                    </script>
             """)
     int updateDeptChildren(@Param("depts")List<MyDept> depts);
 
@@ -140,6 +146,7 @@ public interface DeptDao {
      * @return 结果
      */
     @Update("""
+                    <script>
                     update my_dept d
                     <set>
                         <if test="parentId != null and parentId != 0">parent_id = #{parentId},</if>
@@ -150,6 +157,7 @@ public interface DeptDao {
                         update_time = #{updateTime}
                     </set>
                     where d.dept_id = #{deptId}
+                    </script>
             """)
     int updateDept(MyDept dept);
 
@@ -159,12 +167,14 @@ public interface DeptDao {
      * @param dept 部门
      */
     @Update("""
+            <script>
             update my_dept
             <set>
                 <if test="status != null and status != ''">status = #{status},</if>
                 update_time = #{updateTime}
             </set>
             where dept_id in (${ancestors})
+            </script>
             """)
      void updateDeptStatus(MyDept dept);
 
@@ -183,11 +193,13 @@ public interface DeptDao {
      * @return 结果
      */
     @Select("""
+            <script>
             select count(1) from my_dept
             <where>
                 <if test="deptId != null and deptId != 0"> and dept_id = #{deptId} </if>
                 <if test="parentId != null and parentId != 0"> and parent_id = #{parentId} </if>
             </where>
+            </script>
             """)
     int selectDeptCount(MyDept dept);
 

@@ -21,6 +21,5 @@ dependencies{
     implementation("com.alibaba:fastjson:2.0.9")
     implementation("com.github.whvcse:easy-captcha:1.6.2")
 
-    compileOnly("org.projectlombok:lombok:1.18.24")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

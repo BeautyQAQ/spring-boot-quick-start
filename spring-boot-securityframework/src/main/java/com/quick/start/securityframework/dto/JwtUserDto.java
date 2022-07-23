@@ -3,17 +3,12 @@ package com.quick.start.securityframework.dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.quick.start.securityframework.entity.MyRole;
 import com.quick.start.securityframework.entity.MyUser;
-import lombok.Data;
-import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Data
-@ToString
 public class JwtUserDto implements UserDetails {
 
     /**
@@ -95,6 +90,34 @@ public class JwtUserDto implements UserDetails {
 
     public JwtUserDto(MyUser myUser, List<GrantedAuthority> authorities) {
         this.myUser = myUser;
+        this.authorities = authorities;
+    }
+
+    public JwtUserDto() {
+    }
+
+    public MyUser getMyUser() {
+        return myUser;
+    }
+
+    public void setMyUser(MyUser myUser) {
+        this.myUser = myUser;
+    }
+
+    public List<MyRole> getRoleInfo() {
+        return roleInfo;
+    }
+
+    public void setRoleInfo(List<MyRole> roleInfo) {
+        this.roleInfo = roleInfo;
+    }
+
+    @Override
+    public List<GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(List<GrantedAuthority> authorities) {
         this.authorities = authorities;
     }
 }

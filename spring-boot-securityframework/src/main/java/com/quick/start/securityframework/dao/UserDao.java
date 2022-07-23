@@ -14,6 +14,7 @@ public interface UserDao {
      * @return
      */
     @Select("""
+            <script>
             SELECT u.user_id,u.dept_id,u.user_name,u.password,u.nick_name,u.phone,u.email,u.status,u.create_time,u.update_time
                     FROM my_user u
                     left join my_dept d on u.dept_id = d.dept_id
@@ -31,6 +32,7 @@ public interface UserDao {
                         ${params.dataScope}
                     </where>
                     ORDER BY u.user_id
+            </script>
             """)
      List<MyUser> getFuzzyUserByPage(MyUser myUser);
 
@@ -72,6 +74,7 @@ public interface UserDao {
      * @return
      */
     @Update("""
+            <script>
             update my_user u
                     <set>
                         <if test="deptId != null">
@@ -95,6 +98,7 @@ public interface UserDao {
                         update_time = #{updateTime}
                     </set>
                     where u.user_id = #{userId}
+            </script>
             """)
     int updateUser(MyUser myUser);
 

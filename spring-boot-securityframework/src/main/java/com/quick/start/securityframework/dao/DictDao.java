@@ -23,6 +23,7 @@ public interface DictDao {
      * @return
      */
     @Select("""
+            <script>
             select di.dict_id,di.dict_name,di.description,di.sort,di.create_by,di.update_by,di.create_time,di.update_time
                     from my_dict di
                     <where>
@@ -30,6 +31,7 @@ public interface DictDao {
                             AND di.dict_name like CONCAT('%', #{dictName}, '%')
                         </if>
                     </where>
+            </script>
             """)
     List<MyDict> getFuzzyDictByPage(MyDict myDict);
 
@@ -67,6 +69,7 @@ public interface DictDao {
      * @return 结果
      */
     @Select("""
+                    <script>
                     update my_dict
                     <set>
                         <if test="dictName != null and dictName != ''">dict_name = #{dictName},</if>
@@ -75,6 +78,7 @@ public interface DictDao {
                         update_time = #{updateTime}
                     </set>
                     where dict_id = #{dictId}
+                    </script>
             """)
     int updateDict(MyDict myDict);
 
@@ -85,10 +89,12 @@ public interface DictDao {
      * @return 结果
      */
     @Delete("""
+            <script>
             delete from my_dict where dict_id in
                     <foreach collection="array" item="dictId" open="(" separator="," close=")">
                         #{dictId}
                     </foreach>
+            </script>
             """)
     int deleteDictByIds(Integer[] dictIds);
 }

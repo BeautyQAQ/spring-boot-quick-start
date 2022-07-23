@@ -15,6 +15,6 @@ public class SmokeTest {
     @Test
     void should_print_password() {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        System.out.println(bCryptPasswordEncoder.encode("123456"));
+        System.out.println(bCryptPasswordEncoder.encode("admin"));
     }
 }

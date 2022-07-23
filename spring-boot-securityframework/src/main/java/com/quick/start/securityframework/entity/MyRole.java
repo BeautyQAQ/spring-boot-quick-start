@@ -1,16 +1,7 @@
 package com.quick.start.securityframework.entity;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
 import java.io.Serial;
 
-@Data
-@EqualsAndHashCode(callSuper = true)
-@ToString
-@NoArgsConstructor
 public class MyRole extends BaseEntity{
     @Serial
     private static final long serialVersionUID = -6525908145032868837L;
@@ -42,5 +33,40 @@ public class MyRole extends BaseEntity{
     public MyRole(Integer roleId)
     {
         this.setRoleId(roleId);
+    }
+
+    public MyRole() {
+    }
+
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
+    public String getDataScope() {
+        return dataScope;
+    }
+
+    public void setDataScope(String dataScope) {
+        this.dataScope = dataScope;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
