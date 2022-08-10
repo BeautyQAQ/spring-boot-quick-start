@@ -48,3 +48,13 @@
 ### gradle
 
 - 刷新依赖`./gradlew build --refresh-dependencies`
+
+### 链接远程docker测试
+
+修改用户文件夹下`.testcontainers.properties`文件，内容为
+```properties
+#Modified by Testcontainers
+#Fri Jun 03 22:07:27 CST 2022
+docker.client.strategy=org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy
+docker.host=tcp://111.111.111.111:2375
+```
