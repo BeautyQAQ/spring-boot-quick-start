@@ -43,3 +43,8 @@
 - 无需给应用服务编写完整的单元测试，通常来说application service会是非常薄的一层，业务逻辑不多，业务变复杂要么会放入聚合根中，要么引入另外一个领域服务，并且这一层测试编写起来很麻烦，需要mock很多上下游的bean，并且意义不大
 
 ### spring-boot-security
+
+
+### gradle
+
+- 刷新依赖`./gradlew build --refresh-dependencies`
