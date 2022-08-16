@@ -17,6 +17,7 @@ public interface LogDao {
 
     /**
      * 保存日志
+     * 
      * @param log
      */
     @Insert("insert into my_log(user_name,ip,description,params,type,exception_detail,browser,method,time,create_time)values(#{userName},#{ip},#{description},#{params},#{type},#{exceptionDetail},#{browser},#{method},#{time},now())")
@@ -24,6 +25,7 @@ public interface LogDao {
 
     /**
      * 分页返回所有用户日志
+     * 
      * @param logQuery 查询条件
      * @return
      */
@@ -47,6 +49,7 @@ public interface LogDao {
 
     /**
      * 分页返回所有错误日志
+     * 
      * @param logQuery 查询条件
      * @return
      */
@@ -70,6 +73,7 @@ public interface LogDao {
 
     /**
      * 删除所有日志
+     * 
      * @param type 日志类型
      */
     @Delete("delete from my_log where type = #{type}")

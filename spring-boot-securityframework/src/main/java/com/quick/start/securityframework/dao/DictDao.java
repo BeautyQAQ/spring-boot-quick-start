@@ -1,6 +1,5 @@
 package com.quick.start.securityframework.dao;
 
-
 import com.quick.start.securityframework.entity.MyDict;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -19,8 +18,9 @@ public interface DictDao {
 
     /**
      * 模糊查询字典
+     * 
      * @param myDict 状态查询
-     * @return
+     * @return list MyDict
      */
     @Select("""
             <script>
@@ -37,8 +37,9 @@ public interface DictDao {
 
     /**
      * 通过字典名称获取字典信息
+     * 
      * @param dictName
-     * @return
+     * @return MyDict
      */
     @Select("""
             select di.dict_id,di.dict_name,di.description,di.sort,di.create_by,di.update_by,di.create_time,di.update_time
@@ -48,6 +49,7 @@ public interface DictDao {
 
     /**
      * 插入字典
+     * 
      * @param myDict
      * @return
      */
@@ -56,8 +58,9 @@ public interface DictDao {
 
     /**
      * 通过id获得字典信息
+     * 
      * @param dictId
-     * @return
+     * @return MyDict
      */
     @Select("select di.dict_id,di.dict_name,di.description,di.sort,di.create_time,di.update_time from my_dict di  where di.dict_id = #{dictId}")
     MyDict getDictById(Integer dictId);

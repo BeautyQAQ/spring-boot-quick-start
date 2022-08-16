@@ -20,18 +20,18 @@ import java.util.List;
 
 @Service
 public class JobService {
+    
     @Autowired
     private JobDao jobDao;
+
     @Autowired
     private UserJobDao userJobDao;
-
 
     public Result<MyJob> getJobAll(Integer offectPosition, Integer limit, JobQueryDto jobQueryDto) {
         Page page = PageHelper.offsetPage(offectPosition,limit);
         List<MyJob> fuzzyJob = jobDao.getFuzzyJob(jobQueryDto.getQueryName(), jobQueryDto.getQueryStatus());
         return Result.ok().count(page.getTotal()).data(fuzzyJob).code(ResultCode.TABLE_SUCCESS);
     }
-
 
     public int insertJob(MyJob job) {
         return jobDao.insertDept(job);
@@ -52,33 +52,28 @@ public class JobService {
         return UserConstants.JOB_NAME_UNIQUE;
     }
 
-
     public MyJob getJobById(Integer jobId) {
         return jobDao.getJobById(jobId);
     }
 
-
     public int deleteJobByIds(String ids) throws MyException {
         Integer[] jobIds = Convert.toIntArray(ids);
-        for (Integer jobid:jobIds){
+        for (Integer jobid:jobIds) {
             MyJob job = getJobById(jobid);
-            if (countUserJobtById(jobid)>0){
+            if (countUserJobtById(jobid)>0) {
                 throw new MyException(ResultCode.ERROR,job.getJobName()+ "已分配,不能删除");
             }
         }
         return jobDao.deleteJobByIds(jobIds);
     }
 
-
     public int countUserJobtById(Integer jobId) {
         return userJobDao.countUserJobtById(jobId);
     }
 
-
     public List<MyJob> selectJobAll() {
         return jobDao.selectJobAll();
     }
-
 
     public List<MyJob> selectJobsByUserId(Integer userId) {
         List<MyJob> userJobs = jobDao.selectJobsByUserId(userId);
@@ -97,11 +92,9 @@ public class JobService {
         return jobs;
     }
 
-
     public int updateJob(MyJob myJob) {
         return jobDao.updateJob(myJob);
     }
-
 
     public int changeStatus(MyJob myJob) {
         return jobDao.updateJob(myJob);

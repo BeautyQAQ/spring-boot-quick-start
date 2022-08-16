@@ -31,11 +31,9 @@ public class DictService {
         return Result.ok().count(page.getTotal()).data(fuzzyDictByPage).code(ResultCode.TABLE_SUCCESS);
     }
 
-
     public MyDict getDictByName(String dictName) {
         return dictDao.getDictByName(dictName);
     }
-
 
     public String checkDictNameUnique(MyDict myDict) {
         MyDict info = dictDao.getDictByName(myDict.getDictName());
@@ -44,7 +42,6 @@ public class DictService {
         }
         return UserConstants.UNIQUE;
     }
-
 
     public int insertDict(MyDict myDict) {
         return dictDao.insertDict(myDict);
@@ -55,11 +52,9 @@ public class DictService {
         return dictDao.getDictById(dictId);
     }
 
-
     public int updateDict(MyDict myDict) {
         return dictDao.updateDict(myDict);
     }
-
 
     @Transactional(rollbackFor = RuntimeException.class)
     public int deleteDictByIds(String ids)  throws MyException {

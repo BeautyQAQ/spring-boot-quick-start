@@ -8,6 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface DeptDao {
+
     /**
      * 模糊查询部门
      *
@@ -32,9 +33,9 @@ public interface DeptDao {
             """)
     List<MyDept> getFuzzyDept(MyDept myDept);
 
-
     /**
      * 部门树
+     * 
      * @param deptDto
      * @return
      */
@@ -52,6 +53,7 @@ public interface DeptDao {
 
     /**
      * 校验部门名称
+     * 
      * @param deptName 岗位名称
      * @param parentId
      * @return
@@ -61,18 +63,23 @@ public interface DeptDao {
             from my_dept d
             where dept_name= #{deptName} and parent_id = #{parentId} limit 1
             """)
-    MyDept checkDeptNameUnique(@Param("deptName")String deptName,@Param("parentId") Integer parentId);
-
+    MyDept checkDeptNameUnique(@Param("deptName")String deptName, @Param("parentId") Integer parentId);
 
     /**
      * 新增部门信息
+     * 
      * @param dept 岗位信息
      * @return 结果
      */
-    @Insert("INSERT INTO my_dept(parent_id,ancestors,dept_name,sort,status, create_time, update_time) values(#{parentId},#{ancestors},#{deptName},#{sort},#{status}, now(), now())")
+    @Insert("""
+        INSERT INTO my_dept(parent_id,ancestors,dept_name,sort,status, create_time, update_time)
+        values(#{parentId},#{ancestors},#{deptName},#{sort},#{status}, now(), now())
+    """)
     int insertDept(MyDept dept);
+    
     /**
      * 根据部门ID查询信息
+     * 
      * @param deptId 部门ID
      * @return 部门信息
      */
@@ -86,12 +93,12 @@ public interface DeptDao {
 
     /**
      * 通过id查询部门信息
+     * 
      * @param deptId
      * @return
      */
     @Select("select d.dept_id,d.parent_id,d.ancestors,d.dept_name,d.sort,d.status,d.create_time,d.update_time from my_dept d where d.dept_id = #{deptId}")
     MyDept getDeptById(Integer deptId);
-
 
     /**
      * 根据ID查询所有子部门
@@ -101,7 +108,6 @@ public interface DeptDao {
      */
     @Select("select * from my_dept where find_in_set(#{id}, ancestors)")
      List<MyDept> selectChildrenDeptById(Integer id);
-
 
     /**
      * 根据角色ID查询部门
@@ -117,6 +123,7 @@ public interface DeptDao {
             order by d.parent_id
             """)
      List<DeptDto> selectRoleDeptTree(Integer id);
+
     /**
      * 修改子元素关系
      *
@@ -176,7 +183,7 @@ public interface DeptDao {
             where dept_id in (${ancestors})
             </script>
             """)
-     void updateDeptStatus(MyDept dept);
+    void updateDeptStatus(MyDept dept);
 
     /**
      * 根据ID查询所有子部门（正常状态）

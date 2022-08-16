@@ -15,8 +15,10 @@ import java.util.List;
 
 @Service
 public class MenuService {
+
     @Autowired
     private MenuDao menuDao;
+
     @Autowired
     private RoleMenuDao roleMenuDao;
 
@@ -25,16 +27,13 @@ public class MenuService {
         return menuDao.getFuzzyMenu(queryName,queryType);
     }
 
-
     public MyMenu getMenuById(Integer id) {
         return menuDao.getMenuById(id);
     }
 
-
     public List<MenuDto> buildMenuAll() {
         return menuDao.buildAll();
     }
-
 
     public Result updateMenu(MyMenu menu) {
         menu.setIcon("layui-icon "+menu.getIcon());
@@ -42,21 +41,17 @@ public class MenuService {
 
     }
 
-
     public Result<MyMenu> save(MyMenu menu) {
         menu.setIcon("layui-icon "+menu.getIcon());
         return (menuDao.save(menu) > 0) ? Result.ok().message("添加成功") : Result.error().message("添加失败");
 
     }
 
-
-
     /**
      * 如果这里删除了菜单树的父节点，把它的子节点一并删除
      * @param id
      * @return
      */
-
     public Result delete(Integer id) {
         Integer count = roleMenuDao.countRoleMenuByRoleId(id);
         if (count == 0){
@@ -76,14 +71,12 @@ public class MenuService {
 
     }
 
-
     public List<MenuDto> buildMenuAllByRoleId(Integer roleId) {
         List<MenuDto> listByRoleId = menuDao.listByRoleId(roleId);
         List<MenuDto> permissionDtos = menuDao.buildAll();
         List<MenuDto> tree = TreeUtil.menutree(listByRoleId, permissionDtos);
         return tree;
     }
-
 
     public List<MenuIndexDto> getMenu(Integer userId) {
         List<MenuIndexDto> list = menuDao.listByUserId(userId);

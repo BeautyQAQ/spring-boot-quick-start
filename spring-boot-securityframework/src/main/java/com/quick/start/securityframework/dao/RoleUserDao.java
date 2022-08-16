@@ -9,6 +9,7 @@ import java.util.List;
 public interface RoleUserDao {
     /**
      * 通过角色id返回所有用户
+     * 
      * @param id
      * @return
      */
@@ -19,6 +20,7 @@ public interface RoleUserDao {
 
     /**
      * 通过用户id查询权限id
+     * 
      * @param userId
      * @return
      */
@@ -27,6 +29,7 @@ public interface RoleUserDao {
 
     /**
      * 通过用户id返回角色
+     * 
      * @param intValue
      * @return
      */
@@ -35,6 +38,7 @@ public interface RoleUserDao {
 
     /**
      * 更新
+     * 
      * @param myRoleUser
      * @return
      */
@@ -53,6 +57,7 @@ public interface RoleUserDao {
 
     /**
      * 新建
+     * 
      * @param myRoleUser
      * @return
      */
@@ -61,6 +66,7 @@ public interface RoleUserDao {
 
     /**
      * 删除
+     * 
      * @param id
      * @return
      */

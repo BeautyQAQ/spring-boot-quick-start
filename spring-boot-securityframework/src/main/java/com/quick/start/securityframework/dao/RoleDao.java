@@ -11,6 +11,7 @@ public interface RoleDao {
 
     /**
      * 分页模糊查询角色
+     * 
      * @param role
      * @return
      */
@@ -42,6 +43,7 @@ public interface RoleDao {
 
     /**
      * 更新角色
+     * 
      * @param roleDto
      * @return
      */
@@ -67,6 +69,7 @@ public interface RoleDao {
 
     /**
      * 新建角色
+     * 
      * @param roleDto
      * @return
      */
@@ -79,6 +82,7 @@ public interface RoleDao {
 
     /**
      * 通过id删除角色
+     * 
      * @param roleId
      * @return
      */

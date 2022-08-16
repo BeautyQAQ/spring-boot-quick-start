@@ -22,15 +22,18 @@ import java.util.List;
 
 @Service
 public class RoleService {
+    
     @Autowired
     private RoleDao roleDao;
+
     @Autowired
     private RoleMenuDao roleMenuDao;
+
     @Autowired
     private RoleUserDao roleUserDao;
+
     @Autowired
     private RoleDeptDao roleDeptDao;
-
 
     @DataPermission(deptAlias = "d")
     public Result<MyRole> getFuzzyRolesByPage(Integer offectPosition, Integer limit, MyRole myRole) {
@@ -39,11 +42,9 @@ public class RoleService {
         return Result.ok().count(page.getTotal()).data(fuzzyRolesByPage).code(ResultCode.TABLE_SUCCESS);
     }
 
-
     public MyRole getRoleById(Integer id) {
         return roleDao.getRoleById(id);
     }
-
 
     public Result update(RoleDto roleDto) {
         List<Integer> menuIds = roleDto.getMenuIds();
@@ -63,7 +64,6 @@ public class RoleService {
         }
     }
 
-
     public Result authDataScope(RoleDto roleDto) {
         if (roleDto.getDataScope().equals(UserConstants.DATA_SCOPE_CUSTOM)){
             List<Integer> deptIds = roleDto.getDeptIds();
@@ -80,7 +80,6 @@ public class RoleService {
         return Result.ok().message("更新成功");
     }
 
-
     public Result save(RoleDto roleDto) {
         roleDto.setDataScope("1");
         //1、先保存角色"
@@ -94,7 +93,6 @@ public class RoleService {
         return Result.ok().message("插入成功");
     }
 
-
     public Result<MyRole> delete(Integer id) {
         List<MyRoleUser> tbRoleUsers = roleUserDao.listAllRoleUserByRoleId(id);
         if(tbRoleUsers.size() <= 0){
@@ -105,7 +103,6 @@ public class RoleService {
         }
         return Result.error().message("该角色已经关联,无法删除");
     }
-
 
     public Result<MyRole> getAllRoles() {
         return Result.ok().data(roleDao.getAllRoles());

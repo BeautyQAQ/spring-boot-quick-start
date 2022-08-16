@@ -13,6 +13,7 @@ import java.util.List;
 public interface JobDao {
     /**
      * 模糊查询岗位
+     * 
      * @param queryName 查询的名称
      * @param queryStatus 状态查询
      * @return
@@ -36,6 +37,7 @@ public interface JobDao {
 
     /**
      * 新增岗位信息
+     * 
      * @param job 岗位信息
      * @return 结果
      */
@@ -45,6 +47,7 @@ public interface JobDao {
 
     /**
      * 校验岗位名称
+     * 
      * @param name 岗位名称
      * @return 结果
      */

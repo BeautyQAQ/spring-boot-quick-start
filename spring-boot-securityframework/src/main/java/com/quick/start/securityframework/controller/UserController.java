@@ -28,7 +28,7 @@ public class UserController {
 
     @GetMapping("/index")
     @PreAuthorize("hasAnyAuthority('user:list')")
-    public String index(){
+    public String index() {
         return "system/user/user";
     }
 
@@ -37,17 +37,17 @@ public class UserController {
     @ApiOperation(value = "用户列表")
     @PreAuthorize("hasAnyAuthority('user:list')")
     @MyLog("查询用户")
-    public Result<MyUser> userList(PageTableRequest pageTableRequest, MyUser myUser){
+    public Result<MyUser> userList(PageTableRequest pageTableRequest, MyUser myUser) {
         pageTableRequest.countOffset();
-        return userService.getAllUsersByPage(pageTableRequest.getOffset(),pageTableRequest.getLimit(),myUser);
+        return userService.getAllUsersByPage(pageTableRequest.getOffset(), pageTableRequest.getLimit(), myUser);
     }
 
     @GetMapping("/add")
     @ApiOperation(value = "添加用户页面")
     @PreAuthorize("hasAnyAuthority('user:add')")
-    public String addUser(Model model){
-        model.addAttribute("myUser",new MyUser());
-        model.addAttribute("jobs",jobService.selectJobAll());
+    public String addUser(Model model) {
+        model.addAttribute("myUser", new MyUser());
+        model.addAttribute("jobs", jobService.selectJobAll());
         return "/system/user/user-add";
     }
 
@@ -56,7 +56,7 @@ public class UserController {
     @ApiOperation(value = "添加用户")
     @PreAuthorize("hasAnyAuthority('user:add')")
     @MyLog("添加用户")
-    public Result<MyUser> saveUser(@RequestBody MyUser myUser){
+    public Result<MyUser> saveUser(@RequestBody MyUser myUser) {
         if (UserConstants.USER_PHONE_NOT_UNIQUE.equals(userService.checkPhoneUnique(myUser))){
             return Result.error().message("手机号已存在");
         }
@@ -85,15 +85,16 @@ public class UserController {
     public Result updateUser(@RequestBody MyUser myUser){
         MyUser userById = userService.getUserById(myUser.getUserId());
         userService.checkUserAllowed(userById);
-        if (UserConstants.USER_PHONE_NOT_UNIQUE.equals(userService.checkPhoneUnique(myUser))){
+        if (UserConstants.USER_PHONE_NOT_UNIQUE.equals(userService.checkPhoneUnique(myUser))) {
 
             return Result.error().message("手机号已存在");
         }
-        if (UserConstants.USER_NAME_NOT_UNIQUE.equals(userService.checkUserNameUnique(myUser))){
+        if (UserConstants.USER_NAME_NOT_UNIQUE.equals(userService.checkUserNameUnique(myUser))) {
             return Result.error().message("用户名已存在");
         }
-        return userService.updateUser(myUser,myUser.getRoleId());
+        return userService.updateUser(myUser, myUser.getRoleId());
     }
+
     /**
      * 用户状态修改
      */
@@ -102,11 +103,10 @@ public class UserController {
     @ResponseBody
     @ApiOperation(value = "修改用户状态")
     @PreAuthorize("hasAnyAuthority('user:edit')")
-    public Result changeStatus(@RequestBody MyUser myUser)
-    {
+    public Result changeStatus(@RequestBody MyUser myUser) {
         userService.checkUserAllowed(myUser);
         userService.changeStatus(myUser);
-        return Result.judge(userService.changeStatus(myUser),"修改成功");
+        return Result.judge(userService.changeStatus(myUser), "修改成功");
     }
 
     @DeleteMapping
@@ -114,8 +114,8 @@ public class UserController {
     @ApiOperation(value = "删除用户")
     @PreAuthorize("hasAnyAuthority('user:del')")
     @MyLog("删除用户")
-    public Result deleteUser(Integer userId){
+    public Result deleteUser(Integer userId) {
         int count = userService.deleteUser(userId);
-        return Result.judge(count,"删除用户");
+        return Result.judge(count, "删除用户");
     }
 }

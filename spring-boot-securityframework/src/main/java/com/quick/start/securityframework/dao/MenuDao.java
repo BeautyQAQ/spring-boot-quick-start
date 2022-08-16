@@ -53,6 +53,7 @@ public interface MenuDao {
 
     /**
      * 更新菜单
+     * 
      * @param menu
      * @return
      */
@@ -90,6 +91,7 @@ public interface MenuDao {
 
     /**
      * 新建菜单
+     * 
      * @param menu
      * @return
      */
@@ -99,6 +101,7 @@ public interface MenuDao {
 
     /**
      * 通过id删除菜单
+     * 
      * @param menuId
      * @return
      */
@@ -107,6 +110,7 @@ public interface MenuDao {
 
     /**
      * 通过父节点删除子菜单
+     * 
      * @param parentId
      * @return
      */
@@ -115,6 +119,7 @@ public interface MenuDao {
 
     /**
      * 通过父节点返回字节点
+     * 
      * @param parentId
      * @return
      */
@@ -123,6 +128,7 @@ public interface MenuDao {
 
     /**
      * 通过角色id返回菜单
+     * 
      * @param roleId
      * @return
      */
@@ -133,6 +139,7 @@ public interface MenuDao {
 
     /**
      * 通过用户id返回菜单
+     * 
      * @param userId
      * @return
      */
