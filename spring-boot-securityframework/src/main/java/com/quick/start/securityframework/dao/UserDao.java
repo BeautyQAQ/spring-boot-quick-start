@@ -10,8 +10,8 @@ public interface UserDao {
 
     /**
      * 分页返回所有用户
-     * @param myUser
-     * @return
+     * @param myUser 查询条件
+     * @return List<MyUser> 
      */
     @Select("""
             <script>
@@ -38,7 +38,7 @@ public interface UserDao {
 
     /**
      * 计算所有用户数量
-     * @return Long
+     * @return 所有用户数量
      */
      @Select("select count(*) from my_user")
      Long countAllUser();
@@ -46,32 +46,32 @@ public interface UserDao {
     /**
      *
      * 通过id返回用户
-     * @param userId
-     * @return
+     * @param userId userId
+     * @return 用户
      */
     @Select("select u.user_id,u.dept_id,u.user_name,u.password,u.nick_name,u.phone,u.email,u.status,u.create_time,u.update_time from my_user u where u.user_id = #{userId}")
     MyUser getUserById(Integer userId);
 
     /**
      * 通过手机返回用户
-     * @param phone
-     * @return
+     * @param phone 手机
+     * @return 用户
      */
     @Select("select u.user_id,u.phone from my_user u where u.phone = #{phone} limit 1")
     MyUser checkPhoneUnique(String phone);
 
     /**
      * 通过用户名返回用户
-     * @param userName
-     * @return
+     * @param userName 用户名
+     * @return 用户
      */
     @Select("select u.user_id,u.user_name from my_user u where u.user_name = #{userName} limit 1")
     MyUser checkUsernameUnique(String userName);
 
     /**
      * 更新用户
-     * @param myUser
-     * @return
+     * @param myUser 用户
+     * @return int
      */
     @Update("""
             <script>
@@ -104,8 +104,8 @@ public interface UserDao {
 
     /**
      * 插入用户
-     * @param myUser
-     * @return
+     * @param myUser 用户
+     * @return int
      */
     @Options(useGeneratedKeys = true, keyProperty = "userId")
     @Insert("insert into my_user(dept_id,user_name, password, nick_name, phone, email, status, create_time, update_time) values(#{deptId},#{userName}, #{password}, #{nickName}, #{phone}, #{email}, #{status}, now(), now())")
@@ -113,19 +113,18 @@ public interface UserDao {
 
     /**
      * 通过id删除用户
-     * @param userId
-     * @return
+     * @param userId userId
+     * @return int 
      */
     @Delete("delete from my_user where user_id = #{userId}")
     int deleteUserById(Integer userId);
 
     /**
      *  根据用户名查询用户
-     * @param userName
-     * @return
+     * @param userName 用户名
+     * @return MyUser
      */
     @Select("select * from my_user t where t.user_name = #{userName}")
     MyUser getUser(String userName);
-
 
 }

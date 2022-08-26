@@ -12,16 +12,18 @@ public interface RoleDeptDao {
 
     /**
      * 通过id删除与部门关联
-     * @param roleId
-     * @return
+     * 
+     * @param roleId roleId
+     * @return int
      */
     @Delete("delete from my_role_dept where role_id = #{roleId}")
     int deleteRoleDept(Integer roleId);
 
     /**
      * 新建角色与部门的联系
-     * @param id
-     * @param deptIds
+     * 
+     * @param id roleId
+     * @param deptIds deptIds
      */
     @Insert("""
             <script>

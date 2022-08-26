@@ -1,10 +1,9 @@
 package com.quick.start.securityframework.entity;
 
-
 import java.io.Serial;
 
-
 public class MyJob extends BaseEntity {
+
     @Serial
     private static final long serialVersionUID = 8925514045582234222L;
 
@@ -21,8 +20,7 @@ public class MyJob extends BaseEntity {
      */
     private boolean flag = false;
 
-    public MyJob() {
-    }
+    public MyJob() {}
 
     public Integer getJobId() {
         return jobId;

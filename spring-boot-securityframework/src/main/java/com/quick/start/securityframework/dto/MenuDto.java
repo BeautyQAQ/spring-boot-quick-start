@@ -1,7 +1,7 @@
 package com.quick.start.securityframework.dto;
 
-
 import java.io.Serializable;
+
 public class MenuDto implements Serializable {
 
     private Integer id;
@@ -12,8 +12,7 @@ public class MenuDto implements Serializable {
 
     private String title;
 
-    public MenuDto() {
-    }
+    public MenuDto() {}
 
     public Integer getId() {
         return id;

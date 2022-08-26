@@ -18,7 +18,7 @@ public interface LogDao {
     /**
      * 保存日志
      * 
-     * @param log
+     * @param log MyLog
      */
     @Insert("insert into my_log(user_name,ip,description,params,type,exception_detail,browser,method,time,create_time)values(#{userName},#{ip},#{description},#{params},#{type},#{exceptionDetail},#{browser},#{method},#{time},now())")
     void save(MyLog log);
@@ -27,7 +27,7 @@ public interface LogDao {
      * 分页返回所有用户日志
      * 
      * @param logQuery 查询条件
-     * @return
+     * @return List<LogDto>
      */
     @Select("""
             <script>
@@ -51,7 +51,7 @@ public interface LogDao {
      * 分页返回所有错误日志
      * 
      * @param logQuery 查询条件
-     * @return
+     * @return List<ErrorLogDto>
      */
     @Select("""
             <script>

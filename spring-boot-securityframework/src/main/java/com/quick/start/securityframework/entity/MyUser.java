@@ -2,7 +2,8 @@ package com.quick.start.securityframework.entity;
 
 import java.io.Serial;
 
-public class MyUser extends BaseEntity{
+public class MyUser extends BaseEntity {
+
     @Serial
     private static final long serialVersionUID = -6525908145032868837L;
 
@@ -33,25 +34,21 @@ public class MyUser extends BaseEntity{
 
     /**
      * 判断是否为admin用户
-     * @return
+     * @return boolean
      */
-    public boolean isAdmin()
-    {
+    public boolean isAdmin() {
         return isAdmin(this.getUserId());
     }
 
-    public static boolean isAdmin(Integer userId)
-    {
+    public static boolean isAdmin(Integer userId) {
         return userId != null && 1L == userId;
     }
 
-    public MyUser(Integer userId)
-    {
+    public MyUser(Integer userId) {
         this.setUserId(userId);
     }
 
-    public MyUser() {
-    }
+    public MyUser() {}
 
     public Integer getUserId() {
         return userId;

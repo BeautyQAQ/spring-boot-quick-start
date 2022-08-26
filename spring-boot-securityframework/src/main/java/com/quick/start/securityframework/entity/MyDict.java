@@ -2,7 +2,6 @@ package com.quick.start.securityframework.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
 import java.io.Serial;
 
 /**
@@ -10,10 +9,11 @@ import java.io.Serial;
  * 数据字典
  * </p>
  */
-@ApiModel(value="SysDict对象", description="数据字典")
-public class MyDict extends BaseEntity{
+@ApiModel(value = "SysDict对象", description = "数据字典")
+public class MyDict extends BaseEntity {
+
     @Serial
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "id")
     private Integer dictId;
@@ -33,8 +33,7 @@ public class MyDict extends BaseEntity{
     @ApiModelProperty(value = "更新者")
     private String updateBy;
 
-    public MyDict() {
-    }
+    public MyDict() {}
 
     public Integer getDictId() {
         return dictId;

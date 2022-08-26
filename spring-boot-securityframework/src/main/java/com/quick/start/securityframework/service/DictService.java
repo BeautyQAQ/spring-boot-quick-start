@@ -7,18 +7,18 @@ import com.github.pagehelper.PageHelper;
 import com.quick.start.securityframework.common.Result;
 import com.quick.start.securityframework.common.ResultCode;
 import com.quick.start.securityframework.common.UserConstants;
+import com.quick.start.securityframework.common.exption.MyException;
 import com.quick.start.securityframework.dao.DictDao;
 import com.quick.start.securityframework.dao.DictDetailDao;
 import com.quick.start.securityframework.entity.MyDict;
-import com.quick.start.securityframework.common.exption.MyException;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Service
 public class DictService {
+
     @Autowired
     private DictDao dictDao;
 
@@ -26,7 +26,7 @@ public class DictService {
     private DictDetailDao dictDetailDao;
 
     public Result<MyDict> getDictPage(Integer offectPosition, Integer limit, MyDict myDict) {
-        Page page = PageHelper.offsetPage(offectPosition,limit);
+        Page page = PageHelper.offsetPage(offectPosition, limit);
         List<MyDict> fuzzyDictByPage = dictDao.getFuzzyDictByPage(myDict);
         return Result.ok().count(page.getTotal()).data(fuzzyDictByPage).code(ResultCode.TABLE_SUCCESS);
     }
@@ -37,7 +37,7 @@ public class DictService {
 
     public String checkDictNameUnique(MyDict myDict) {
         MyDict info = dictDao.getDictByName(myDict.getDictName());
-        if (ObjectUtil.isNotEmpty(info) && !info.getDictId().equals (myDict.getDictId())){
+        if (ObjectUtil.isNotEmpty(info) && !info.getDictId().equals(myDict.getDictId())) {
             return UserConstants.NOT_UNIQUE;
         }
         return UserConstants.UNIQUE;
@@ -46,7 +46,6 @@ public class DictService {
     public int insertDict(MyDict myDict) {
         return dictDao.insertDict(myDict);
     }
-
 
     public MyDict getDictById(Integer dictId) {
         return dictDao.getDictById(dictId);
@@ -57,9 +56,9 @@ public class DictService {
     }
 
     @Transactional(rollbackFor = RuntimeException.class)
-    public int deleteDictByIds(String ids)  throws MyException {
+    public int deleteDictByIds(String ids) throws MyException {
         Integer[] dictIds = Convert.toIntArray(ids);
-        for (Integer dictId : dictIds){
+        for (Integer dictId : dictIds) {
             dictDetailDao.deleteDictDetailByDictId(dictId);
         }
         return dictDao.deleteDictByIds(dictIds);

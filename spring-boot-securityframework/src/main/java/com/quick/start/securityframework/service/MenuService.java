@@ -44,8 +44,8 @@ public class MenuService {
 
     /**
      * 如果这里删除了菜单树的父节点，把它的子节点一并删除
-     * @param id
-     * @return
+     * @param id 父节点ID
+     * @return 删除结果
      */
     public Result delete(Integer id) {
         Integer count = roleMenuDao.countRoleMenuByRoleId(id);

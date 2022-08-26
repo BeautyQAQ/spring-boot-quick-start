@@ -3,15 +3,14 @@ package com.quick.start.securityframework.filter;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
 import com.quick.start.securityframework.common.Result;
-import org.springframework.stereotype.Component;
-import org.springframework.web.filter.OncePerRequestFilter;
-
+import java.io.IOException;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 /**
  * @author codermy
@@ -32,17 +31,17 @@ public class VerifyCodeFilter extends OncePerRequestFilter {
             //验证码的信息存放在seesion种，具体看EasyCaptcha官方解释
             String genCaptcha = (String) request.getSession().getAttribute("captcha");
             response.setContentType("application/json;charset=UTF-8");
-            if (StrUtil.isEmpty(requestCaptcha)){
+            if (StrUtil.isEmpty(requestCaptcha)) {
                 //删除缓存里的验证码信息
                 session.removeAttribute("captcha");
                 response.getWriter().write(JSON.toJSONString(Result.error().message("验证码不能为空!")));
                 return;
             }
-            if (StrUtil.isEmpty(genCaptcha)){
+            if (StrUtil.isEmpty(genCaptcha)) {
                 response.getWriter().write(JSON.toJSONString(Result.error().message("验证码已失效!")));
                 return;
             }
-            if (!StrUtil.equalsIgnoreCase(genCaptcha,requestCaptcha)){
+            if (!StrUtil.equalsIgnoreCase(genCaptcha, requestCaptcha)) {
                 session.removeAttribute("captcha");
                 response.getWriter().write(JSON.toJSONString(Result.error().message("验证码错误!")));
                 return;

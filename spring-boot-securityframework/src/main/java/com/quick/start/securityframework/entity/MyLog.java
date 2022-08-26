@@ -40,13 +40,12 @@ public class MyLog implements Serializable {
     /** 创建日期 */
     private Date createTime = new Date();
 
-    public MyLog( String type,Long time) {
+    public MyLog(String type, Long time) {
         this.type = type;
         this.time = time;
     }
 
-    public MyLog() {
-    }
+    public MyLog() {}
 
     public Long getLogId() {
         return logId;

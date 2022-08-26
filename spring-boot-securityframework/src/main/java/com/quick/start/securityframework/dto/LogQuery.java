@@ -1,16 +1,14 @@
 package com.quick.start.securityframework.dto;
 
-
 public class LogQuery {
 
     private String userName;
 
     private String logType;
+
     // private List<Timestamp> createTime;
 
-
-    public LogQuery() {
-    }
+    public LogQuery() {}
 
     public String getUserName() {
         return userName;

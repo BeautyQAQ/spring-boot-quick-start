@@ -2,8 +2,8 @@ package com.quick.start.securityframework.entity;
 
 import java.io.Serial;
 
-
 public class MyDept extends BaseEntity {
+
     @Serial
     private static final long serialVersionUID = 8925514045582235633L;
 
@@ -19,8 +19,7 @@ public class MyDept extends BaseEntity {
 
     private Integer status;
 
-    public MyDept() {
-    }
+    public MyDept() {}
 
     public Integer getDeptId() {
         return deptId;
@@ -72,13 +71,23 @@ public class MyDept extends BaseEntity {
 
     @Override
     public String toString() {
-        return "MyDept{" +
-                "deptId=" + deptId +
-                ", parentId=" + parentId +
-                ", ancestors='" + ancestors + '\'' +
-                ", deptName='" + deptName + '\'' +
-                ", sort=" + sort +
-                ", status=" + status +
-                '}';
+        return (
+            "MyDept{" +
+            "deptId=" +
+            deptId +
+            ", parentId=" +
+            parentId +
+            ", ancestors='" +
+            ancestors +
+            '\'' +
+            ", deptName='" +
+            deptName +
+            '\'' +
+            ", sort=" +
+            sort +
+            ", status=" +
+            status +
+            '}'
+        );
     }
 }

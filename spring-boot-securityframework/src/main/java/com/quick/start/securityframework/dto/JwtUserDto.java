@@ -3,11 +3,10 @@ package com.quick.start.securityframework.dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.quick.start.securityframework.entity.MyRole;
 import com.quick.start.securityframework.entity.MyUser;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 public class JwtUserDto implements UserDetails {
 
@@ -17,6 +16,7 @@ public class JwtUserDto implements UserDetails {
     private MyUser myUser;
 
     private List<MyRole> roleInfo;
+
     /**
      * 用户权限的集合
      */
@@ -27,74 +27,60 @@ public class JwtUserDto implements UserDetails {
         return authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
     }
 
-
     /**
-     * 加密后的密码
-     * @return
+     * @return 加密后的密码
      */
     @Override
     public String getPassword() {
         return myUser.getPassword();
     }
 
-
     /**
-     * 用户名
-     * @return
+     * @return 用户名
      */
     @Override
     public String getUsername() {
         return myUser.getUserName();
     }
 
-
     /**
-     * 是否过期
-     * @return
+     * @return 是否过期
      */
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
-
     /**
-     * 是否锁定
-     * @return
+     * @return 是否锁定
      */
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
-
     /**
-     * 凭证是否过期
-     * @return
+     * @return 凭证是否过期
      */
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
-
     /**
-     * 是否可用
-     * @return
+     * @return 是否可用
      */
     @Override
     public boolean isEnabled() {
         return myUser.getStatus() == 1 ? true : false;
     }
 
-
     public JwtUserDto(MyUser myUser, List<GrantedAuthority> authorities) {
         this.myUser = myUser;
         this.authorities = authorities;
     }
 
-    public JwtUserDto() {
-    }
+    public JwtUserDto() {}
 
     public MyUser getMyUser() {
         return myUser;

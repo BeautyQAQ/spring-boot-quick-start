@@ -11,12 +11,13 @@ import java.util.List;
 
 @Mapper
 public interface JobDao {
+
     /**
      * 模糊查询岗位
      * 
      * @param queryName 查询的名称
      * @param queryStatus 状态查询
-     * @return
+     * @return List<MyJob>
      */
     @Select("""
             <script>
@@ -39,27 +40,27 @@ public interface JobDao {
      * 新增岗位信息
      * 
      * @param job 岗位信息
-     * @return 结果
+     * @return int
      */
     @Insert("INSERT INTO my_job(job_name,status,sort, create_time, update_time) values(#{jobName},#{status},#{sort}, now(), now())")
     int insertDept(MyJob job);
-
 
     /**
      * 校验岗位名称
      * 
      * @param name 岗位名称
-     * @return 结果
+     * @return MyJob
      */
     @Select("""
             select j.job_id,j.job_name,j.sort,j.status,j.create_time,j.update_time
                     from my_job j where j.job_name= #{jobName} limit 1
             """)
     MyJob checkJobNameUnique(String name);
+
     /**
      * 通过id查询岗位信息
-     * @param jobId
-     * @return
+     * @param jobId jobId
+     * @return MyJob
      */
     @Select("select j.job_id,j.job_name,j.status,j.sort,j.create_time,j.update_time from my_job j where j.job_id = #{jobId}")
     MyJob getJobById(Integer jobId);
@@ -68,7 +69,7 @@ public interface JobDao {
      * 批量删除岗位信息
      *
      * @param ids 需要删除的数据ID
-     * @return 结果
+     * @return int
      */
     @Delete("""
             <script>
@@ -110,7 +111,7 @@ public interface JobDao {
      * 修改岗位信息
      *
      * @param myJob 岗位信息
-     * @return 结果
+     * @return int
      */
     @Update("""
             <script>
