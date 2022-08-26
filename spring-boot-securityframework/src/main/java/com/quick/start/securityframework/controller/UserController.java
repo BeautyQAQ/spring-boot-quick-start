@@ -14,7 +14,13 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/api/user")
@@ -63,8 +69,8 @@ public class UserController {
         if (UserConstants.USER_NAME_NOT_UNIQUE.equals(userService.checkUserNameUnique(myUser))) {
             return Result.error().message("用户名已存在");
         }
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        myUser.setPassword(bCryptPasswordEncoder.encode("123456"));
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        myUser.setPassword(passwordEncoder.encode("123456"));
         return userService.save(myUser, myUser.getRoleId());
     }
 

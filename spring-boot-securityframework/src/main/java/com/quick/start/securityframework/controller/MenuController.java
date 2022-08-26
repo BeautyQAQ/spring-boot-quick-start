@@ -101,8 +101,10 @@ public class MenuController {
     }
 
     /**
-     * @param menuId
-     * @return
+     * 删除菜单
+     *
+     * @param menuId menuId
+     * @return Result
      */
     @DeleteMapping
     @ResponseBody

@@ -12,7 +12,7 @@ public interface RoleDeptDao {
 
     /**
      * 通过id删除与部门关联
-     * 
+     *
      * @param roleId roleId
      * @return int
      */
@@ -21,8 +21,8 @@ public interface RoleDeptDao {
 
     /**
      * 新建角色与部门的联系
-     * 
-     * @param id roleId
+     *
+     * @param id      roleId
      * @param deptIds deptIds
      */
     @Insert("""
@@ -34,5 +34,5 @@ public interface RoleDeptDao {
                     </foreach>
             </script>
             """)
-    void save(@Param("roleId")Integer id, @Param("deptIds") List<Integer> deptIds);
+    void save(@Param("roleId") Integer id, @Param("deptIds") List<Integer> deptIds);
 }

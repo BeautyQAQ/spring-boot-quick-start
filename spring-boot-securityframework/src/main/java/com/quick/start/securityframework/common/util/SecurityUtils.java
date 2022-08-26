@@ -23,6 +23,7 @@ public class SecurityUtils {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         return userDetails.getUsername();
     }
+
     /**
      * 取得当前用户登录IP, 如果当前用户未登录则返回空字符串.
      * 无用

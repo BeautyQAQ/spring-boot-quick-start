@@ -16,9 +16,9 @@ public interface UserDao {
 
     /**
      * 分页返回所有用户
-     * 
+     *
      * @param myUser 查询条件
-     * @return List<MyUser>
+     * @return List MyUser
      */
     @Select("""
             <script>
@@ -45,25 +45,28 @@ public interface UserDao {
 
     /**
      * 计算所有用户数量
-     * 
+     *
      * @return 所有用户数量
      */
     @Select("select count(*) from my_user")
     Long countAllUser();
 
     /**
-     *
      * 通过id返回用户
-     * 
+     *
      * @param userId userId
      * @return 用户
      */
-    @Select("select u.user_id,u.dept_id,u.user_name,u.password,u.nick_name,u.phone,u.email,u.status,u.create_time,u.update_time from my_user u where u.user_id = #{userId}")
+    @Select("""
+            select u.user_id,u.dept_id,u.user_name,u.password,u.nick_name,u.phone,u.email,
+            u.status,u.create_time,u.update_time
+            from my_user u where u.user_id = #{userId}
+            """)
     MyUser getUserById(Integer userId);
 
     /**
      * 通过手机返回用户
-     * 
+     *
      * @param phone 手机
      * @return 用户
      */
@@ -72,7 +75,7 @@ public interface UserDao {
 
     /**
      * 通过用户名返回用户
-     * 
+     *
      * @param userName 用户名
      * @return 用户
      */
@@ -81,7 +84,7 @@ public interface UserDao {
 
     /**
      * 更新用户
-     * 
+     *
      * @param myUser 用户
      * @return int
      */
@@ -116,17 +119,20 @@ public interface UserDao {
 
     /**
      * 插入用户
-     * 
+     *
      * @param myUser 用户
      * @return int
      */
     @Options(useGeneratedKeys = true, keyProperty = "userId")
-    @Insert("insert into my_user(dept_id,user_name, password, nick_name, phone, email, status, create_time, update_time) values(#{deptId},#{userName}, #{password}, #{nickName}, #{phone}, #{email}, #{status}, now(), now())")
+    @Insert("""
+            insert into my_user(dept_id,user_name, password, nick_name, phone, email, status, create_time, update_time)
+            values(#{deptId},#{userName}, #{password}, #{nickName}, #{phone}, #{email}, #{status}, now(), now())
+            """)
     int save(MyUser myUser);
 
     /**
      * 通过id删除用户
-     * 
+     *
      * @param userId userId
      * @return int
      */
@@ -135,7 +141,7 @@ public interface UserDao {
 
     /**
      * 根据用户名查询用户
-     * 
+     *
      * @param userName 用户名
      * @return MyUser
      */

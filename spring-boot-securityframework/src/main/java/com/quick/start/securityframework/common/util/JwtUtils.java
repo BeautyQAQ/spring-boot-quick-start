@@ -6,22 +6,22 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.Date;
 
 @Component
 public class JwtUtils {
 
     @Value("${jwt.secret}")
     private String secret;
-    
+
     @Value("${jwt.expiration}")
     private Long expiration;
 
     /**
      * 创建token
-     * 
+     *
      * @param username 用户名
-     * @return
+     * @return token
      */
     public String generateToken(String username) {
         return Jwts.builder()
@@ -35,9 +35,9 @@ public class JwtUtils {
 
     /**
      * 从token中获取用户名
-     * 
-     * @param token
-     * @return
+     *
+     * @param token token
+     * @return 用户名
      */
     public String getUserNameFromToken(String token) {
         return getTokenBody(token).getSubject();
@@ -45,9 +45,9 @@ public class JwtUtils {
 
     /**
      * 是否已过期
-     * 
-     * @param token
-     * @return
+     *
+     * @param token token
+     * @return 是否已过期
      */
     public boolean isExpiration(String token) {
         return getTokenBody(token).getExpiration().before(new Date());

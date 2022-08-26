@@ -6,24 +6,24 @@ import com.quick.start.securityframework.dto.DeptDto;
 import com.quick.start.securityframework.dto.MenuDto;
 import com.quick.start.securityframework.dto.MenuIndexDto;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class TreeUtil {
-    // todo 判断list是否为空
 
     /**
-     *
      * @param listByRoleId 通过角色id查询的menuid
      * @param menuDtos     返回的menutree
-     * @return
+     * @return List MenuDto
      */
     public static List<MenuDto> menutree(List<MenuDto> listByRoleId, List<MenuDto> menuDtos) {
         // if (listByRoleId == null & listByRoleId.size() ==0){
         // throw
         // }
-        List<Integer> collect = listByRoleId.stream().map(MenuDto::getId).collect(Collectors.toList());
-        List<Integer> collect1 = menuDtos.stream().map(MenuDto::getId).collect(Collectors.toList());
+        List<Integer> collect = listByRoleId.stream().map(MenuDto::getId).toList();
+        List<Integer> collect1 = menuDtos.stream().map(MenuDto::getId).toList();
         // 遍历list2
         for (Integer item : collect) {
             // 如果存在这个数

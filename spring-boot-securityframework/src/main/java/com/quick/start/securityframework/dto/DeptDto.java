@@ -2,7 +2,6 @@ package com.quick.start.securityframework.dto;
 
 import com.quick.start.securityframework.entity.BaseEntity;
 
-
 public class DeptDto extends BaseEntity {
 
     private Integer id;
@@ -12,7 +11,6 @@ public class DeptDto extends BaseEntity {
     private String checkArr = "0";
 
     private String title;
-
 
     public DeptDto() {
     }

@@ -9,7 +9,7 @@ import java.util.Objects;
 public class RequestHolder {
     /**
      * 获取HttpServletRequest对象
-     * 
+     *
      * @return HttpServletRequest
      */
     public static HttpServletRequest getHttpServletRequest() {

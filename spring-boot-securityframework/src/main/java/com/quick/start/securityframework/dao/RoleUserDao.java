@@ -1,7 +1,11 @@
 package com.quick.start.securityframework.dao;
 
 import com.quick.start.securityframework.entity.MyRoleUser;
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -10,7 +14,7 @@ public interface RoleUserDao {
 
     /**
      * 通过角色id返回所有用户
-     * 
+     *
      * @param id 角色id
      * @return List MyRoleUser
      */
@@ -19,7 +23,7 @@ public interface RoleUserDao {
 
     /**
      * 通过用户id查询权限id
-     * 
+     *
      * @param userId 用户id
      * @return List MyRoleUser
      */
@@ -28,7 +32,7 @@ public interface RoleUserDao {
 
     /**
      * 通过用户id返回角色
-     * 
+     *
      * @param userId 用户id
      * @return MyRoleUser
      */
@@ -37,7 +41,7 @@ public interface RoleUserDao {
 
     /**
      * 更新
-     * 
+     *
      * @param myRoleUser myRoleUser
      * @return int
      */
@@ -65,7 +69,7 @@ public interface RoleUserDao {
 
     /**
      * 删除
-     * 
+     *
      * @param id id
      * @return int
      */

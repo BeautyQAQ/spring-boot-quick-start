@@ -19,7 +19,8 @@ public class MyDept extends BaseEntity {
 
     private Integer status;
 
-    public MyDept() {}
+    public MyDept() {
+    }
 
     public Integer getDeptId() {
         return deptId;
@@ -72,22 +73,13 @@ public class MyDept extends BaseEntity {
     @Override
     public String toString() {
         return (
-            "MyDept{" +
-            "deptId=" +
-            deptId +
-            ", parentId=" +
-            parentId +
-            ", ancestors='" +
-            ancestors +
-            '\'' +
-            ", deptName='" +
-            deptName +
-            '\'' +
-            ", sort=" +
-            sort +
-            ", status=" +
-            status +
-            '}'
-        );
+            "MyDept{"
+                + "deptId=" + deptId
+                + ", parentId=" + parentId
+                + ", ancestors='" + ancestors + '\''
+                + ", deptName='" + deptName + '\''
+                + ", sort=" + sort
+                + ", status=" + status
+                + '}');
     }
 }

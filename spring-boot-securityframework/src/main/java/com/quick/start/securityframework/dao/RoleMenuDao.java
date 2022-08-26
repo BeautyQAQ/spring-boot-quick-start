@@ -1,6 +1,10 @@
 package com.quick.start.securityframework.dao;
 
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -9,7 +13,7 @@ public interface RoleMenuDao {
 
     /**
      * 通过id删除roleMenu
-     * 
+     *
      * @param roleId roleId
      * @return int
      */
@@ -18,7 +22,7 @@ public interface RoleMenuDao {
 
     /**
      * 新建角色与menu的联系
-     * 
+     *
      * @param roleId  roleId
      * @param menuIds menuIds
      */
@@ -34,8 +38,8 @@ public interface RoleMenuDao {
 
     /**
      * 通过menu_id计算权限数量
-     * 
-     * @param menuId
+     *
+     * @param menuId menuId
      * @return 权限数量
      */
     @Select("select count(*) from my_role_menu t where t.menu_id = #{menuId}")

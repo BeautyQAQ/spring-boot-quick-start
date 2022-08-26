@@ -7,7 +7,9 @@ import com.quick.start.securityframework.dao.RoleMenuDao;
 import com.quick.start.securityframework.dto.MenuDto;
 import com.quick.start.securityframework.dto.MenuIndexDto;
 import com.quick.start.securityframework.entity.MyMenu;
+
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,7 +46,7 @@ public class MenuService {
 
     /**
      * 如果这里删除了菜单树的父节点，把它的子节点一并删除
-     * 
+     *
      * @param id 父节点ID
      * @return 删除结果
      */

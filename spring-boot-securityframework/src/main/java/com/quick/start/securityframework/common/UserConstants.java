@@ -4,30 +4,44 @@ package com.quick.start.securityframework.common;
  * 用户常量信息
  */
 public class UserConstants {
-    /** 岗位名称是否唯一的返回结果码 */
-    public final static String JOB_NAME_UNIQUE = "0";
-    public final static String JOB_NAME_NOT_UNIQUE = "1";
+    /**
+     * 岗位名称是否唯一的返回结果码
+     */
+    public static final String JOB_NAME_UNIQUE = "0";
+    public static final String JOB_NAME_NOT_UNIQUE = "1";
 
-    /** 用户名名称是否唯一的返回结果码 */
-    public final static String USER_NAME_UNIQUE = "0";
-    public final static String USER_NAME_NOT_UNIQUE = "1";
+    /**
+     * 用户名名称是否唯一的返回结果码
+     */
+    public static final String USER_NAME_UNIQUE = "0";
+    public static final String USER_NAME_NOT_UNIQUE = "1";
 
-    /** 部门名称是否唯一的返回结果码 */
-    public final static String DEPT_NAME_UNIQUE = "0";
-    public final static String DEPT_NAME_NOT_UNIQUE = "1";
+    /**
+     * 部门名称是否唯一的返回结果码
+     */
+    public static final String DEPT_NAME_UNIQUE = "0";
+    public static final String DEPT_NAME_NOT_UNIQUE = "1";
 
-    /** 手机号码是否唯一的返回结果 */
-    public final static String USER_PHONE_UNIQUE = "0";
-    public final static String USER_PHONE_NOT_UNIQUE = "1";
+    /**
+     * 手机号码是否唯一的返回结果
+     */
+    public static final String USER_PHONE_UNIQUE = "0";
+    public static final String USER_PHONE_NOT_UNIQUE = "1";
 
-    /** 是否唯一的返回结果 */
-    public final static String UNIQUE = "0";
-    public final static String NOT_UNIQUE = "1";
+    /**
+     * 是否唯一的返回结果
+     */
+    public static final String UNIQUE = "0";
+    public static final String NOT_UNIQUE = "1";
 
-    /** 部门停用状态 */
+    /**
+     * 部门停用状态
+     */
     public static final String DEPT_DISABLE = "0";
 
-    /** 部门正常状态 */
+    /**
+     * 部门正常状态
+     */
     public static final String DEPT_NORMAL = "1";
 
     /**

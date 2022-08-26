@@ -3,7 +3,13 @@ package com.quick.start.securityframework.dao;
 import com.quick.start.securityframework.dto.MenuDto;
 import com.quick.start.securityframework.dto.MenuIndexDto;
 import com.quick.start.securityframework.entity.MyMenu;
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -12,7 +18,7 @@ import java.util.List;
 public interface MenuDao {
     /**
      * 模糊查询菜单
-     * 
+     *
      * @param queryName 查询的表题
      * @param queryType 查询类型
      * @return List MyMenu
@@ -37,16 +43,20 @@ public interface MenuDao {
 
     /**
      * 通过id查询菜单
-     * 
-     * @param menuId
+     *
+     * @param menuId menuId
      * @return MyMenu
      */
-    @Select("select m.menu_id,m.parent_id,m.menu_name,m.icon,m.url,m.permission,m.sort,m.type,m.create_time,m.update_time from my_menu m where m.menu_id = #{menuId}")
+    @Select("""
+            select m.menu_id,m.parent_id,m.menu_name,m.icon,m.url,m.permission,m.sort,
+                   m.type,m.create_time,m.update_time
+                   from my_menu m where m.menu_id = #{menuId}
+            """)
     MyMenu getMenuById(Integer menuId);
 
     /**
      * 菜单树
-     * 
+     *
      * @return List MenuDto
      */
     @Select("select m.menu_id,m.parent_id,m.menu_name from my_menu m")
@@ -56,7 +66,7 @@ public interface MenuDao {
 
     /**
      * 更新菜单
-     * 
+     *
      * @param menu MyMenu
      * @return int
      */
@@ -94,17 +104,20 @@ public interface MenuDao {
 
     /**
      * 新建菜单
-     * 
+     *
      * @param menu MyMenu
      * @return int
      */
     @Options(useGeneratedKeys = true, keyProperty = "menuId")
-    @Insert("insert into my_menu(parent_id, menu_name, icon, url, permission, sort, type, create_time, update_time)values(#{parentId}, #{menuName}, #{icon}, #{url}, #{permission}, #{sort}, #{type}, now(), now())")
+    @Insert("""
+            insert into my_menu(parent_id, menu_name, icon, url, permission, sort, type, create_time, update_time)
+            values(#{parentId}, #{menuName}, #{icon}, #{url}, #{permission}, #{sort}, #{type}, now(), now())
+            """)
     int save(MyMenu menu);
 
     /**
      * 通过id删除菜单
-     * 
+     *
      * @param menuId menuId
      * @return int
      */
@@ -113,7 +126,7 @@ public interface MenuDao {
 
     /**
      * 通过父节点删除子菜单
-     * 
+     *
      * @param parentId parentId
      * @return int
      */
@@ -122,18 +135,18 @@ public interface MenuDao {
 
     /**
      * 通过父节点返回字节点
-     * 
+     *
      * @param parentId parentId父节点
-     * @return List<Integer>子节点
+     * @return List Integer 子节点
      */
     @Select("select m.menu_id from my_menu m where parent_id = #{parentId}")
     List<Integer> selectByParentId(Integer parentId);
 
     /**
      * 通过角色id返回菜单
-     * 
+     *
      * @param roleId roleId
-     * @return List<MenuDto>
+     * @return List MenuDto
      */
     @Select("select m.menu_id,m.parent_id,m.menu_name from my_menu m inner join my_role_menu rm on m.menu_id = rm.menu_id where rm.role_id = #{roleId}")
     @Result(property = "title", column = "menu_name")
@@ -142,9 +155,9 @@ public interface MenuDao {
 
     /**
      * 通过用户id返回菜单
-     * 
+     *
      * @param userId userId
-     * @return List<MenuIndexDto>
+     * @return List MenuIndexDto
      */
     @Select("""
             <script>SELECT DISTINCT m.menu_id as id,m.parent_id,m.menu_name as title,m.icon,m.url as href,m.type,m.permission,m.sort

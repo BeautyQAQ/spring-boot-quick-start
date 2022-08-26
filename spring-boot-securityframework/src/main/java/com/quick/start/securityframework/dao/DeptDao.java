@@ -2,7 +2,12 @@ package com.quick.start.securityframework.dao;
 
 import com.quick.start.securityframework.dto.DeptDto;
 import com.quick.start.securityframework.entity.MyDept;
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -35,7 +40,7 @@ public interface DeptDao {
 
     /**
      * 部门树
-     * 
+     *
      * @param deptDto deptDto
      * @return List DeptDto
      */
@@ -53,7 +58,7 @@ public interface DeptDao {
 
     /**
      * 校验部门名称
-     * 
+     *
      * @param deptName 岗位名称
      * @param parentId parentId
      * @return MyDept
@@ -67,7 +72,7 @@ public interface DeptDao {
 
     /**
      * 新增部门信息
-     * 
+     *
      * @param dept 岗位信息
      * @return 结果
      */
@@ -79,21 +84,21 @@ public interface DeptDao {
 
     /**
      * 根据部门ID查询信息
-     * 
+     *
      * @param deptId 部门ID
      * @return 部门信息
      */
     @Select("""
             select d.dept_id, d.parent_id, d.ancestors, d.dept_name, d.status,
-            			(select s.dept_name from my_dept s where s.dept_id = d.parent_id) parent_name
-            		from my_dept d
-            		where d.dept_id = #{deptId}
+            (select s.dept_name from my_dept s where s.dept_id = d.parent_id) parent_name
+            from my_dept d
+            where d.dept_id = #{deptId}
             """)
     MyDept selectDeptById(Integer deptId);
 
     /**
      * 通过id查询部门信息
-     * 
+     *
      * @param deptId deptId
      * @return MyDept
      */
@@ -118,7 +123,7 @@ public interface DeptDao {
     @Select("""
             select d.dept_id as id,d.parent_id,d.dept_name as title
             from my_dept d
-            	left join my_role_dept rd on d.dept_id = rd.dept_id
+            left join my_role_dept rd on d.dept_id = rd.dept_id
             where rd.role_id = #{id}
             order by d.parent_id
             """)

@@ -29,12 +29,14 @@ public class MyUser extends BaseEntity {
     }
 
     private Integer roleId;
-    /** 岗位组 */
+    /**
+     * 岗位组
+     */
     private Integer[] jobIds;
 
     /**
      * 判断是否为admin用户
-     * 
+     *
      * @return boolean
      */
     public boolean isAdmin() {

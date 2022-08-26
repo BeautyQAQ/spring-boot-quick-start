@@ -14,7 +14,7 @@ public interface JobDao {
 
     /**
      * 模糊查询岗位
-     * 
+     *
      * @param queryName   查询的名称
      * @param queryStatus 状态查询
      * @return List MyJob
@@ -38,7 +38,7 @@ public interface JobDao {
 
     /**
      * 新增岗位信息
-     * 
+     *
      * @param job 岗位信息
      * @return int
      */
@@ -47,7 +47,7 @@ public interface JobDao {
 
     /**
      * 校验岗位名称
-     * 
+     *
      * @param name 岗位名称
      * @return MyJob
      */
@@ -59,7 +59,7 @@ public interface JobDao {
 
     /**
      * 通过id查询岗位信息
-     * 
+     *
      * @param jobId jobId
      * @return MyJob
      */
@@ -90,10 +90,10 @@ public interface JobDao {
      */
     @Select("""
             SELECT j.job_id, j.job_name,j.status
-            		FROM my_user u
-            			 LEFT JOIN my_user_job uj ON u.user_id = uj.user_id
-            			 LEFT JOIN my_job j ON uj.job_id = j.job_id
-            		WHERE uj.user_id = #{userId}
+            FROM my_user u
+            LEFT JOIN my_user_job uj ON u.user_id = uj.user_id
+            LEFT JOIN my_job j ON uj.job_id = j.job_id
+            WHERE uj.user_id = #{userId}
             """)
     List<MyJob> selectJobsByUserId(Integer userId);
 

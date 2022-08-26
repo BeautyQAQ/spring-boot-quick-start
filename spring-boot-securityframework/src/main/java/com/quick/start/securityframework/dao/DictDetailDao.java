@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  */
 @Mapper
@@ -22,18 +22,21 @@ public interface DictDetailDao {
             from my_dict_detail did where did.dict_id = #{dictId}
             """)
     List<MyDictDetail> getDictDetail(Integer dictId);
+
     /**
      * 插入字典详情
-     * @param myDictDetail
-     * @return
+     *
+     * @param myDictDetail myDictDetail
+     * @return int
      */
     @Insert("INSERT INTO my_dict_detail(dict_id,label,value, sort,create_time, update_time)values(#{dictId},#{label},#{value},#{sort}, now(), now())")
     int insertDictDetail(MyDictDetail myDictDetail);
 
     /**
      * 通过id获得字典详情信息
-     * @param id
-     * @return
+     *
+     * @param id id
+     * @return MyDictDetail
      */
     @Select("select did.id,did.dict_id,did.label,did.value,did.sort,did.create_time,did.update_time from my_dict_detail did  where did.id = #{id}")
     MyDictDetail getDictDetailById(Integer id);
@@ -75,10 +78,10 @@ public interface DictDetailDao {
     int deleteDictDetailByIds(Integer[] dictDetailIds);
 
     /**
-     *
      * 根据字典id删除字典详情
-     * @param dictId
-     * @return
+     *
+     * @param dictId dictId
+     * @return int
      */
     @Delete("DELETE from my_dict_detail where dict_id = #{dictId}")
     int deleteDictDetailByDictId(Integer dictId);

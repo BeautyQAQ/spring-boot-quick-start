@@ -17,7 +17,7 @@ public class MyDictDetail extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "id")
-    private Integer Id;
+    private Integer id;
 
     @ApiModelProperty(value = "字典id")
     private Integer dictId;
@@ -40,11 +40,11 @@ public class MyDictDetail extends BaseEntity {
     public MyDictDetail() {}
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Integer id) {
-        Id = id;
+        this.id = id;
     }
 
     public Integer getDictId() {

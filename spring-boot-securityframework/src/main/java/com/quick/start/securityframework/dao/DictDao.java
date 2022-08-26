@@ -18,7 +18,7 @@ public interface DictDao {
 
     /**
      * 模糊查询字典
-     * 
+     *
      * @param myDict 状态查询
      * @return list MyDict
      */
@@ -37,7 +37,7 @@ public interface DictDao {
 
     /**
      * 通过字典名称获取字典信息
-     * 
+     *
      * @param dictName 字典名称
      * @return MyDict
      */
@@ -49,19 +49,19 @@ public interface DictDao {
 
     /**
      * 插入字典
-     * 
+     *
      * @param myDict MyDict
      * @return int
      */
     @Insert("""
-        INSERT INTO my_dict(dict_id,dict_name,description, sort,create_time, update_time)
-        values(#{dictId},#{dictName},#{description},#{sort}, now(), now())
-    """)
+                INSERT INTO my_dict(dict_id,dict_name,description, sort,create_time, update_time)
+                values(#{dictId},#{dictName},#{description},#{sort}, now(), now())
+            """)
     int insertDict(MyDict myDict);
 
     /**
      * 通过id获得字典信息
-     * 
+     *
      * @param dictId dictId
      * @return MyDict
      */

@@ -50,9 +50,9 @@ public class LogUtils {
 
     /**
      * 获取浏览器信息
-     * 
-     * @param request
-     * @return
+     *
+     * @param request request
+     * @return 浏览器信息
      */
     public static String getBrowser(HttpServletRequest request) {
         UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));

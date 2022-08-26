@@ -14,7 +14,7 @@ public class DaoTest {
     protected MenuDao menuDao;
 
     @Test
-    public void should_return_MenuIndexDto(){
+    public void should_return_MenuIndexDto() {
         List<MenuIndexDto> menuIndexDtoList = menuDao.listByUserId(1);
         menuIndexDtoList.forEach(System.out::println);
     }
