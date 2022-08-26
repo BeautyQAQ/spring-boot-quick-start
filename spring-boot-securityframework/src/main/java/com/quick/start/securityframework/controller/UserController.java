@@ -57,23 +57,23 @@ public class UserController {
     @PreAuthorize("hasAnyAuthority('user:add')")
     @MyLog("添加用户")
     public Result<MyUser> saveUser(@RequestBody MyUser myUser) {
-        if (UserConstants.USER_PHONE_NOT_UNIQUE.equals(userService.checkPhoneUnique(myUser))){
+        if (UserConstants.USER_PHONE_NOT_UNIQUE.equals(userService.checkPhoneUnique(myUser))) {
             return Result.error().message("手机号已存在");
         }
-        if (UserConstants.USER_NAME_NOT_UNIQUE.equals(userService.checkUserNameUnique(myUser))){
+        if (UserConstants.USER_NAME_NOT_UNIQUE.equals(userService.checkUserNameUnique(myUser))) {
             return Result.error().message("用户名已存在");
         }
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         myUser.setPassword(bCryptPasswordEncoder.encode("123456"));
-        return userService.save(myUser,myUser.getRoleId());
+        return userService.save(myUser, myUser.getRoleId());
     }
 
     @GetMapping("edit")
     @ApiOperation(value = "修改用户界面")
     @PreAuthorize("hasAnyAuthority('user:edit')")
-    public String editUser(Model model, MyUser tbUser){
-        model.addAttribute("myUser",userService.getUserById(tbUser.getUserId()));
-        model.addAttribute("jobs",jobService.selectJobsByUserId(tbUser.getUserId()));
+    public String editUser(Model model, MyUser tbUser) {
+        model.addAttribute("myUser", userService.getUserById(tbUser.getUserId()));
+        model.addAttribute("jobs", jobService.selectJobsByUserId(tbUser.getUserId()));
         return "/system/user/user-edit";
     }
 
@@ -82,7 +82,7 @@ public class UserController {
     @ApiOperation(value = "修改用户")
     @PreAuthorize("hasAnyAuthority('user:edit')")
     @MyLog("修改用户")
-    public Result updateUser(@RequestBody MyUser myUser){
+    public Result updateUser(@RequestBody MyUser myUser) {
         MyUser userById = userService.getUserById(myUser.getUserId());
         userService.checkUserAllowed(userById);
         if (UserConstants.USER_PHONE_NOT_UNIQUE.equals(userService.checkPhoneUnique(myUser))) {

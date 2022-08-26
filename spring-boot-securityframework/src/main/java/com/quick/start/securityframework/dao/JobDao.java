@@ -15,9 +15,9 @@ public interface JobDao {
     /**
      * 模糊查询岗位
      * 
-     * @param queryName 查询的名称
+     * @param queryName   查询的名称
      * @param queryStatus 状态查询
-     * @return List<MyJob>
+     * @return List MyJob
      */
     @Select("""
             <script>
@@ -59,6 +59,7 @@ public interface JobDao {
 
     /**
      * 通过id查询岗位信息
+     * 
      * @param jobId jobId
      * @return MyJob
      */

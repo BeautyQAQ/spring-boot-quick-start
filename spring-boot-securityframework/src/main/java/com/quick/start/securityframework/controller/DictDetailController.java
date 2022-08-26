@@ -32,16 +32,16 @@ public class DictDetailController {
     @GetMapping
     @PreAuthorize("hasAnyAuthority('dict:list')")
     @ResponseBody
-    public Result getDictDetailMaps(PageTableRequest pageTableRequest, String dictName){
+    public Result getDictDetailMaps(PageTableRequest pageTableRequest, String dictName) {
         pageTableRequest.countOffset();
-        return detailService.getDictByName(pageTableRequest.getOffset(),pageTableRequest.getLimit(),dictName);
+        return detailService.getDictByName(pageTableRequest.getOffset(), pageTableRequest.getLimit(), dictName);
     }
 
     @GetMapping("/add")
     @ApiOperation(value = "添加字典详情页面")
     @PreAuthorize("hasAnyAuthority('dict:add')")
-    public String addDictDetail(Model model, MyDictDetail myDictDetail){
-        model.addAttribute("MyDictDetail",myDictDetail);
+    public String addDictDetail(Model model, MyDictDetail myDictDetail) {
+        model.addAttribute("MyDictDetail", myDictDetail);
         return "/system/dict/dict-detail-add";
     }
 
@@ -50,15 +50,15 @@ public class DictDetailController {
     @ApiOperation(value = "添加字典详情")
     @PreAuthorize("hasAnyAuthority('dict:add')")
     @MyLog("添加字典详情")
-    public Result saveDictDetail(@RequestBody MyDictDetail myDictDetail){
-        return Result.judge(detailService.insertDictDetail(myDictDetail),"添加字典详情");
+    public Result saveDictDetail(@RequestBody MyDictDetail myDictDetail) {
+        return Result.judge(detailService.insertDictDetail(myDictDetail), "添加字典详情");
     }
 
     @GetMapping(value = "/edit")
     @ApiOperation(value = "修改字典详情页面")
     @PreAuthorize("hasAnyAuthority('dict:edit')")
     public String editDictDetail(Model model, MyDictDetail myDictDetail) {
-        model.addAttribute("MyDictDetail",detailService.getDictDetailById(myDictDetail.getId()));
+        model.addAttribute("MyDictDetail", detailService.getDictDetailById(myDictDetail.getId()));
         return "system/dict/dict-detail-edit";
     }
 
@@ -67,8 +67,8 @@ public class DictDetailController {
     @ApiOperation(value = "修改字典详情")
     @PreAuthorize("hasAnyAuthority('dict:edit')")
     @MyLog("修改字典详情")
-    public Result updateDictDetail(@RequestBody MyDictDetail myDictDetail){
-        return Result.judge(detailService.updateDictDetail(myDictDetail),"修改字典详情");
+    public Result updateDictDetail(@RequestBody MyDictDetail myDictDetail) {
+        return Result.judge(detailService.updateDictDetail(myDictDetail), "修改字典详情");
     }
 
     @DeleteMapping
@@ -79,7 +79,7 @@ public class DictDetailController {
         try {
             detailService.deleteDictDetailByIds(ids);
             return Result.ok().message("删除成功");
-        }catch (MyException e){
+        } catch (MyException e) {
             return Result.error().message(e.getMsg()).code(e.getCode());
         }
     }

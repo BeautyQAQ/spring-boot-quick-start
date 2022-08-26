@@ -13,7 +13,7 @@ public interface RoleDao {
      * 分页模糊查询角色
      * 
      * @param role MyRole
-     * @return List<MyRole>
+     * @return ListMyRole
      */
     @Select("""
             <script>
@@ -93,7 +93,7 @@ public interface RoleDao {
     /**
      * 返回所有角色
      * 
-     * @return List<MyRole>
+     * @return List MyRole
      */
     @Select("select r.role_id,r.role_name,r.description from my_role r")
     List<MyRole> getAllRoles();

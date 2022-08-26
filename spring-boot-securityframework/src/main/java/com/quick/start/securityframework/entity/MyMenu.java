@@ -2,7 +2,7 @@ package com.quick.start.securityframework.entity;
 
 import java.io.Serial;
 
-public class MyMenu extends BaseEntity{
+public class MyMenu extends BaseEntity {
 
     @Serial
     private static final long serialVersionUID = -6525908145032868815L;

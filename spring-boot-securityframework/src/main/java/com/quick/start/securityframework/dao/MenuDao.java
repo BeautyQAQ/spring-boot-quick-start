@@ -15,7 +15,7 @@ public interface MenuDao {
      * 
      * @param queryName 查询的表题
      * @param queryType 查询类型
-     * @return List<MyMenu>
+     * @return List MyMenu
      */
     @SuppressWarnings("AlibabaAbstractMethodOrInterfaceMethodMustUseJavadoc")
     @Select("""
@@ -37,6 +37,7 @@ public interface MenuDao {
 
     /**
      * 通过id查询菜单
+     * 
      * @param menuId
      * @return MyMenu
      */
@@ -45,11 +46,12 @@ public interface MenuDao {
 
     /**
      * 菜单树
-     * @return List<MenuDto>
+     * 
+     * @return List MenuDto
      */
     @Select("select m.menu_id,m.parent_id,m.menu_name from my_menu m")
-    @Result(property = "title",column = "menu_name")
-    @Result(property = "id",column = "menu_id")
+    @Result(property = "title", column = "menu_name")
+    @Result(property = "id", column = "menu_id")
     List<MenuDto> buildAll();
 
     /**
@@ -134,8 +136,8 @@ public interface MenuDao {
      * @return List<MenuDto>
      */
     @Select("select m.menu_id,m.parent_id,m.menu_name from my_menu m inner join my_role_menu rm on m.menu_id = rm.menu_id where rm.role_id = #{roleId}")
-    @Result(property = "title",column = "menu_name")
-    @Result(property = "id",column = "menu_id")
+    @Result(property = "title", column = "menu_name")
+    @Result(property = "id", column = "menu_id")
     List<MenuDto> listByRoleId(Integer roleId);
 
     /**
@@ -156,5 +158,5 @@ public interface MenuDao {
                     </where>
                     ORDER BY ifnull(m.sort,0)</script>
             """)
-    List<MenuIndexDto> listByUserId(@Param("userId")Integer userId);
+    List<MenuIndexDto> listByUserId(@Param("userId") Integer userId);
 }

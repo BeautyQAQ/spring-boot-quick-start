@@ -8,21 +8,22 @@ import org.springframework.stereotype.Component;
 
 import java.util.*;
 
-
 @Component
 public class JwtUtils {
+
     @Value("${jwt.secret}")
     private String secret;
+    
     @Value("${jwt.expiration}")
-    private  Long expiration;
-
+    private Long expiration;
 
     /**
      * 创建token
+     * 
      * @param username 用户名
      * @return
      */
-    public  String generateToken(String username) {
+    public String generateToken(String username) {
         return Jwts.builder()
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .setSubject(username)
@@ -32,28 +33,27 @@ public class JwtUtils {
 
     }
 
-
     /**
      * 从token中获取用户名
+     * 
      * @param token
      * @return
      */
-    public  String getUserNameFromToken(String token){
+    public String getUserNameFromToken(String token) {
         return getTokenBody(token).getSubject();
     }
 
-
-
     /**
-     *  是否已过期
+     * 是否已过期
+     * 
      * @param token
      * @return
      */
-    public  boolean isExpiration(String token){
+    public boolean isExpiration(String token) {
         return getTokenBody(token).getExpiration().before(new Date());
     }
 
-    private  Claims getTokenBody(String token){
+    private Claims getTokenBody(String token) {
         return Jwts.parser()
                 .setSigningKey(secret)
                 .parseClaimsJws(token)
@@ -61,4 +61,3 @@ public class JwtUtils {
     }
 
 }
-

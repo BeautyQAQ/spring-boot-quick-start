@@ -27,7 +27,7 @@ public interface LogDao {
      * 分页返回所有用户日志
      * 
      * @param logQuery 查询条件
-     * @return List<LogDto>
+     * @return ListLogDto
      */
     @Select("""
             <script>
@@ -45,7 +45,6 @@ public interface LogDao {
             </script>
             """)
     List<LogDto> getFuzzyLogByPage(@Param("logQuery") LogQuery logQuery);
-
 
     /**
      * 分页返回所有错误日志
@@ -69,7 +68,6 @@ public interface LogDao {
             </script>
             """)
     List<ErrorLogDto> getFuzzyErrorLogByPage(@Param("logQuery") LogQuery logQuery);
-
 
     /**
      * 删除所有日志

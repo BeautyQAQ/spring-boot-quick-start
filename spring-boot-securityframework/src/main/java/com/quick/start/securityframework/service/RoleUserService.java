@@ -13,7 +13,6 @@ public class RoleUserService {
     private RoleUserDao roleUserDao;
 
     public List<MyRoleUser> getMyRoleUserByUserId(Integer userId) {
-       return roleUserDao.getMyRoleUserByUserId(userId);
-
+        return roleUserDao.getMyRoleUserByUserId(userId);
     }
 }

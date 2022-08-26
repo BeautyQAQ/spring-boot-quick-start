@@ -19,19 +19,18 @@ public interface RoleMenuDao {
     /**
      * 新建角色与menu的联系
      * 
-     * @param roleId roleId
+     * @param roleId  roleId
      * @param menuIds menuIds
      */
     @Insert("""
             <script>
             insert into my_role_menu(role_id, menu_id) values
-                    <foreach collection="menuIds" item="menuId"
-                             separator=",">
+                    <foreach collection="menuIds" item="menuId" separator=",">
                         (#{roleId}, #{menuId})
                     </foreach>
             </script>
             """)
-    void save(@Param("roleId")Integer roleId,@Param("menuIds") List<Integer> menuIds);
+    void save(@Param("roleId") Integer roleId, @Param("menuIds") List<Integer> menuIds);
 
     /**
      * 通过menu_id计算权限数量

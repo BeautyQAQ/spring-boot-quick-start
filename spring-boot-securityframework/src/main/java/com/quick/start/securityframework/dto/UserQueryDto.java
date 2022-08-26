@@ -1,6 +1,5 @@
 package com.quick.start.securityframework.dto;
 
-
 import java.io.Serializable;
 
 public class UserQueryDto implements Serializable {

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
 @Controller
 @RequestMapping("/api")
 @Api(tags = "系统：日志管理")
@@ -26,7 +25,7 @@ public class LogController {
     private MyLogService logService;
 
     @GetMapping("/log/index")
-    public String logIndex(){
+    public String logIndex() {
         return "system/log/log";
     }
 
@@ -34,10 +33,10 @@ public class LogController {
     @ResponseBody
     @ApiOperation(value = "日志列表")
     @PreAuthorize("hasAnyAuthority('log:list')")
-    public Result<LogDto> logList(PageTableRequest pageTableRequest, LogQuery logQuery){
+    public Result<LogDto> logList(PageTableRequest pageTableRequest, LogQuery logQuery) {
         pageTableRequest.countOffset();
         logQuery.setLogType("INFO");
-        return logService.getFuzzyInfoLogByPage(pageTableRequest.getOffset(),pageTableRequest.getLimit(),logQuery);
+        return logService.getFuzzyInfoLogByPage(pageTableRequest.getOffset(), pageTableRequest.getLimit(), logQuery);
     }
 
     @DeleteMapping("/log")
@@ -45,13 +44,13 @@ public class LogController {
     @ResponseBody
     @ApiOperation("删除所有INFO日志")
     @PreAuthorize("hasAnyAuthority('log:del')")
-    public Result<Object> delAllByInfo(){
+    public Result<Object> delAllByInfo() {
         logService.delAllByInfo();
         return Result.ok().message("删除成功");
     }
 
     @GetMapping("/log/error/index")
-    public String errorLogIndex(){
+    public String errorLogIndex() {
         return "system/log/errorLog";
     }
 
@@ -59,17 +58,18 @@ public class LogController {
     @ResponseBody
     @ApiOperation(value = "错误日志")
     @PreAuthorize("hasAnyAuthority('errorLog:list')")
-    public Result<ErrorLogDto> errorLogList(PageTableRequest pageTableRequest, LogQuery logQuery){
+    public Result<ErrorLogDto> errorLogList(PageTableRequest pageTableRequest, LogQuery logQuery) {
         pageTableRequest.countOffset();
         logQuery.setLogType("ERROR");
-        return logService.getFuzzyErrorLogByPage(pageTableRequest.getOffset(),pageTableRequest.getLimit(),logQuery);
-  }
+        return logService.getFuzzyErrorLogByPage(pageTableRequest.getOffset(), pageTableRequest.getLimit(), logQuery);
+    }
+
     @DeleteMapping("/error/log")
     @MyLog("删除所有ERROR日志")
     @ResponseBody
     @ApiOperation("删除所有ERROR日志")
     @PreAuthorize("hasAnyAuthority('errorLog:del')")
-    public Result<Object> delAllByError(){
+    public Result<Object> delAllByError() {
         logService.delAllByError();
         return Result.ok().message("删除成功");
     }

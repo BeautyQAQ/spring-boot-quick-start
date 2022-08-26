@@ -16,14 +16,15 @@ import java.io.IOException;
 public class MyAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
     @Override
-    public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
-        //修改编码格式
+    public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
+            AuthenticationException e) throws IOException, ServletException {
+        // 修改编码格式
         httpServletResponse.setCharacterEncoding("utf-8");
         httpServletResponse.setContentType("application/json");
 
-        if (e instanceof BadCredentialsException){
+        if (e instanceof BadCredentialsException) {
             httpServletResponse.getWriter().write(JSON.toJSONString(Result.error().message("用户名或密码错误")));
-        }else {
+        } else {
             httpServletResponse.getWriter().write(JSON.toJSONString(Result.error().message(e.getMessage())));
         }
 

@@ -18,6 +18,7 @@ public class MyRole extends BaseEntity {
 
     /**
      * 判断是否为admin用户
+     * 
      * @return boolean
      */
     public boolean isAdmin() {
@@ -32,7 +33,8 @@ public class MyRole extends BaseEntity {
         this.setRoleId(roleId);
     }
 
-    public MyRole() {}
+    public MyRole() {
+    }
 
     public Integer getRoleId() {
         return roleId;

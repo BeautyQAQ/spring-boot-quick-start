@@ -25,7 +25,7 @@ public class UserConstants {
     public final static String NOT_UNIQUE = "1";
 
     /** 部门停用状态 */
-    public static final String DEPT_DISABLE= "0";
+    public static final String DEPT_DISABLE = "0";
 
     /** 部门正常状态 */
     public static final String DEPT_NORMAL = "1";

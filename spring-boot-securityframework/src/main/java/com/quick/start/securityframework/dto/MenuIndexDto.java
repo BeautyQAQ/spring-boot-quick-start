@@ -21,7 +21,8 @@ public class MenuIndexDto implements Serializable {
 
     private List<MenuIndexDto> children;
 
-    public MenuIndexDto() {}
+    public MenuIndexDto() {
+    }
 
     public Integer getId() {
         return id;
@@ -89,29 +90,15 @@ public class MenuIndexDto implements Serializable {
 
     @Override
     public String toString() {
-        return (
-            "MenuIndexDto{" +
-            "id=" +
-            id +
-            ", parentId=" +
-            parentId +
-            ", title='" +
-            title +
-            '\'' +
-            ", icon='" +
-            icon +
-            '\'' +
-            ", type=" +
-            type +
-            ", href='" +
-            href +
-            '\'' +
-            ", permission='" +
-            permission +
-            '\'' +
-            ", children=" +
-            children +
-            '}'
-        );
+        return ("MenuIndexDto{" +
+                "id=" + id +
+                ", parentId=" + parentId +
+                ", title='" + title + '\'' +
+                ", icon='" + icon + '\'' +
+                ", type=" + type +
+                ", href='" + href + '\'' +
+                ", permission='" + permission + '\'' +
+                ", children=" + children +
+                '}');
     }
 }

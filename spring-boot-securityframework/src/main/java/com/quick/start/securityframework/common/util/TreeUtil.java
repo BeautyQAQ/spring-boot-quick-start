@@ -10,17 +10,17 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class TreeUtil {
-    //todo 判断list是否为空
+    // todo 判断list是否为空
 
     /**
      *
      * @param listByRoleId 通过角色id查询的menuid
-     * @param menuDtos 返回的menutree
+     * @param menuDtos     返回的menutree
      * @return
      */
-    public static List<MenuDto> menutree(List<MenuDto> listByRoleId, List<MenuDto> menuDtos ){
+    public static List<MenuDto> menutree(List<MenuDto> listByRoleId, List<MenuDto> menuDtos) {
         // if (listByRoleId == null & listByRoleId.size() ==0){
-        //     throw
+        // throw
         // }
         List<Integer> collect = listByRoleId.stream().map(MenuDto::getId).collect(Collectors.toList());
         List<Integer> collect1 = menuDtos.stream().map(MenuDto::getId).collect(Collectors.toList());
@@ -32,15 +32,15 @@ public class TreeUtil {
                 int i = collect1.indexOf(item);
                 menuDto = menuDtos.get(i);
                 menuDto.setCheckArr("1");
-                menuDtos.set(i,menuDto);
+                menuDtos.set(i, menuDto);
             }
         }
         return menuDtos;
     }
 
-    public static List<DeptDto> deptTree(List<DeptDto> listById, List<DeptDto> lists ){
+    public static List<DeptDto> deptTree(List<DeptDto> listById, List<DeptDto> lists) {
         // if (listByRoleId == null & listByRoleId.size() ==0){
-        //     throw
+        // throw
         // }
         List<Integer> collect = listById.stream().map(DeptDto::getId).collect(Collectors.toList());
         List<Integer> collect1 = lists.stream().map(DeptDto::getId).collect(Collectors.toList());
@@ -52,7 +52,7 @@ public class TreeUtil {
                 int i = collect1.indexOf(item);
                 deptDto = lists.get(i);
                 deptDto.setCheckArr("1");
-                lists.set(i,deptDto);
+                lists.set(i, deptDto);
             }
         }
         return lists;
@@ -73,11 +73,11 @@ public class TreeUtil {
         }
     }
 
-    public static List<MenuIndexDto> parseMenuTree(List<MenuIndexDto> list){
+    public static List<MenuIndexDto> parseMenuTree(List<MenuIndexDto> list) {
         List<MenuIndexDto> result = new ArrayList<MenuIndexDto>();
         // 1、获取第一级节点
         for (MenuIndexDto menu : list) {
-            if(menu.getParentId() == 0) {
+            if (menu.getParentId() == 0) {
                 result.add(menu);
             }
         }
@@ -89,7 +89,7 @@ public class TreeUtil {
     }
 
     public static MenuIndexDto recursiveTree(MenuIndexDto parent, List<MenuIndexDto> list) {
-        List<MenuIndexDto>children = new ArrayList<>();
+        List<MenuIndexDto> children = new ArrayList<>();
         for (MenuIndexDto menu : list) {
             if (Objects.equals(parent.getId(), menu.getParentId())) {
                 children.add(menu);

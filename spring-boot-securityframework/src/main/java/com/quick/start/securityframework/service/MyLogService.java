@@ -40,13 +40,14 @@ public class MyLogService {
     public void save(String userName, String browser, String ip, ProceedingJoinPoint joinPoint, MyLog log) {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
-        com.quick.start.securityframework.annotation.MyLog myLog = method.getAnnotation(com.quick.start.securityframework.annotation.MyLog.class);
+        com.quick.start.securityframework.annotation.MyLog myLog = method
+                .getAnnotation(com.quick.start.securityframework.annotation.MyLog.class);
         // 方法路径
         String methodName = joinPoint.getTarget().getClass().getName() + "." + signature.getName() + "()";
         StringBuilder params = new StringBuilder("{");
-        //参数值
+        // 参数值
         Object[] argValues = joinPoint.getArgs();
-        //参数名称
+        // 参数名称
         String[] argNames = ((MethodSignature) joinPoint.getSignature()).getParameterNames();
         if (argValues != null) {
             for (int i = 0; i < argValues.length; i++) {

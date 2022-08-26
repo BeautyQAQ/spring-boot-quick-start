@@ -13,7 +13,7 @@ public interface DeptDao {
      * 模糊查询部门
      *
      * @param myDept 查询的名称
-     * @return
+     * @return List MyDept
      */
     @Select("""
             <script>
@@ -36,8 +36,8 @@ public interface DeptDao {
     /**
      * 部门树
      * 
-     * @param deptDto
-     * @return
+     * @param deptDto deptDto
+     * @return List DeptDto
      */
     @Select("""
             <script>
@@ -55,15 +55,15 @@ public interface DeptDao {
      * 校验部门名称
      * 
      * @param deptName 岗位名称
-     * @param parentId
-     * @return
+     * @param parentId parentId
+     * @return MyDept
      */
     @Select("""
             select d.dept_id,d.parent_id,d.dept_name,d.sort,d.status,d.create_time,d.update_time
             from my_dept d
             where dept_name= #{deptName} and parent_id = #{parentId} limit 1
             """)
-    MyDept checkDeptNameUnique(@Param("deptName")String deptName, @Param("parentId") Integer parentId);
+    MyDept checkDeptNameUnique(@Param("deptName") String deptName, @Param("parentId") Integer parentId);
 
     /**
      * 新增部门信息
@@ -72,11 +72,11 @@ public interface DeptDao {
      * @return 结果
      */
     @Insert("""
-        INSERT INTO my_dept(parent_id,ancestors,dept_name,sort,status, create_time, update_time)
-        values(#{parentId},#{ancestors},#{deptName},#{sort},#{status}, now(), now())
-    """)
+                INSERT INTO my_dept(parent_id,ancestors,dept_name,sort,status, create_time, update_time)
+                values(#{parentId},#{ancestors},#{deptName},#{sort},#{status}, now(), now())
+            """)
     int insertDept(MyDept dept);
-    
+
     /**
      * 根据部门ID查询信息
      * 
@@ -94,8 +94,8 @@ public interface DeptDao {
     /**
      * 通过id查询部门信息
      * 
-     * @param deptId
-     * @return
+     * @param deptId deptId
+     * @return MyDept
      */
     @Select("select d.dept_id,d.parent_id,d.ancestors,d.dept_name,d.sort,d.status,d.create_time,d.update_time from my_dept d where d.dept_id = #{deptId}")
     MyDept getDeptById(Integer deptId);
@@ -107,7 +107,7 @@ public interface DeptDao {
      * @return 部门列表
      */
     @Select("select * from my_dept where find_in_set(#{id}, ancestors)")
-     List<MyDept> selectChildrenDeptById(Integer id);
+    List<MyDept> selectChildrenDeptById(Integer id);
 
     /**
      * 根据角色ID查询部门
@@ -122,7 +122,7 @@ public interface DeptDao {
             where rd.role_id = #{id}
             order by d.parent_id
             """)
-     List<DeptDto> selectRoleDeptTree(Integer id);
+    List<DeptDto> selectRoleDeptTree(Integer id);
 
     /**
      * 修改子元素关系
@@ -144,7 +144,7 @@ public interface DeptDao {
                     </foreach>
                     </script>
             """)
-    int updateDeptChildren(@Param("depts")List<MyDept> depts);
+    int updateDeptChildren(@Param("depts") List<MyDept> depts);
 
     /**
      * 修改部门信息
@@ -193,6 +193,7 @@ public interface DeptDao {
      */
     @Select("select count(*) from my_dept where status = 1 and find_in_set(#{dept_id}, ancestors)")
     int selectNormalChildrenDeptById(Integer deptId);
+
     /**
      * 查询部门人数
      *

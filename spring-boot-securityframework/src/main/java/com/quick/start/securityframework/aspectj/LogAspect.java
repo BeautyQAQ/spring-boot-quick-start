@@ -20,6 +20,7 @@ public class LogAspect {
     private MyLogService logService;
 
     ThreadLocal<Long> currentTime = new ThreadLocal<>();
+
     /**
      * 设置操作日志切入点 记录操作日志 在注解的位置切入代码
      */
@@ -33,16 +34,17 @@ public class LogAspect {
      * @param joinPoint join point for advice
      */
     @Around("logPointCut()")
-    public Object saveSysLog(ProceedingJoinPoint joinPoint)throws Throwable{
+    public Object saveSysLog(ProceedingJoinPoint joinPoint) throws Throwable {
         Object result;
-        //记录方法的执行时间
+        // 记录方法的执行时间
         currentTime.set(System.currentTimeMillis());
         result = joinPoint.proceed();
-        //定义日志类型
-        MyLog log = new MyLog("INFO",System.currentTimeMillis() - currentTime.get());
+        // 定义日志类型
+        MyLog log = new MyLog("INFO", System.currentTimeMillis() - currentTime.get());
         currentTime.remove();
         HttpServletRequest request = RequestHolder.getHttpServletRequest();
-        logService.save(SecurityUtils.getCurrentUsername(), LogUtils.getBrowser(request), LogUtils.getIp(request),joinPoint, log);
+        logService.save(SecurityUtils.getCurrentUsername(), LogUtils.getBrowser(request), LogUtils.getIp(request),
+                joinPoint, log);
         return result;
     }
 
@@ -50,14 +52,15 @@ public class LogAspect {
      * 配置异常通知
      *
      * @param joinPoint join point for advice
-     * @param e exception
+     * @param e         exception
      */
     @AfterThrowing(pointcut = "logPointCut()", throwing = "e")
     public void logAfterThrowing(JoinPoint joinPoint, Throwable e) {
-        MyLog log = new MyLog("ERROR",System.currentTimeMillis() - currentTime.get());
+        MyLog log = new MyLog("ERROR", System.currentTimeMillis() - currentTime.get());
         currentTime.remove();
         log.setExceptionDetail(LogUtils.getStackTrace(e));
         HttpServletRequest request = RequestHolder.getHttpServletRequest();
-        logService.save(SecurityUtils.getCurrentUsername(), LogUtils.getBrowser(request), LogUtils.getIp(request), (ProceedingJoinPoint)joinPoint, log);
+        logService.save(SecurityUtils.getCurrentUsername(), LogUtils.getBrowser(request), LogUtils.getIp(request),
+                (ProceedingJoinPoint) joinPoint, log);
     }
 }

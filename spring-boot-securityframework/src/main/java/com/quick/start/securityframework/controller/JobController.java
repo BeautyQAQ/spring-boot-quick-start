@@ -29,9 +29,10 @@ public class JobController {
 
     @Autowired
     private JobService jobService;
+
     @GetMapping("index")
     @ApiOperation(value = "返回岗位页面")
-    public String index(){
+    public String index() {
         return "system/job/job";
     }
 
@@ -40,16 +41,16 @@ public class JobController {
     @ApiOperation(value = "岗位列表")
     @PreAuthorize("hasAnyAuthority('job:list')")
     @MyLog("查询岗位")
-    public Result getJobAll(PageTableRequest pageTableRequest, JobQueryDto jobQueryDto){
+    public Result getJobAll(PageTableRequest pageTableRequest, JobQueryDto jobQueryDto) {
         pageTableRequest.countOffset();
-        return jobService.getJobAll(pageTableRequest.getOffset(),pageTableRequest.getLimit(),jobQueryDto);
+        return jobService.getJobAll(pageTableRequest.getOffset(), pageTableRequest.getLimit(), jobQueryDto);
     }
 
     @GetMapping("/add")
     @ApiOperation(value = "添加岗位页面")
     @PreAuthorize("hasAnyAuthority('job:add')")
-    public String addJob(Model model){
-        model.addAttribute("MyJob",new MyJob());
+    public String addJob(Model model) {
+        model.addAttribute("MyJob", new MyJob());
         return "/system/job/job-add";
     }
 
@@ -58,31 +59,33 @@ public class JobController {
     @ApiOperation(value = "添加岗位")
     @PreAuthorize("hasAnyAuthority('job:add')")
     @MyLog("添加岗位")
-    public Result saveJob(@RequestBody MyJob myJob){
+    public Result saveJob(@RequestBody MyJob myJob) {
         if (UserConstants.JOB_NAME_NOT_UNIQUE.equals(jobService.checkJobNameUnique(myJob))) {
             return Result.error().message("新增岗位'" + myJob.getJobName() + "'失败，岗位名称已存在");
         }
-        return Result.judge(jobService.insertJob(myJob),"添加岗位");
+        return Result.judge(jobService.insertJob(myJob), "添加岗位");
     }
 
     @GetMapping(value = "/edit")
     @ApiOperation(value = "修改岗位页面")
     @PreAuthorize("hasAnyAuthority('job:edit')")
     public String editRole(Model model, MyJob job) {
-        model.addAttribute("MyJob",jobService.getJobById(job.getJobId()));
+        model.addAttribute("MyJob", jobService.getJobById(job.getJobId()));
         return "system/job/job-edit";
     }
+
     @PutMapping
     @ResponseBody
     @ApiOperation(value = "修改岗位")
     @PreAuthorize("hasAnyAuthority('job:edit')")
     @MyLog("修改岗位")
-    public Result updateJob(@RequestBody MyJob myJob){
+    public Result updateJob(@RequestBody MyJob myJob) {
         if (UserConstants.JOB_NAME_NOT_UNIQUE.equals(jobService.checkJobNameUnique(myJob))) {
             return Result.error().message("修改岗位'" + myJob.getJobName() + "'失败，岗位名称已存在");
         }
-        return Result.judge(jobService.updateJob(myJob),"修改岗位");
+        return Result.judge(jobService.updateJob(myJob), "修改岗位");
     }
+
     /**
      * 用户状态修改
      */
@@ -91,10 +94,9 @@ public class JobController {
     @ResponseBody
     @ApiOperation(value = "修改岗位状态")
     @PreAuthorize("hasAnyAuthority('job:edit')")
-    public Result changeStatus(@RequestBody MyJob myJob)
-    {
+    public Result changeStatus(@RequestBody MyJob myJob) {
         int i = jobService.changeStatus(myJob);
-        return Result.judge(i,"修改");
+        return Result.judge(i, "修改");
     }
 
     @DeleteMapping
@@ -105,7 +107,7 @@ public class JobController {
         try {
             jobService.deleteJobByIds(ids);
             return Result.ok().message("删除成功");
-        }catch (MyException e){
+        } catch (MyException e) {
             return Result.error().message(e.getMsg()).code(e.getCode());
         }
     }

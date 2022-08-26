@@ -29,7 +29,7 @@ public class RoleController {
 
     @GetMapping("/index")
     @PreAuthorize("hasAnyAuthority('role:list')")
-    public String index(){
+    public String index() {
         return "system/role/role";
     }
 
@@ -40,14 +40,14 @@ public class RoleController {
     @MyLog("查询角色")
     public Result roleList(PageTableRequest request, MyRole myRole) {
         request.countOffset();
-        return roleService.getFuzzyRolesByPage(request.getOffset(), request.getLimit(),myRole);
+        return roleService.getFuzzyRolesByPage(request.getOffset(), request.getLimit(), myRole);
     }
 
     @GetMapping(value = "/edit")
     @ApiOperation(value = "修改角色页面")
     @PreAuthorize("hasAnyAuthority('role:edit')")
     public String editRole(Model model, MyRole role) {
-        model.addAttribute("MyRole",roleService.getRoleById(role.getRoleId()));
+        model.addAttribute("MyRole", roleService.getRoleById(role.getRoleId()));
         return "system/role/role-edit";
     }
 
@@ -55,7 +55,7 @@ public class RoleController {
     @ApiOperation(value = "修改角色页面")
     @PreAuthorize("hasAnyAuthority('role:edit')")
     public String editRoleDataScope(Model model, MyRole role) {
-        model.addAttribute("MyRole",roleService.getRoleById(role.getRoleId()));
+        model.addAttribute("MyRole", roleService.getRoleById(role.getRoleId()));
         return "system/role/role-dataScope";
     }
 
@@ -81,7 +81,7 @@ public class RoleController {
     @ApiOperation(value = "添加角色页面")
     @PreAuthorize("hasAnyAuthority('role:add')")
     public String addRole(Model model) {
-        model.addAttribute("MyRole",new MyRole());
+        model.addAttribute("MyRole", new MyRole());
         return "/system/role/role-add";
     }
 
@@ -107,7 +107,7 @@ public class RoleController {
     @ResponseBody
     @ApiOperation(value = "角色列表")
     @PreAuthorize("hasAnyAuthority('user:list')")
-    public Result<MyRole> getAll(){
+    public Result<MyRole> getAll() {
         return roleService.getAllRoles();
     }
 }

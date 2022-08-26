@@ -34,6 +34,7 @@ public class MyUser extends BaseEntity {
 
     /**
      * 判断是否为admin用户
+     * 
      * @return boolean
      */
     public boolean isAdmin() {
@@ -48,7 +49,8 @@ public class MyUser extends BaseEntity {
         this.setUserId(userId);
     }
 
-    public MyUser() {}
+    public MyUser() {
+    }
 
     public Integer getUserId() {
         return userId;

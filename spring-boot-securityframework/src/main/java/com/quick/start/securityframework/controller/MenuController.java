@@ -33,18 +33,17 @@ public class MenuController {
     @GetMapping("index")
     @PreAuthorize("hasAnyAuthority('menu:list')")
     @ApiOperation(value = "返回菜单页面")
-    public String index(){
+    public String index() {
         return "system/menu/menu";
     }
-
 
     @GetMapping
     @ResponseBody
     @ApiOperation(value = "菜单列表")
     @PreAuthorize("hasAnyAuthority('menu:list')")
     @MyLog("查询菜单")
-    public Result getMenuAll(String queryName, Integer queryType){
-        return Result.ok().data(menuService.getMenuAll(queryName,queryType)).code(ResultCode.TABLE_SUCCESS);
+    public Result getMenuAll(String queryName, Integer queryType) {
+        return Result.ok().data(menuService.getMenuAll(queryName, queryType)).code(ResultCode.TABLE_SUCCESS);
     }
 
     @GetMapping("/build")
@@ -52,8 +51,8 @@ public class MenuController {
     @ApiOperation(value = "绘制菜单树")
     @PreAuthorize("hasAnyAuthority('menu:add','menu:edit')")
     @MyLog("绘制菜单树")
-    public Result buildMenuAll(){
-        List<MenuDto> menuAll =menuService.buildMenuAll();
+    public Result buildMenuAll() {
+        List<MenuDto> menuAll = menuService.buildMenuAll();
         return Result.ok().data(menuAll);
     }
 
@@ -62,8 +61,8 @@ public class MenuController {
     @ApiOperation(value = "通过id绘制菜单树")
     @PreAuthorize("hasAnyAuthority('role:add','role:edit')")
     @MyLog("通过id绘制菜单树")
-    public Result buildMenuAllByRoleId(@PathVariable Integer roleId){
-        List<MenuDto> menuAll =menuService.buildMenuAllByRoleId(roleId);
+    public Result buildMenuAllByRoleId(@PathVariable Integer roleId) {
+        List<MenuDto> menuAll = menuService.buildMenuAllByRoleId(roleId);
         return Result.ok().data(menuAll);
     }
 
@@ -71,7 +70,7 @@ public class MenuController {
     @ApiOperation(value = "修改菜单页面")
     @PreAuthorize("hasAnyAuthority('menu:edit')")
     public String editPermission(Model model, MyMenu myMenu) {
-        model.addAttribute("myMenu",menuService.getMenuById(myMenu.getMenuId()));
+        model.addAttribute("myMenu", menuService.getMenuById(myMenu.getMenuId()));
         return "system/menu/menu-edit";
     }
 
@@ -84,12 +83,11 @@ public class MenuController {
         return menuService.updateMenu(menu);
     }
 
-
     @GetMapping(value = "/add")
     @ApiOperation(value = "添加菜单页面")
     @PreAuthorize("hasAnyAuthority('menu:add')")
     public String addMenu(Model model) {
-        model.addAttribute("myMenu",new MyMenu());
+        model.addAttribute("myMenu", new MyMenu());
         return "system/menu/menu-add";
     }
 
@@ -101,7 +99,6 @@ public class MenuController {
     public Result<MyMenu> savePermission(@RequestBody MyMenu myMenu) {
         return menuService.save(myMenu);
     }
-
 
     /**
      * @param menuId

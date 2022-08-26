@@ -10,8 +10,9 @@ public interface UserDao {
 
     /**
      * 分页返回所有用户
+     * 
      * @param myUser 查询条件
-     * @return List<MyUser> 
+     * @return List<MyUser>
      */
     @Select("""
             <script>
@@ -34,18 +35,20 @@ public interface UserDao {
                     ORDER BY u.user_id
             </script>
             """)
-     List<MyUser> getFuzzyUserByPage(MyUser myUser);
+    List<MyUser> getFuzzyUserByPage(MyUser myUser);
 
     /**
      * 计算所有用户数量
+     * 
      * @return 所有用户数量
      */
-     @Select("select count(*) from my_user")
-     Long countAllUser();
+    @Select("select count(*) from my_user")
+    Long countAllUser();
 
     /**
      *
      * 通过id返回用户
+     * 
      * @param userId userId
      * @return 用户
      */
@@ -54,6 +57,7 @@ public interface UserDao {
 
     /**
      * 通过手机返回用户
+     * 
      * @param phone 手机
      * @return 用户
      */
@@ -62,6 +66,7 @@ public interface UserDao {
 
     /**
      * 通过用户名返回用户
+     * 
      * @param userName 用户名
      * @return 用户
      */
@@ -70,6 +75,7 @@ public interface UserDao {
 
     /**
      * 更新用户
+     * 
      * @param myUser 用户
      * @return int
      */
@@ -104,6 +110,7 @@ public interface UserDao {
 
     /**
      * 插入用户
+     * 
      * @param myUser 用户
      * @return int
      */
@@ -113,14 +120,16 @@ public interface UserDao {
 
     /**
      * 通过id删除用户
+     * 
      * @param userId userId
-     * @return int 
+     * @return int
      */
     @Delete("delete from my_user where user_id = #{userId}")
     int deleteUserById(Integer userId);
 
     /**
-     *  根据用户名查询用户
+     * 根据用户名查询用户
+     * 
      * @param userName 用户名
      * @return MyUser
      */

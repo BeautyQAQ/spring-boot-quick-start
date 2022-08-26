@@ -12,18 +12,16 @@ public interface RoleUserDao {
      * 通过角色id返回所有用户
      * 
      * @param id 角色id
-     * @return List<MyRoleUser>
+     * @return List MyRoleUser
      */
     @Select("select * from my_role_user ru where ru.role_id = #{roleId}")
     List<MyRoleUser> listAllRoleUserByRoleId(Integer id);
-
-
 
     /**
      * 通过用户id查询权限id
      * 
      * @param userId 用户id
-     * @return List<MyRoleUser>
+     * @return List MyRoleUser
      */
     @Select("select * from my_role_user ru where ru.user_id = #{userId}")
     List<MyRoleUser> getMyRoleUserByUserId(Integer userId);

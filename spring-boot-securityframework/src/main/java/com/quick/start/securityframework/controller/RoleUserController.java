@@ -28,10 +28,10 @@ public class RoleUserController {
     @PreAuthorize("hasAnyAuthority('user:list')")
     @MyLog("查询用户角色")
     public Result getRoleUserByUserId(Integer userId) {
-        List<MyRoleUser> tbRoleUser =roleUserService.getMyRoleUserByUserId(userId);
-        if(tbRoleUser != null){
+        List<MyRoleUser> tbRoleUser = roleUserService.getMyRoleUserByUserId(userId);
+        if (tbRoleUser != null) {
             return Result.ok().data(tbRoleUser);
-        }else{
+        } else {
             return Result.error();
         }
     }
