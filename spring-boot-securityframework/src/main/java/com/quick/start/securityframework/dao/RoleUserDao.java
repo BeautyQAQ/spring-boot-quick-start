@@ -56,7 +56,7 @@ public interface RoleUserDao {
 
     /**
      * 新建
-     * 
+     *
      * @param myRoleUser myRoleUser
      * @return int
      */

@@ -44,6 +44,7 @@ public class MyLogService {
                 .getAnnotation(com.quick.start.securityframework.annotation.MyLog.class);
         // 方法路径
         String methodName = joinPoint.getTarget().getClass().getName() + "." + signature.getName() + "()";
+        log.setMethod(methodName);
         StringBuilder params = new StringBuilder("{");
         // 参数值
         Object[] argValues = joinPoint.getArgs();
@@ -69,7 +70,6 @@ public class MyLogService {
                 e.printStackTrace();
             }
         }
-        log.setMethod(methodName);
         log.setUserName(userName);
         log.setParams(params.toString() + " }");
         log.setBrowser(browser);
