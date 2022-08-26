@@ -1,6 +1,5 @@
 package com.quick.start.securityframework.service;
 
-
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.quick.start.securityframework.annotation.DataPermission;
@@ -14,15 +13,14 @@ import com.quick.start.securityframework.dao.RoleUserDao;
 import com.quick.start.securityframework.dto.RoleDto;
 import com.quick.start.securityframework.entity.MyRole;
 import com.quick.start.securityframework.entity.MyRoleUser;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import java.util.List;
-
 @Service
 public class RoleService {
-    
+
     @Autowired
     private RoleDao roleDao;
 
@@ -37,7 +35,7 @@ public class RoleService {
 
     @DataPermission(deptAlias = "d")
     public Result<MyRole> getFuzzyRolesByPage(Integer offectPosition, Integer limit, MyRole myRole) {
-        Page page = PageHelper.offsetPage(offectPosition,limit);
+        Page page = PageHelper.offsetPage(offectPosition, limit);
         List<MyRole> fuzzyRolesByPage = roleDao.getFuzzyRolesByPage(myRole);
         return Result.ok().count(page.getTotal()).data(fuzzyRolesByPage).code(ResultCode.TABLE_SUCCESS);
     }
@@ -57,15 +55,15 @@ public class RoleService {
         }
         //3、更新角色表
         int countData = roleDao.update(roleDto);
-        if(countData > 0){
+        if (countData > 0) {
             return Result.ok().message("更新成功");
-        }else{
+        } else {
             return Result.error().message("更新失败");
         }
     }
 
     public Result authDataScope(RoleDto roleDto) {
-        if (roleDto.getDataScope().equals(UserConstants.DATA_SCOPE_CUSTOM)){
+        if (roleDto.getDataScope().equals(UserConstants.DATA_SCOPE_CUSTOM)) {
             List<Integer> deptIds = roleDto.getDeptIds();
             deptIds.remove(0L);
             roleDeptDao.deleteRoleDept(roleDto.getRoleId());
@@ -73,7 +71,7 @@ public class RoleService {
                 roleDeptDao.save(roleDto.getRoleId(), deptIds);
             }
             roleDao.update(roleDto);
-        }else {
+        } else {
             roleDao.update(roleDto);
             roleDeptDao.deleteRoleDept(roleDto.getRoleId());
         }
@@ -95,7 +93,7 @@ public class RoleService {
 
     public Result<MyRole> delete(Integer id) {
         List<MyRoleUser> tbRoleUsers = roleUserDao.listAllRoleUserByRoleId(id);
-        if(tbRoleUsers.size() <= 0){
+        if (tbRoleUsers.size() <= 0) {
             roleMenuDao.deleteRoleMenu(id);
             roleDao.delete(id);
             roleDeptDao.deleteRoleDept(id);
