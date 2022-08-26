@@ -2,7 +2,7 @@ import org.springframework.boot.gradle.plugin.SpringBootPlugin
 
 dependencies{
     implementation(platform(SpringBootPlugin.BOM_COORDINATES))
-    testImplementation(platform("org.testcontainers:testcontainers-bom:1.17.2"))
+    testImplementation(platform("org.testcontainers:testcontainers-bom:1.17.3"))
 
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-web")
@@ -14,4 +14,7 @@ dependencies{
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.testcontainers:testcontainers")
     testImplementation("org.testcontainers:postgresql")
+}
+repositories {
+    mavenCentral()
 }

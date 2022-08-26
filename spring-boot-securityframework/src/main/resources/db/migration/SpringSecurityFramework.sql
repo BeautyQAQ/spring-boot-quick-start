@@ -14,7 +14,7 @@
  Date: 07/11/2020 20:05:45
 */
 
-SET NAMES utf8mb4;
+# SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
