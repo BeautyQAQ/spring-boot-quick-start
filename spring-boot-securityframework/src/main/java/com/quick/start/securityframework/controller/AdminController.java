@@ -18,6 +18,7 @@ import java.util.List;
 @RequestMapping("/api")
 @Api(tags = "系统：菜单路由")
 public class AdminController {
+
     @Autowired
     private MenuService menuService;
 
