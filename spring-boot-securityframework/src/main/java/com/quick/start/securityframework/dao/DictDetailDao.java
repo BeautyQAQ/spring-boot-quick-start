@@ -29,7 +29,7 @@ public interface DictDetailDao {
      * @param myDictDetail myDictDetail
      * @return int
      */
-    @Insert("INSERT INTO my_dict_detail(dict_id,label,value, sort,create_time, update_time)values(#{dictId},#{label},#{value},#{sort}, now(), now())")
+    @Insert("INSERT INTO my_dict_detail(dict_id,label,value, sort,create_time, update_time) values(#{dictId},#{label},#{value},#{sort}, now(), now())")
     int insertDictDetail(MyDictDetail myDictDetail);
 
     /**

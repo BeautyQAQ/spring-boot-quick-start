@@ -34,8 +34,8 @@ public class RoleService {
     private RoleDeptDao roleDeptDao;
 
     @DataPermission(deptAlias = "d")
-    public Result<MyRole> getFuzzyRolesByPage(Integer offectPosition, Integer limit, MyRole myRole) {
-        Page page = PageHelper.offsetPage(offectPosition, limit);
+    public Result<MyRole> getFuzzyRolesByPage(Integer offsetPosition, Integer limit, MyRole myRole) {
+        Page page = PageHelper.offsetPage(offsetPosition, limit);
         List<MyRole> fuzzyRolesByPage = roleDao.getFuzzyRolesByPage(myRole);
         return Result.ok().count(page.getTotal()).data(fuzzyRolesByPage).code(ResultCode.TABLE_SUCCESS);
     }
@@ -46,7 +46,7 @@ public class RoleService {
 
     public Result update(RoleDto roleDto) {
         List<Integer> menuIds = roleDto.getMenuIds();
-        menuIds.remove(0L);
+        menuIds.remove(0);
         //1、更新角色权限之前要删除该角色之前的所有权限
         roleMenuDao.deleteRoleMenu(roleDto.getRoleId());
         //2、判断该角色是否有赋予权限值，有就添加"
@@ -65,7 +65,7 @@ public class RoleService {
     public Result authDataScope(RoleDto roleDto) {
         if (roleDto.getDataScope().equals(UserConstants.DATA_SCOPE_CUSTOM)) {
             List<Integer> deptIds = roleDto.getDeptIds();
-            deptIds.remove(0L);
+            deptIds.remove(0);
             roleDeptDao.deleteRoleDept(roleDto.getRoleId());
             if (!CollectionUtils.isEmpty(deptIds)) {
                 roleDeptDao.save(roleDto.getRoleId(), deptIds);

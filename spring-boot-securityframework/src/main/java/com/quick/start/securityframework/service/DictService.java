@@ -25,8 +25,8 @@ public class DictService {
     @Autowired
     private DictDetailDao dictDetailDao;
 
-    public Result<MyDict> getDictPage(Integer offectPosition, Integer limit, MyDict myDict) {
-        Page page = PageHelper.offsetPage(offectPosition, limit);
+    public Result<MyDict> getDictPage(Integer offsetPosition, Integer limit, MyDict myDict) {
+        Page page = PageHelper.offsetPage(offsetPosition, limit);
         List<MyDict> fuzzyDictByPage = dictDao.getFuzzyDictByPage(myDict);
         return Result.ok().count(page.getTotal()).data(fuzzyDictByPage).code(ResultCode.TABLE_SUCCESS);
     }

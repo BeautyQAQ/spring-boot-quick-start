@@ -24,14 +24,14 @@ public class MyLogService {
     @Autowired
     private LogDao logDao;
 
-    public Result<LogDto> getFuzzyInfoLogByPage(Integer offectPosition, Integer limit, LogQuery logQuery) {
-        Page page = PageHelper.offsetPage(offectPosition, limit);
+    public Result<LogDto> getFuzzyInfoLogByPage(Integer offsetPosition, Integer limit, LogQuery logQuery) {
+        Page page = PageHelper.offsetPage(offsetPosition, limit);
         List<LogDto> fuzzyLogByPage = logDao.getFuzzyLogByPage(logQuery);
         return Result.ok().count(page.getTotal()).data(fuzzyLogByPage).code(ResultCode.TABLE_SUCCESS);
     }
 
-    public Result<ErrorLogDto> getFuzzyErrorLogByPage(Integer offectPosition, Integer limit, LogQuery logQuery) {
-        Page page = PageHelper.offsetPage(offectPosition, limit);
+    public Result<ErrorLogDto> getFuzzyErrorLogByPage(Integer offsetPosition, Integer limit, LogQuery logQuery) {
+        Page page = PageHelper.offsetPage(offsetPosition, limit);
         List<ErrorLogDto> fuzzyErrorLogByPage = logDao.getFuzzyErrorLogByPage(logQuery);
         return Result.ok().count(page.getTotal()).data(fuzzyErrorLogByPage).code(ResultCode.TABLE_SUCCESS);
     }
@@ -56,10 +56,7 @@ public class MyLogService {
             }
         }
         // 描述
-        if (log != null) {
-            log.setDescription(myLog.value());
-        }
-        assert log != null;
+        log.setDescription(myLog.value());
         log.setIp(ip);
         String loginPath = "login";
         if (loginPath.equals(signature.getName())) {

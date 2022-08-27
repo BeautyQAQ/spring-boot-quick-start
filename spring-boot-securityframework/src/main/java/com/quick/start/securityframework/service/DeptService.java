@@ -34,8 +34,7 @@ public class DeptService {
         List<DeptDto> selectRoleDeptTree = deptDao.selectRoleDeptTree(roleId);
         DeptDto deptDto = new DeptDto();
         List<DeptDto> buildAll = deptDao.buildAll(deptDto);
-        List<DeptDto> tree = TreeUtil.deptTree(selectRoleDeptTree, buildAll);
-        return tree;
+        return TreeUtil.deptTree(selectRoleDeptTree, buildAll);
     }
 
     public int insertDept(MyDept dept) {
@@ -92,7 +91,7 @@ public class DeptService {
 
     public boolean checkDeptExistUser(Integer deptId) {
         int result = deptDao.checkDeptExistUser(deptId);
-        return result > 0 ? true : false;
+        return result > 0;
     }
 
     public int deleteDeptById(Integer deptId) {

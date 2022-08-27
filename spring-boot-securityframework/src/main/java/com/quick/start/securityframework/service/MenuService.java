@@ -69,14 +69,12 @@ public class MenuService {
 
     public List<MenuDto> buildMenuAllByRoleId(Integer roleId) {
         List<MenuDto> listByRoleId = menuDao.listByRoleId(roleId);
-        List<MenuDto> permissionDtos = menuDao.buildAll();
-        List<MenuDto> tree = TreeUtil.menutree(listByRoleId, permissionDtos);
-        return tree;
+        List<MenuDto> permissionDtoList = menuDao.buildAll();
+        return TreeUtil.menutree(listByRoleId, permissionDtoList);
     }
 
     public List<MenuIndexDto> getMenu(Integer userId) {
         List<MenuIndexDto> list = menuDao.listByUserId(userId);
-        List<MenuIndexDto> result = TreeUtil.parseMenuTree(list);
-        return result;
+        return TreeUtil.parseMenuTree(list);
     }
 }

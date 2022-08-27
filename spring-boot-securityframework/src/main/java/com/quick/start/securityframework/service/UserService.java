@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
+import org.springframework.util.ObjectUtils;
 
 @Service
 public class UserService {
@@ -34,8 +34,8 @@ public class UserService {
     private UserJobDao userJobDao;
 
     @DataPermission(deptAlias = "d", userAlias = "u")
-    public Result<MyUser> getAllUsersByPage(Integer offectPosition, Integer limit, MyUser myUser) {
-        Page page = PageHelper.offsetPage(offectPosition, limit);
+    public Result<MyUser> getAllUsersByPage(Integer offsetPosition, Integer limit, MyUser myUser) {
+        Page page = PageHelper.offsetPage(offsetPosition, limit);
         List<MyUser> fuzzyUserByPage = userDao.getFuzzyUserByPage(myUser);
         return Result.ok().count(page.getTotal()).data(fuzzyUserByPage).code(ResultCode.TABLE_SUCCESS);
     }
@@ -45,7 +45,7 @@ public class UserService {
     }
 
     public void checkUserAllowed(MyUser user) {
-        if (!StringUtils.isEmpty(user.getUserId()) && user.isAdmin()) {
+        if (!ObjectUtils.isEmpty(user.getUserId()) && user.isAdmin()) {
             throw new MyException(ResultCode.ERROR, "不允许操作超级管理员用户");
         }
     }
@@ -96,7 +96,7 @@ public class UserService {
             userDao.save(myUser);
             MyRoleUser myRoleUser = new MyRoleUser();
             myRoleUser.setRoleId(roleId);
-            myRoleUser.setUserId(myUser.getUserId().intValue());
+            myRoleUser.setUserId(myUser.getUserId());
             roleUserDao.save(myRoleUser);
             insertUserPost(myUser);
             return Result.ok().message("添加成功，初始密码123456");
@@ -125,7 +125,7 @@ public class UserService {
 
         if (ArrayUtil.isNotEmpty(jobs)) {
             // 新增用户与岗位管理
-            List<MyUserJob> list = new ArrayList<MyUserJob>();
+            List<MyUserJob> list = new ArrayList<>();
             for (Integer jobId : jobs) {
                 MyUserJob up = new MyUserJob();
                 up.setUserId(user.getUserId());
@@ -136,6 +136,5 @@ public class UserService {
                 userJobDao.batchUserJob(list);
             }
         }
-        return;
     }
 }

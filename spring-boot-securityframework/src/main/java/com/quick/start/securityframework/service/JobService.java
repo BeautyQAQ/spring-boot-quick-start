@@ -25,8 +25,8 @@ public class JobService {
     @Autowired
     private UserJobDao userJobDao;
 
-    public Result<MyJob> getJobAll(Integer offectPosition, Integer limit, JobQueryDto jobQueryDto) {
-        Page page = PageHelper.offsetPage(offectPosition, limit);
+    public Result<MyJob> getJobAll(Integer offsetPosition, Integer limit, JobQueryDto jobQueryDto) {
+        Page page = PageHelper.offsetPage(offsetPosition, limit);
         List<MyJob> fuzzyJob = jobDao.getFuzzyJob(jobQueryDto.getQueryName(), jobQueryDto.getQueryStatus());
         return Result.ok().count(page.getTotal()).data(fuzzyJob).code(ResultCode.TABLE_SUCCESS);
     }
