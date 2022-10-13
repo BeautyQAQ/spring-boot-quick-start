@@ -21,10 +21,10 @@ public class DictDetailService {
     @Autowired
     private DictDetailDao dictDetailDao;
 
-    public Result<MyDictDetail> getDictByName(Integer offectPosition, Integer limit, String dictName) {
+    public Result<MyDictDetail> getDictByName(Integer offsetPosition, Integer limit, String dictName) {
         MyDict dictByName = dictService.getDictByName(dictName);
         Integer dictId = dictByName.getDictId();
-        Page page = PageHelper.offsetPage(offectPosition, limit);
+        Page page = PageHelper.offsetPage(offsetPosition, limit);
         List<MyDictDetail> fuzzyDictDetailByPage = getDictDetail(dictId);
         return Result.ok().count(page.getTotal()).data(fuzzyDictDetailByPage).code(ResultCode.TABLE_SUCCESS);
     }
