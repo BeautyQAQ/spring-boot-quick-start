@@ -63,7 +63,7 @@ docker.host=tcp://111.111.111.111:2375
 
 ### 跟随芋道源码学习
 - [x] [芋道 Spring Boot 快速入门](https://www.iocoder.cn/Spring-Boot/quick-start/?github) --> [跳转到对应模块](./spring-boot-quick-introduction)
-- [ ] [Maven 最全教程，看了必懂](https://www.iocoder.cn/Fight/Maven-most-complete-tutorial-read-must-understand/?self)
+- [x] [Maven 最全教程，看了必懂](https://www.iocoder.cn/Fight/Maven-most-complete-tutorial-read-must-understand/?self)
 - [ ] [芋道 Spring Boot 配置文件入门](https://www.iocoder.cn/Spring-Boot/config-file/?self)
 - [ ] [芋道 Spring Boot SpringMVC 入门](https://www.iocoder.cn/Spring-Boot/SpringMVC/?self)
 - [ ] [芋道 Spring Boot 自动配置原理](https://www.iocoder.cn/Spring-Boot/autoconfigure/?self)
