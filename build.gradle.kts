@@ -33,9 +33,9 @@ allprojects{
     }
 
     dependencies {
-        implementation("cn.hutool:hutool-all:5.8.4.M1")
+        implementation("cn.hutool:hutool-all:5.8.10")
 
-        testImplementation(platform("org.junit:junit-bom:5.9.0-M1"))
+        testImplementation(platform("org.junit:junit-bom:5.9.0"))
         testImplementation("org.junit.jupiter:junit-jupiter-api")
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     }

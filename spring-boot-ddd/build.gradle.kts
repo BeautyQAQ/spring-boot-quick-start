@@ -15,6 +15,3 @@ dependencies{
     testImplementation("org.testcontainers:testcontainers")
     testImplementation("org.testcontainers:postgresql")
 }
-repositories {
-    mavenCentral()
-}

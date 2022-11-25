@@ -1,5 +1,7 @@
 # spring-boot-quick-start
 
+关于Java后端开发以及spring boot各个组件的学习记录仓库
+
 ## 通过gradle命令创建module
 
 - 首先`mkdir spring-boot-security`创建文件夹
@@ -7,7 +9,7 @@
 - gradle创建module需要一个`settings.gradle.kts`文件，使用`touch settings.gradle.kts`创建(windows powershell命令为`New-Item settings.gradle.kts`)
 - 通过`gradle wrapper`将gradle包一层，避免多台机器gradle版本不一致的问题，这是一个比较好的实践
 - 通过IDEA选择新建模块->来自现有源代码的模块，导入刚刚创建的module
-- spring组件的统一版本控制由`id("org.springframework.boot") version "2.6.4"`插件控制
+- spring组件的统一版本控制由`id("org.springframework.boot") version "2.x.x"`插件控制
 
 **这里并未使用上述机制，还是使用了多模块的方案**
 
@@ -58,3 +60,12 @@
 docker.client.strategy=org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy
 docker.host=tcp://111.111.111.111:2375
 ```
+
+### 跟随芋道源码学习
+- [x] [芋道 Spring Boot 快速入门](https://www.iocoder.cn/Spring-Boot/quick-start/?github) --> [跳转到对应模块](./spring-boot-quick-introduction)
+- [ ] [Maven 最全教程，看了必懂](https://www.iocoder.cn/Fight/Maven-most-complete-tutorial-read-must-understand/?self)
+- [ ] [芋道 Spring Boot 配置文件入门](https://www.iocoder.cn/Spring-Boot/config-file/?self)
+- [ ] [芋道 Spring Boot SpringMVC 入门](https://www.iocoder.cn/Spring-Boot/SpringMVC/?self)
+- [ ] [芋道 Spring Boot 自动配置原理](https://www.iocoder.cn/Spring-Boot/autoconfigure/?self)
+- [ ] [芋道 Spring Boot 单元测试 Test 入门](https://www.iocoder.cn/Spring-Boot/Unit-Test/?self)
+- [ ] [芋道 Spring Boot 持续交付 Jenkins 入门](https://www.iocoder.cn/Spring-Boot/Jenkins/?self)
