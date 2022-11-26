@@ -1,7 +1,7 @@
 spring:
   application:
     name: ENC(hSujk/MWyAH1WNcKeHqfyxDBBvHhJb3xrvhUBvYH94r/GpT4rmJl4A==)
-#    name: demo-application
+    # name: demo-application
 
 jasypt:
   # jasypt 配置项，对应 JasyptEncryptorConfigurationProperties 配置类

@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.config.ConfigFileApplicationListener;
 
 @SpringBootApplication
-public class SpringBootQuickConfiguration {
+public class SpringBootConfiguration {
 
     /**
      * 设置需要读取的配置文件的名字。
@@ -18,6 +18,6 @@ public class SpringBootQuickConfiguration {
         System.setProperty(ConfigFileApplicationListener.CONFIG_NAME_PROPERTY, CONFIG_NAME_VALUE);
         // 传递参数
         args = new String[]{"--jasypt.encryptor.password=justdoit", "--start-arg=class"};
-        SpringApplication.run(SpringBootQuickConfiguration.class, args);
+        SpringApplication.run(SpringBootConfiguration.class, args);
     }
 }

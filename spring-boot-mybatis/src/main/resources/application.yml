@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: local
+
+  # datasource 数据源配置内容
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://111.111.111.111:3306/xxxxx?serverTimezone=Asia/Shanghai&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: 1234
+    password: 1234
+
+# mybatis 配置内容
+mybatis:
+  config-location: classpath:mybatis-config.xml # 配置 MyBatis 配置文件路径
+  mapper-locations: classpath:mapper/*.xml # 配置 Mapper XML 地址
+  type-aliases-package: com.quick.start.mybatis.mapper # 配置数据库实体包路径
