@@ -11,8 +11,7 @@ dependencies {
     implementation(platform(SpringBootPlugin.BOM_COORDINATES))
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
     implementation("mysql:mysql-connector-java:8.0.31")
-    implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2")
+    implementation("com.baomidou:mybatis-plus-boot-starter:3.5.2")
 
-    testImplementation("org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.2.2")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

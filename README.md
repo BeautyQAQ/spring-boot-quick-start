@@ -71,3 +71,4 @@ docker.host=tcp://111.111.111.111:2375
 - [ ] [芋道 Spring Boot 持续交付 Jenkins 入门](https://www.iocoder.cn/Spring-Boot/Jenkins/?self)
 - [ ] [芋道 Spring Boot 数据库连接池入门](https://www.iocoder.cn/Spring-Boot/datasource-pool/)
 - [x] [芋道 Spring Boot MyBatis 入门](https://www.iocoder.cn/Spring-Boot/MyBatis/) --> [跳转到对应模块](./spring-boot-mybatis/README.md)
+- [x] [芋道 Spring Boot MyBatis-Plus 入门](https://www.iocoder.cn/Spring-Boot/MyBatis/) --> [跳转到对应模块](./spring-boot-mybatis-plus/README.md)
