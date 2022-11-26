@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: ENC(hSujk/MWyAH1WNcKeHqfyxDBBvHhJb3xrvhUBvYH94r/GpT4rmJl4A==)
+#    name: demo-application
+
+jasypt:
+  # jasypt 配置项，对应 JasyptEncryptorConfigurationProperties 配置类
+  encryptor:
+    algorithm: PBEWithMD5AndDES # 加密算法
+    # `password` 配置项，设置加密秘钥，非常重要。这里，显然不能直接把该配置项设置在配置文件中，不然不就白加密了嘛。
+    # 因此，这里我们采用 `JASYPT_PASSWORD` 环境变量。当然，也可以通过[「6. 命令行配置」](#)，例如说 `java -jar xxx.jar --jasypt.encryptor.password=秘钥` 操作。
+    password: ${JASYPT_PASSWORD} # 加密秘钥
+
+# 注意，单词之间，Spring Boot 推荐使用 - 中划线间隔。
+order:
+  pay-timeout-seconds: 120 # 订单支付超时时长，单位：秒。
+  create-frequency-seconds: 10 # 订单创建频率，单位：秒
+  desc: "订单支付超时时长为 ${order.pay-timeout-seconds} 秒，订单创建频率为 ${order.create-frequency-seconds} 秒"
+
+my:
+  # 指定 int 整数。
+  myNumber1: "${random.int}"
+  # 指定 long 整数。
+  myLongNumber: "${random.long}"
+  # 随机小于 10 的 int 整数。
+  myNumber2: "${random.int(10)}"
+  # 随机大于等于 10 ，小于等于 65536 的 int 整数。
+  myNumber3: "${random.int[1024,65536]}"
+  # 字符串：
+  # 普通字符串
+  secret1: "${random.value}"
+  # UUID 字符串
+  secret2: "${random.uuid}"

@@ -64,8 +64,9 @@ docker.host=tcp://111.111.111.111:2375
 ### 跟随芋道源码学习
 - [x] [芋道 Spring Boot 快速入门](https://www.iocoder.cn/Spring-Boot/quick-start/?github) --> [跳转到对应模块](./spring-boot-quick-introduction)
 - [x] [Maven 最全教程，看了必懂](https://www.iocoder.cn/Fight/Maven-most-complete-tutorial-read-must-understand/?self)
-- [ ] [芋道 Spring Boot 配置文件入门](https://www.iocoder.cn/Spring-Boot/config-file/?self)
+- [x] [芋道 Spring Boot 配置文件入门](https://www.iocoder.cn/Spring-Boot/config-file/?self) --> [跳转到对应模块](./spring-boot-configuration/README.md)
 - [ ] [芋道 Spring Boot SpringMVC 入门](https://www.iocoder.cn/Spring-Boot/SpringMVC/?self)
 - [ ] [芋道 Spring Boot 自动配置原理](https://www.iocoder.cn/Spring-Boot/autoconfigure/?self)
 - [ ] [芋道 Spring Boot 单元测试 Test 入门](https://www.iocoder.cn/Spring-Boot/Unit-Test/?self)
 - [ ] [芋道 Spring Boot 持续交付 Jenkins 入门](https://www.iocoder.cn/Spring-Boot/Jenkins/?self)
+- [ ] [芋道 Spring Boot 数据库连接池入门](https://www.iocoder.cn/Spring-Boot/datasource-pool/)

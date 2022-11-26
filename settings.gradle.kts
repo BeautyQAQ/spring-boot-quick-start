@@ -3,4 +3,4 @@ include("spring-boot-security")
 include("spring-boot-securityframework")
 include("spring-boot-ddd")
 include("spring-boot-quick-introduction")
-
+include("spring-boot-configuration")
