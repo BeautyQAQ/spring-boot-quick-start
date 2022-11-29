@@ -10,6 +10,7 @@ version = "unspecified"
 dependencies {
     implementation(platform(SpringBootPlugin.BOM_COORDINATES))
     implementation("org.springframework.boot:spring-boot-starter")
+    implementation("com.quick.start:spring-boot-auto-config:unspecified")
 
     /*这里，引入 spring-boot-configuration-processor 依赖的原因是，
     编译项目时，会扫描 @ConfigurationProperties 注解，

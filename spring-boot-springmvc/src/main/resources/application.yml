@@ -1,0 +1,4 @@
+my:
+  # 自定义 HttpServer 端口, 自定义starter中的自定义配置
+  server:
+    port: 8888
