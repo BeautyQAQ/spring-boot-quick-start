@@ -67,7 +67,7 @@ public class CodeSnippetsController {
         logger.info("map2={}",JSONUtil.toJsonPrettyStr(map2));
     }
 
-    class User{
+    private class User{
         private String name;
         private String sex;
 
