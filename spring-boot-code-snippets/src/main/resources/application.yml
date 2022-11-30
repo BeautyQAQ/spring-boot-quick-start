@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active: local
+
+  # datasource 数据源配置内容
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://111.111.111.111:3306/xxxxx?serverTimezone=Asia/Shanghai&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: 1234
+    password: 1234
