@@ -27,4 +27,10 @@ public class UserController {
         // 查询并返回用户
         return userService.get(id);
     }
+
+    @GetMapping("/test")
+    public String test() {
+        // 查询并返回用户
+        return "test_hotSwap_test";
+    }
 }
