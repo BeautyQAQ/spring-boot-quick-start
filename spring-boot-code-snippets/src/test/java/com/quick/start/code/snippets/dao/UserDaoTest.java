@@ -1,7 +1,7 @@
 package com.quick.start.code.snippets.dao;
 
 import cn.hutool.core.lang.Assert;
-import com.quick.start.code.snippets.DO.UserDO;
+import com.quick.start.code.snippets.dataobject.UserDo;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
@@ -25,12 +25,13 @@ public class UserDaoTest {
      * 第三条，在单元测试方法执行之后，/sql/clean.sql 脚本，清空数据。毕竟，多个单元测试是共享一个 H2 内存数据库，所以需要进行清理。
      */
     @Sql(scripts = "/sql/create_tables.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-    @Sql(statements = "INSERT INTO `t_user`(`id`, `username`, `password`) VALUES (1, 'username:1', 'password:1');", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(statements = "INSERT INTO `t_user`(`id`, `username`, `password`) VALUES (1, 'username:1', 'password:1');",
+            executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
     @Sql(scripts = "/sql/clean.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
     @Test
-    public void testSelectById(){
+    public void testSelectById() {
         // 查询用户
-        UserDO user = userDao.selectById(1);
+        UserDo user = userDao.selectById(1);
         // 校验结果
         Assert.equals(1, user.getId(), "编号不匹配");
         Assert.equals("password:1", user.getPassword(), "密码不匹配");

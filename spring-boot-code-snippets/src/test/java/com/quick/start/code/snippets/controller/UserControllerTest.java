@@ -1,6 +1,6 @@
 package com.quick.start.code.snippets.controller;
 
-import com.quick.start.code.snippets.DO.UserDO;
+import com.quick.start.code.snippets.dataobject.UserDo;
 import com.quick.start.code.snippets.service.UserService;
 import org.hamcrest.core.IsEqual;
 import org.junit.jupiter.api.Test;
@@ -30,7 +30,7 @@ public class UserControllerTest {
     @Test
     public void testGet() throws Exception {
         // Mock UserService 的 get 方法
-        Mockito.when(userService.get(any())).thenReturn(new UserDO().setId(1).setUsername("username:1").setPassword("password:1"));
+        Mockito.when(userService.get(any())).thenReturn(new UserDo().setId(1).setUsername("username:1").setPassword("password:1"));
         // mock查询用户
         ResultActions resultActions = mvc.perform(MockMvcRequestBuilders.get("/user/get?id=1"));
         // 校验相应状态码

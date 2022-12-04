@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @RestController
 public class CodeSnippetsController {
 
-    private final static Logger logger = LoggerFactory.getLogger(CodeSnippetsController.class);
+    private static final Logger logger = LoggerFactory.getLogger(CodeSnippetsController.class);
 
     @Resource
     private HttpServletRequest request;
@@ -57,17 +57,17 @@ public class CodeSnippetsController {
 
         // 若value为空，设置默认值""
         Map<String, String> map1 = list.stream().collect(
-                Collectors.toMap(User::getName, i-> Optional.ofNullable(i.getSex()).orElse(""), (v1, v2) -> v1));
+                Collectors.toMap(User::getName, i -> Optional.ofNullable(i.getSex()).orElse(""), (v1, v2) -> v1));
 
         // 调用hashMap putAll方法， 注意key相同时，value会覆盖。
         Map<String, String> map2 = list.stream().collect(
                 HashMap::new, (m, i) -> m.put(i.getName(), i.getSex()), HashMap::putAll);
 
-        logger.info("map1={}",JSONUtil.toJsonPrettyStr(map1));
-        logger.info("map2={}",JSONUtil.toJsonPrettyStr(map2));
+        logger.info("map1={}", JSONUtil.toJsonPrettyStr(map1));
+        logger.info("map2={}", JSONUtil.toJsonPrettyStr(map2));
     }
 
-    private class User{
+    private static class User {
         private String name;
         private String sex;
 

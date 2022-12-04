@@ -1,6 +1,6 @@
-package com.quick.start.code.snippets.DO;
+package com.quick.start.code.snippets.dataobject;
 
-public class UserDO {
+public class UserDo {
 
     /**
      * 用户编号
@@ -22,7 +22,7 @@ public class UserDO {
         return id;
     }
 
-    public UserDO setId(Integer id) {
+    public UserDo setId(Integer id) {
         this.id = id;
         return this;
     }
@@ -31,7 +31,7 @@ public class UserDO {
         return username;
     }
 
-    public UserDO setUsername(String username) {
+    public UserDo setUsername(String username) {
         this.username = username;
         return this;
     }
@@ -40,7 +40,7 @@ public class UserDO {
         return password;
     }
 
-    public UserDO setPassword(String password) {
+    public UserDo setPassword(String password) {
         this.password = password;
         return this;
     }

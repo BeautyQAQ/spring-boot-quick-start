@@ -1,7 +1,7 @@
 package com.quick.start.code.snippets.service;
 
 import cn.hutool.core.lang.Assert;
-import com.quick.start.code.snippets.DO.UserDO;
+import com.quick.start.code.snippets.dataobject.UserDo;
 import com.quick.start.code.snippets.dao.UserDao;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -22,10 +22,10 @@ public class UserServiceTest {
     private UserService userService;
 
     @Test
-    public void testGet(){
+    public void testGet() {
         // Mock UserDao 的 selectById 方法
-        Mockito.when(userDao.selectById(any())).thenReturn(new UserDO().setId(1).setUsername("username:1").setPassword("password:1"));
-        UserDO user = userService.get(1);
+        Mockito.when(userDao.selectById(any())).thenReturn(new UserDo().setId(1).setUsername("username:1").setPassword("password:1"));
+        UserDo user = userService.get(1);
         // 校验结果
         Assert.equals(1, user.getId(), "编号不匹配");
         Assert.equals("username:1", user.getUsername(), "用户名不匹配");
@@ -34,7 +34,7 @@ public class UserServiceTest {
 
     @Test
     public void addUser() throws Exception {
-        Assert.equals(1,userService.addUser("test"));
-        Assert.equals(0,userService.addUser(null));
+        Assert.equals(1, userService.addUser("test"));
+        Assert.equals(0, userService.addUser(null));
     }
 }
