@@ -87,3 +87,5 @@ docker.host=tcp://111.111.111.111:2375
 - [ ] [JSR269 插件化注解API](https://blog.whatakitty.com/JSR269%E6%8F%92%E4%BB%B6%E5%8C%96%E6%B3%A8%E8%A7%A3API.html)
 - [x] [芋道 Spring Boot 消除冗余代码 Lombok 入门](https://www.iocoder.cn/Spring-Boot/Lombok/?github)
 - [x] [芋道 Spring Boot 对象转换 MapStruct 入门](https://www.iocoder.cn/Spring-Boot/MapStruct/?github)
+- [ ] [芋道 Spring Boot 响应式 WebFlux 入门](https://www.iocoder.cn/Spring-Boot/WebFlux/?github)
+- [ ] [使用 Reactor 进行反应式编程](https://www.iocoder.cn/Spring-Boot/WebFlux/?github)
