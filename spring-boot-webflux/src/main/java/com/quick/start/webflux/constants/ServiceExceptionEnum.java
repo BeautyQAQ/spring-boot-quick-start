@@ -1,4 +1,4 @@
-package com.quick.start.springmvc.core.constants;
+package com.quick.start.webflux.constants;
 
 /**
  * 服务异常

@@ -1,6 +1,7 @@
-package com.quick.start.springmvc.core.exception;
+package com.quick.start.webflux.exception;
 
-import com.quick.start.springmvc.core.constants.ServiceExceptionEnum;
+
+import com.quick.start.webflux.constants.ServiceExceptionEnum;
 
 public final class ServiceException extends RuntimeException {
 

@@ -2,8 +2,11 @@ package com.quick.start.webflux.controller;
 
 import com.quick.start.webflux.dto.UserAddDTO;
 import com.quick.start.webflux.dto.UserUpdateDTO;
+import com.quick.start.webflux.service.UserService;
 import com.quick.start.webflux.vo.UserVO;
 import org.reactivestreams.Publisher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +17,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 /**
  * 基于注解的Reactor
@@ -22,6 +24,15 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/users")
 public class UserController {
+
+    public static final Logger log = LoggerFactory.getLogger(UserController.class);
+
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
 
     /**
      * 查询用户列表
@@ -50,12 +61,24 @@ public class UserController {
     }
 
     /**
+     * 获得指定用户编号的用户
+     *
+     * @param id 用户编号
+     * @return 用户
+     */
+    @GetMapping("/v2/get")
+    public Mono<UserVO> get2(@RequestParam("id") Integer id) {
+        UserVO userVO = userService.get(id);
+        return Mono.just(userVO);
+    }
+
+    /**
      * 添加用户
      * 从 request 的 Body 中读取参数。注意，此时提交参数需要使用 "application/json" 的 Content-Type 内容类型。
      * @param addDTO 添加用户信息 DTO
      * @return 添加成功的用户编号
      */
-    @PostMapping("add")
+    @PostMapping("/add")
     public Mono<Integer> add(@RequestBody Publisher<UserAddDTO> addDTO){
         // 插入用户记录，返回编号
         Integer returnId = 1;
@@ -73,7 +96,7 @@ public class UserController {
     @PostMapping("add2")
     public Mono<Integer> add(Mono<UserAddDTO> addDTO) {
         // 插入用户记录，返回编号
-        Integer returnId = UUID.randomUUID().hashCode();
+        Integer returnId = 1;
         // 返回用户编号
         return Mono.just(returnId);
     }
@@ -98,8 +121,9 @@ public class UserController {
      */
     @PostMapping("/delete") // URL 修改成 /delete ，RequestMethod 改成 DELETE
     public Mono<Boolean> delete(@RequestParam("id") Integer id) {
+        log.info("入参id={}", id);
         // 删除用户记录
-        Boolean success = false;
+        Boolean success = true;
         // 返回是否更新成功
         return Mono.just(success);
     }
