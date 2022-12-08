@@ -10,6 +10,7 @@ version = "unspecified"
 dependencies {
     implementation(platform(SpringBootPlugin.BOM_COORDINATES))
     implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

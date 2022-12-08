@@ -7,6 +7,7 @@ import com.quick.start.webflux.vo.UserVO;
 import org.reactivestreams.Publisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
  * 基于注解的Reactor
  */
 @RestController
+@CrossOrigin(origins = "*", allowCredentials = "true") // 允许所有来源，允许发送 Cookie
 @RequestMapping("/users")
 public class UserController {
 
@@ -39,6 +41,7 @@ public class UserController {
      *
      * @return 用户列表
      */
+    @CrossOrigin(allowCredentials = "false") // 允许所有来源，不允许发送 Cookie
     @GetMapping("/list")
     public Flux<UserVO> list() {
         ArrayList<UserVO> result = new ArrayList<>();
