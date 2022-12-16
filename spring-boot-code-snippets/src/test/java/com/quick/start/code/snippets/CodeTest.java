@@ -5,8 +5,10 @@ import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import org.junit.jupiter.api.Test;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +25,12 @@ public class CodeTest {
         }else {
             System.out.println("false");
         }
+
+        String s = StringUtils.arrayToDelimitedString(new ArrayList().toArray(), ",");
+        System.out.println(s);
+
+        System.out.println(JSONUtil.toJsonStr(Arrays.asList("xxxxx-bbb".split("-"))));
+
     }
 
     @Test
