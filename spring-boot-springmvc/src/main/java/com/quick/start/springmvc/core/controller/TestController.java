@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/test")
-@CrossOrigin(origins = "*", allowCredentials = "true") // 允许所有来源，允许发送 Cookie
+@CrossOrigin(originPatterns  = "*", allowCredentials = "true") // 允许所有来源，允许发送 Cookie
 public class TestController {
 
     /**

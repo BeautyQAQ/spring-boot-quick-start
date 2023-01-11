@@ -89,4 +89,5 @@ docker.host=tcp://111.111.111.111:2375
 - [x] [芋道 Spring Boot 对象转换 MapStruct 入门](https://www.iocoder.cn/Spring-Boot/MapStruct/?github)
 - [ ] [芋道 Spring Boot 响应式 WebFlux 入门](https://www.iocoder.cn/Spring-Boot/WebFlux/?github)
 - [ ] [使用 Reactor 进行反应式编程](https://www.iocoder.cn/Spring-Boot/WebFlux/?github)
-- [ ] [芋道 Spring Boot MongoDB 入门](https://www.iocoder.cn/Spring-Boot/MongoDB/?self)
+- [ ] [芋道 Spring Boot MongoDB 入门](https://www.iocoder.cn/Spring-Boot/MongoDB/?self) --> [跳转到对应模块](./spring-boot-middleware)
+- [ ] [芋道 Spring Boot JPA 入门](https://www.iocoder.cn/Spring-Boot/JPA/?self)
