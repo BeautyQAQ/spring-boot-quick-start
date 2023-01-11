@@ -23,7 +23,7 @@ import java.util.ArrayList;
  * 基于注解的Reactor
  */
 @RestController
-@CrossOrigin(origins = "*", allowCredentials = "true") // 允许所有来源，允许发送 Cookie
+@CrossOrigin(originPatterns = "*", allowCredentials = "true") // 允许所有来源，允许发送 Cookie
 @RequestMapping("/users")
 public class UserController {
 

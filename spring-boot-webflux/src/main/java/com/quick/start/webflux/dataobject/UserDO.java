@@ -62,32 +62,36 @@ public class UserDO {
         return id;
     }
 
-    public void setId(Integer id) {
+    public UserDO setId(Integer id) {
         this.id = id;
+        return this;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public UserDO setUsername(String username) {
         this.username = username;
+        return this;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public UserDO setPassword(String password) {
         this.password = password;
+        return this;
     }
 
     public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public UserDO setCreateTime(Date createTime) {
         this.createTime = createTime;
+        return this;
     }
 
     public Profile getProfile() {

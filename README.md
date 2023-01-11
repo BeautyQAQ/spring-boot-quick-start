@@ -91,3 +91,5 @@ docker.host=tcp://111.111.111.111:2375
 - [ ] [使用 Reactor 进行反应式编程](https://www.iocoder.cn/Spring-Boot/WebFlux/?github)
 - [ ] [芋道 Spring Boot MongoDB 入门](https://www.iocoder.cn/Spring-Boot/MongoDB/?self) --> [跳转到对应模块](./spring-boot-middleware)
 - [ ] [芋道 Spring Boot JPA 入门](https://www.iocoder.cn/Spring-Boot/JPA/?self)
+- [ ] [芋道 Spring Boot Redis 入门](https://www.iocoder.cn/Spring-Boot/Redis/?self)
+- [ ] [芋道 Spring Boot Elasticsearch 入门](https://www.iocoder.cn/Spring-Boot/Elasticsearch/?self)

@@ -26,11 +26,11 @@ public class WebFluxConfiguration implements WebFluxConfigurer {
     public void addCorsMappings(CorsRegistry registry){
         // 添加全局的 CORS 配置
         registry.addMapping("/**")
-                .allowedOrigins("*") // 允许所有请求来源
+                .allowedOriginPatterns("*") // 允许所有请求来源
                 .allowCredentials(true) // 允许发送 Cookie
                 .allowedMethods("*") // 允许所有请求 Method
                 .allowedHeaders("*") // 允许所有请求 Header
-//                .exposedHeaders("*") // 允许所有响应 Header
+                .exposedHeaders("*") // 允许所有响应 Header
                 .maxAge(1800L); // 有效期 1800 秒，2 小时
     }
 
@@ -45,11 +45,11 @@ public class WebFluxConfiguration implements WebFluxConfigurer {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         // 创建 CorsConfiguration 配置，相当于 CorsRegistration 注册信息
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(Collections.singletonList("*")); // 允许所有请求来源
+        config.setAllowedOriginPatterns(Collections.singletonList("*")); // 允许所有请求来源
         config.setAllowCredentials(true); // 允许发送 Cookie
         config.addAllowedMethod("*"); // 允许所有请求 Method
         config.setAllowedHeaders(Collections.singletonList("*")); // 允许所有请求 Header
-        // config.setExposedHeaders(Collections.singletonList("*")); // 允许所有响应 Header
+        config.setExposedHeaders(Collections.singletonList("*")); // 允许所有响应 Header
         config.setMaxAge(1800L); // 有效期 1800 秒，2 小时
         source.registerCorsConfiguration("/**", config);
         // 创建 CorsWebFilter 对象
