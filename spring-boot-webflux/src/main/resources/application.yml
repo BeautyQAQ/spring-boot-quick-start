@@ -19,6 +19,14 @@ spring:
     database: 0 # Redis 数据库号，默认为 0 。
     timeout: 0 # Redis 连接超时时间，单位：毫秒。
 
+  # Elasticsearch 配置项
+  elasticsearch:
+    uris: 127.0.0.1:9200
+  r2dbc:
+    url: mysql://127.0.0.1:3306/test
+    username: root
+    password: root
+
 logging:
   level:
     org:

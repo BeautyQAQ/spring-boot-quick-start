@@ -77,7 +77,7 @@ docker.host=tcp://111.111.111.111:2375
 - [x] [小谈 Java 单元测试](https://www.iocoder.cn/Fight/A-little-bit-about-Java-unit-testing/?self)
 - [x] [谈谈单元测试](https://www.iocoder.cn/Architecture/talk-about-java-unit-test/?self)
 - [x] [springboot test](https://www.iocoder.cn/Fight/72b19e24a602/?self)
-- [ ] [JAVA 拾遗 —— 关于 SPI 机制](https://www.iocoder.cn/Fight/xuma/spi/?self)
+- [x] [JAVA 拾遗 —— 关于 SPI 机制](https://www.iocoder.cn/Fight/xuma/spi/?self)
 - [ ] [Spring Boot 中 SPI 机制](https://www.iocoder.cn/Fight/SPI-mechanism-in-Spring-Boot/?self)
 - [ ] [Spring Boot 知识清单](https://www.iocoder.cn/Fight/Give-you-a-list-of-Spring-Boot-knowledge/?self)
 - [ ] [JUnit4 单元测试入门教程](https://www.iocoder.cn/Fight/JUnit4-unit-testing-tutorial/?self)

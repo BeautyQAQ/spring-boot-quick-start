@@ -17,6 +17,8 @@ dependencies {
     // 自 spring-data-elasticsearch 的 3.2.0.RELEASE 版本开始，其基于响应式的 WebClient ，封装了请求 Elasticsearch HTTP API 的 DefaultReactiveElasticsearchClient 客户端。
     // 这意味着什么？Spring Data Elasticsearch 开始支持响应式，并且开始使用 Elasticsearch HTTP API。 Spring Data Elasticsearch 之前的版本，使用的是 Elasticsearch TCP API 。
     implementation("org.springframework.boot:spring-boot-starter-data-elasticsearch")
+    implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
+    implementation("com.github.jasync-sql:jasync-r2dbc-mysql:2.1.8")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

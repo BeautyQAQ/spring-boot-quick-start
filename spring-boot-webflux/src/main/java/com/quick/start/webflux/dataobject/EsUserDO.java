@@ -1,18 +1,22 @@
 package com.quick.start.webflux.dataobject;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
+import org.springframework.data.elasticsearch.annotations.Document;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
-/**
- * 用户 DO
- */
-@Table(value = "users")
-public class UserDO {
+@Document(indexName = "user", // 索引名
+        shards = 1, // 默认索引分区数
+        replicas = 0, // 每个分区的备份数
+        refreshInterval = "-1" // 刷新间隔
+)
+public class EsUserDO {
 
+    /**
+     * ID 主键
+     */
     @Id
-    private Long id;
+    private Integer id;
     /**
      * 账号
      */
@@ -24,13 +28,13 @@ public class UserDO {
     /**
      * 创建时间
      */
-    private LocalDateTime createTime;
+    private Date createTime;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public UserDO setId(Long id) {
+    public EsUserDO setId(Integer id) {
         this.id = id;
         return this;
     }
@@ -39,7 +43,7 @@ public class UserDO {
         return username;
     }
 
-    public UserDO setUsername(String username) {
+    public EsUserDO setUsername(String username) {
         this.username = username;
         return this;
     }
@@ -48,16 +52,16 @@ public class UserDO {
         return password;
     }
 
-    public UserDO setPassword(String password) {
+    public EsUserDO setPassword(String password) {
         this.password = password;
         return this;
     }
 
-    public LocalDateTime getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public UserDO setCreateTime(LocalDateTime createTime) {
+    public EsUserDO setCreateTime(Date createTime) {
         this.createTime = createTime;
         return this;
     }
@@ -71,5 +75,4 @@ public class UserDO {
                 ", createTime=" + createTime +
                 '}';
     }
-
 }
