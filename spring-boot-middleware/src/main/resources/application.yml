@@ -12,6 +12,18 @@ spring:
       # 密码必须使用字符串且是单引号，否则报错
       password: 'test'
       # 上述属性，也可以只配置 uri
+  # datasource 数据源配置内容
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/test?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: test
+    password: test1
+  # JPA 配置内容，对应 JpaProperties 类
+  jpa:
+    show-sql: true # 打印 SQL 。生产环境，建议关闭
+    # Hibernate 配置内容，对应 HibernateProperties 类,实际项目无需配置 hibernate 配置项，这里仅仅是演示
+    hibernate:
+      ddl-auto: none
 
 logging:
   level:

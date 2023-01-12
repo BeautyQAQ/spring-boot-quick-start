@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 
 @Document(collection = "User")
-public class UserDO {
+public class MongoUserDO {
 
     /**
      * 用户信息

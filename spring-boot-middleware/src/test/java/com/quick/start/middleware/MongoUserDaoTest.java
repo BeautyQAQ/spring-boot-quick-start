@@ -1,7 +1,7 @@
 package com.quick.start.middleware;
 
-import com.quick.start.middleware.dao.UserDao;
-import com.quick.start.middleware.dataobject.UserDO;
+import com.quick.start.middleware.dao.MongoUserDao;
+import com.quick.start.middleware.dataobject.MongoUserDO;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -11,9 +11,9 @@ import java.util.Date;
 import java.util.List;
 
 @SpringBootTest
-public class UserDaoTest {
+public class MongoUserDaoTest {
     @Resource
-    private UserDao userDao;
+    private MongoUserDao mongoUserDao;
 
     /**
      * 插入一条记录
@@ -21,19 +21,19 @@ public class UserDaoTest {
     @Test
     public void testInsert() {
         // 创建 UserDO 对象
-        UserDO user = new UserDO();
+        MongoUserDO user = new MongoUserDO();
         // 这里先临时写死一个 ID 编号，后面演示自增 ID 的时候，在修改这块
         user.setId(10);
         user.setUsername("didi");
         user.setPassword("buzhidao");
         user.setCreateTime(new Date());
         // 创建 Profile 对象
-        UserDO.Profile profile = new UserDO.Profile();
+        MongoUserDO.Profile profile = new MongoUserDO.Profile();
         profile.setNickname("测试");
         profile.setGender(1);
         user.setProfile(profile);
         // 存储到 DB
-        userDao.insert(user);
+        mongoUserDao.insert(user);
     }
 
     /**
@@ -44,12 +44,12 @@ public class UserDaoTest {
     @Test
     public void testUpdate() {
         // 创建 UserDO 对象
-        UserDO updateUser = new UserDO();
+        MongoUserDO updateUser = new MongoUserDO();
         updateUser.setId(1);
         updateUser.setUsername("nicai");
 
         // 执行更新
-        userDao.updateById(updateUser);
+        mongoUserDao.updateById(updateUser);
     }
 
     /**
@@ -57,8 +57,8 @@ public class UserDaoTest {
      */
     @Test
     public void testSelectById() {
-        UserDO userDO = userDao.findById(10);
-        System.out.println(userDO);
+        MongoUserDO mongoUserDO = mongoUserDao.findById(10);
+        System.out.println(mongoUserDO);
     }
 
     /**
@@ -66,7 +66,7 @@ public class UserDaoTest {
      */
     @Test
     public void testSelectByIds() {
-        List<UserDO> users = userDao.findAllById(Arrays.asList(10, 4));
+        List<MongoUserDO> users = mongoUserDao.findAllById(Arrays.asList(10, 4));
         users.forEach(System.out::println);
     }
 
@@ -75,6 +75,6 @@ public class UserDaoTest {
      */
     @Test
     public void testDelete() {
-        userDao.deleteById(10);
+        mongoUserDao.deleteById(10);
     }
 }

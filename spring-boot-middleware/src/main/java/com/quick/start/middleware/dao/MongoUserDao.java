@@ -1,6 +1,6 @@
 package com.quick.start.middleware.dao;
 
-import com.quick.start.middleware.dataobject.UserDO;
+import com.quick.start.middleware.dataobject.MongoUserDO;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -15,15 +15,15 @@ import java.lang.reflect.Modifier;
 import java.util.List;
 
 @Repository
-public class UserDao {
+public class MongoUserDao {
     @Resource
     private MongoTemplate mongoTemplate;
 
-    public void insert(UserDO entity){
+    public void insert(MongoUserDO entity){
         mongoTemplate.insert(entity);
     }
 
-    public void updateById(UserDO entity){
+    public void updateById(MongoUserDO entity){
         // 生成 Update 条件
         final Update update = new Update();
         // 反射遍历 entity 对象，将非空字段设置到 Update 中
@@ -54,22 +54,22 @@ public class UserDao {
             return;
         }
         // 执行更新
-        mongoTemplate.updateFirst(new Query(Criteria.where("_id").is(entity.getId())), update, UserDO.class);
+        mongoTemplate.updateFirst(new Query(Criteria.where("_id").is(entity.getId())), update, MongoUserDO.class);
     }
 
     public void deleteById(Integer id){
-        mongoTemplate.remove(new Query(Criteria.where("_id").is(id)),UserDO.class);
+        mongoTemplate.remove(new Query(Criteria.where("_id").is(id)), MongoUserDO.class);
     }
 
-    public UserDO findById(Integer id){
-        return mongoTemplate.findOne(new Query(Criteria.where("_id").is(id)), UserDO.class);
+    public MongoUserDO findById(Integer id){
+        return mongoTemplate.findOne(new Query(Criteria.where("_id").is(id)), MongoUserDO.class);
     }
 
-    public UserDO findByUsername(String username) {
-        return mongoTemplate.findOne(new Query(Criteria.where("username").is(username)), UserDO.class);
+    public MongoUserDO findByUsername(String username) {
+        return mongoTemplate.findOne(new Query(Criteria.where("username").is(username)), MongoUserDO.class);
     }
 
-    public List<UserDO> findAllById(List<Integer> ids){
-        return mongoTemplate.find(new Query(Criteria.where("_id").in(ids)), UserDO.class);
+    public List<MongoUserDO> findAllById(List<Integer> ids){
+        return mongoTemplate.find(new Query(Criteria.where("_id").in(ids)), MongoUserDO.class);
     }
 }
