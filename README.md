@@ -92,4 +92,6 @@ docker.host=tcp://111.111.111.111:2375
 - [x] [芋道 Spring Boot MongoDB 入门](https://www.iocoder.cn/Spring-Boot/MongoDB/?self) --> [跳转到对应模块](./spring-boot-middleware)
 - [x] [芋道 Spring Boot JPA 入门](https://www.iocoder.cn/Spring-Boot/JPA/?self)
 - [x] [芋道 Spring Boot Redis 入门](https://www.iocoder.cn/Spring-Boot/Redis/?self)
-- [ ] [芋道 Spring Boot Elasticsearch 入门](https://www.iocoder.cn/Spring-Boot/Elasticsearch/?self)
+- [ ] [芋道 Spring Boot 缓存 Cache 入门](https://www.iocoder.cn/Spring-Boot/Cache/?self)
+- [x] [芋道 Spring Boot Elasticsearch 入门](https://www.iocoder.cn/Spring-Boot/Elasticsearch/?self)
+- [x] [你应该如何正确健壮后端服务？](https://www.iocoder.cn/Fight/How-do-you-robust-back-end-services/?vip)

@@ -26,18 +26,18 @@ public class RedisConfiguration {
         return template;
     }
 
-    @Bean
-    public RedisMessageListenerContainer listenerContainer(RedisConnectionFactory factory) {
-        // 创建 RedisMessageListenerContainer 对象
-        RedisMessageListenerContainer container = new RedisMessageListenerContainer();
-
-        // 设置 RedisConnection 工厂。😈 它就是实现多种 Java Redis 客户端接入的秘密工厂。感兴趣的胖友，可以自己去撸下。
-        container.setConnectionFactory(factory);
-
-        // 添加监听器
-        container.addMessageListener(new TestChannelTopicMessageListener(), new ChannelTopic("TEST"));
-//        container.addMessageListener(new TestChannelTopicMessageListener(), new ChannelTopic("AOTEMAN"));
-//        container.addMessageListener(new TestPatternTopicMessageListener(), new PatternTopic("TEST"));
-        return container;
-    }
+//    @Bean
+//    public RedisMessageListenerContainer listenerContainer(RedisConnectionFactory factory) {
+//        // 创建 RedisMessageListenerContainer 对象
+//        RedisMessageListenerContainer container = new RedisMessageListenerContainer();
+//
+//        // 设置 RedisConnection 工厂。😈 它就是实现多种 Java Redis 客户端接入的秘密工厂。感兴趣的胖友，可以自己去撸下。
+//        container.setConnectionFactory(factory);
+//
+//        // 添加监听器
+//        container.addMessageListener(new TestChannelTopicMessageListener(), new ChannelTopic("TEST"));
+////        container.addMessageListener(new TestChannelTopicMessageListener(), new ChannelTopic("AOTEMAN"));
+////        container.addMessageListener(new TestPatternTopicMessageListener(), new PatternTopic("TEST"));
+//        return container;
+//    }
 }
