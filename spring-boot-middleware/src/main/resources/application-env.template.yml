@@ -1,0 +1,37 @@
+spring:
+  data:
+    # MongoDB 配置项，对应 MongoProperties 类
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
+      database: test
+      username: test
+      # 密码必须使用字符串且是单引号，否则报错
+      password: 'test'
+      # 上述属性，也可以只配置 uri
+  # datasource 数据源配置内容
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/test?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: test
+    password: test1
+  # JPA 配置内容，对应 JpaProperties 类
+  jpa:
+    show-sql: true # 打印 SQL 。生产环境，建议关闭
+    # Hibernate 配置内容，对应 HibernateProperties 类,实际项目无需配置 hibernate 配置项，这里仅仅是演示
+    hibernate:
+      ddl-auto: none
+  # 对应 RedisProperties 类
+  redis:
+    host: 106.12.108.180
+    port: 6379
+    password: 123456 # Redis 服务器密码，默认为空。生产中，一定要设置 Redis 密码！
+    database: 0 # Redis 数据库号，默认为 0 。
+    timeout: 0 # Redis 连接超时时间，单位：毫秒。
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core: DEBUG # 打印 mongodb 操作的具体语句。生产环境下，不建议开启。
