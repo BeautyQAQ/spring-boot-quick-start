@@ -96,3 +96,8 @@ docker.host=tcp://111.111.111.111:2375
 - [x] [芋道 Spring Boot 缓存 Cache 入门](https://www.iocoder.cn/Spring-Boot/Cache/?self)
 - [x] [芋道 Spring Boot Elasticsearch 入门](https://www.iocoder.cn/Spring-Boot/Elasticsearch/?self)
 - [x] [你应该如何正确健壮后端服务？](https://www.iocoder.cn/Fight/How-do-you-robust-back-end-services/?vip)
+- [x] [图解 Elasticsearch 原理](https://www.iocoder.cn/Fight/Schematic-Elasticsearch-principle/?self)
+- [x] [Elasticsearch 如何做到亿级数据查询毫秒级返回？](https://www.iocoder.cn/Fight/Elasticsearch-how-to-achieve-millionth-level-data-query-millisecond-level-return/?self)
+- [x] [缓存穿透、缓存并发、缓存失效之思路变迁](https://www.iocoder.cn/Fight/Cache-penetration-and-Cache-concurrency-and-Cache-invalidation/?self)
+- [x] [彻底理解 Cookie、Session、Token](https://www.iocoder.cn/Fight/Thoroughly-understand-cookies,-sessions,-tokens/?self)
+- [x] [芋道 Spring Boot 分布式 Session 入门](https://www.iocoder.cn/Spring-Boot/Distributed-Session/?github)
