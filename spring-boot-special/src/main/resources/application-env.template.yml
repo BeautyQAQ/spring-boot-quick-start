@@ -1,4 +1,9 @@
 spring:
+  mvc:
+    pathmatch:
+      # 因为Springfox 使用的路径匹配是基于AntPathMatcher的，而Spring Boot 2.6.X使用的是PathPatternMatcher。
+      # 不添加这个属性会报错
+      matching-strategy: ANT_PATH_MATCHER
   # 对应 RedisProperties 类
   redis:
     host: 127.0.0.1
