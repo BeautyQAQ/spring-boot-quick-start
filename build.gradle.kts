@@ -43,7 +43,7 @@ allprojects{
     // 指定Java的构建版本，由Java插件提供
     java {
         toolchain {
-            languageVersion.set(JavaLanguageVersion.of(17))
+            languageVersion.set(JavaLanguageVersion.of(21))
         }
     }
 
